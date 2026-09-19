@@ -1,8 +1,8 @@
 # Recorded clean-source and fresh-extraction checks
 
 **Record date:** September 19, 2026
-**Package version:** `0.1.0-dev`
-**Public remote:** not yet created
+**Package version:** `v1.0.0-rc1`
+**Intended public remote:** `https://github.com/swihart/minvol-degree3-contact-bound` (not yet created)
 
 This document records reproducibility tests performed while constructing the
 fresh-history public package. A final tagged-checkout test will be added before
@@ -61,7 +61,7 @@ passed in the construction environment:
 - clean LaTeX build;
 - Markdown/PDF source pairing;
 - Poppler page/font/text preflight;
-- page-by-page visual inspection of the nine-page manuscript;
+- page-by-page visual inspection of the ten-page release-candidate manuscript;
 - all nested checksum manifests.
 
 On the named author's Mac, the manuscript and Markdown builds and pair checks
@@ -142,3 +142,12 @@ a fresh checkout of the exact release tag:
 
 The resulting commit, tag, environments, workflow URLs, and any harmless PDF
 binary variation should be recorded here rather than silently omitted.
+
+## Metadata and legal checkpoint
+
+The release-candidate metadata gate fixes the sole named author, absence of an
+asserted institutional affiliation, intended repository name and description,
+preferred citation, and split CC BY 4.0/MIT license. `ci/preflight_metadata.sh`
+checks those decisions against the paper, README, `CITATION.cff`, `LICENSE`,
+`VERSION`, and `RELEASE_DATE`. A public-remote clone and hosted workflow record
+remain pending and must be appended before release.

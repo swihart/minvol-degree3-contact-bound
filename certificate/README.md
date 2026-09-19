@@ -14,7 +14,7 @@ $$
 **Status:** internally replayed proposed exact universal certificate. The package
 has passed its exact Python replay, an independent binary64 Python audit, and
 seven adversarial rejection tests in the construction environment. The archived
-base-R audit has independently passed on the user's machine. The result has not
+base-R audit has independently passed on the named author's machine. The result has not
 yet been externally reproduced, peer reviewed, or published.
 
 This package does not prove sharpness, equality, rigidity, identification of a
@@ -92,11 +92,12 @@ OK
 MINVOL ADVERSARIAL MUTATION SUITE: PASS
 MINVOL EXACT-CONSTANTS APPENDIX: CURRENT
 MINVOL RELEASE-DOCUMENT CHECK: PASS
+MINVOL METADATA PREFLIGHT: PASS
 MINVOL PAPER-CERTIFICATE RECONCILIATION: PASS
 ```
 
 The committed transcript `transcripts/base_r_audit.txt` records a successful
-base-R replay on the user's machine. To reproduce or deliberately refresh it,
+base-R replay on the named author's machine. To reproduce or deliberately refresh it,
 run from the repository root:
 
 ```sh
@@ -214,7 +215,7 @@ Completed here:
 - generated exact-constants appendix verification; and
 - release-document presence, claim-boundary, and relative-link verification.
 
-Completed on the user's machine:
+Completed on the named author's machine:
 
 - a clean Python 3.14 virtual-environment replay;
 - the independent base-R audit, including the required final pass marker;
@@ -227,7 +228,9 @@ Not completed here:
   is unavailable there;
 - external mathematical review;
 - final public copy edit and author sign-off; and
-- final authorship, affiliation, licensing, citation, repository, release, and
-  archival metadata.
+- public-remote creation, hosted workflow execution, final date/tag, release
+  assets, and archival metadata.
 
-The latter items remain release gates.
+Authorship, no-affiliation wording, citation metadata, repository identity, and
+the split CC BY 4.0/MIT license are fixed for this release candidate. The
+remaining items are release gates.

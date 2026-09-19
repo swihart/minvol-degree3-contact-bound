@@ -12,8 +12,8 @@
 - **MUTATION-TESTED:** a targeted corrupted object is rejected.
 - **SOURCE-CHECKED:** bibliographic or historical wording has been compared with
   an identified source.
-- **RELEASE-PENDING:** technically prepared but awaiting metadata, hosted
-  workflow, tag, or explicit approval.
+- **RELEASE-PENDING:** technically prepared but awaiting a hosted workflow,
+  immutable tag, release assets, or explicit approval.
 - **EXTERNAL REVIEW NEEDED:** no independent subject-matter review has been
   recorded.
 
@@ -49,7 +49,7 @@
 | V2 | Final JSON is rebuilt byte identically | Exact verifier and unit test | RECONSTRUCTION-CHECKED |
 | V3 | Exact TSV and CSV renderings are rebuilt byte identically | Exact verifier | RECONSTRUCTION-CHECKED |
 | V4 | Binary64 implementation agrees on principal quantities | Binary64 transcript | NUMERICAL AUDIT |
-| V5 | Base-R implementation agrees on principal quantities | User-machine R transcript | NUMERICAL AUDIT |
+| V5 | Base-R implementation agrees on principal quantities | Named-author machine R transcript | NUMERICAL AUDIT |
 | V6 | Seven named proof-object mutations are rejected | Mutation transcript | MUTATION-TESTED |
 | V7 | Paper-facing constants and lower table match the JSON | Paper reconciliation script | RECONSTRUCTION-CHECKED |
 | V8 | Exact-constants appendix matches the JSON | Generator `--check` | RECONSTRUCTION-CHECKED |
@@ -60,11 +60,11 @@
 ## Publication and review claims
 
 | ID | Claim | Status |
-|---|---|
-| P1 | Lean nine-page Paper v1 manuscript is present | Completed draft |
+|---|---|---|
+| P1 | Lean ten-page Paper v1 manuscript is present | Completed draft |
 | P2 | Complete release-document set is present in Markdown and PDF | Completed in this checkpoint after local build |
-| P3 | Final author list and affiliation are approved | RELEASE-PENDING |
-| P4 | License and citation metadata are final | RELEASE-PENDING |
+| P3 | Release-candidate author list and no-affiliation statement are fixed | Completed for `v1.0.0-rc1` |
+| P4 | Split license and release-candidate citation metadata are fixed | Completed for `v1.0.0-rc1` |
 | P5 | Public remote, immutable tag, and release assets exist | RELEASE-PENDING |
 | P6 | Hosted Python, R, and document jobs are green on the release candidate | RELEASE-PENDING |
 | P7 | Fresh public-clone replay is recorded | RELEASE-PENDING |
@@ -79,12 +79,15 @@ verified or formally verified while `P8` remains open.
 
 ## Current bottleneck
 
-The mathematical and finite-certificate package is internally replayed. The
-remaining release bottlenecks are administrative and external:
+The mathematical, finite-certificate, authorship, citation, and licensing
+packages are prepared for `v1.0.0-rc1`. The remaining release bottlenecks are
+administrative, hosted, and external:
 
-1. final authorship, affiliation, license, and citation metadata;
-2. public remote and release-candidate commit;
-3. green hosted workflow on that exact commit;
-4. fresh public-clone replay;
-5. user approval of the final paper, README, tag, and announcement; and
-6. external mathematical review after release.
+1. public remote and release-candidate push;
+2. green hosted workflow on that exact commit;
+3. final named-author copy edit and page approval;
+4. final release date, `v1.0.0` tag, and fresh tagged-checkout replay;
+5. immutable release assets and independent hash verification;
+6. explicit approval of the final README, paper, release notes, tag, and
+   announcement; and
+7. external mathematical review after release.

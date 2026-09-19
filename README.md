@@ -1,6 +1,6 @@
 # MinVol three-dimensional contact bound
 
-**Public-package construction checkpoint - not yet released**
+**Release candidate `v1.0.0-rc1` - not yet public**
 
 This fresh-history repository is being prepared for a computer-assisted
 preprint and exact reproducibility package for the proposed universal bound
@@ -15,11 +15,15 @@ $$
 
 for every convex body `K` in `R^3` of constant width `d`.
 
-The current checkpoint contains a standalone exact certificate, independent
+The release candidate contains a standalone exact certificate, independent
 Python and base-R audits, adversarial rejection tests, and a lean Paper v1
 manuscript reconciled automatically against the machine-readable certificate.
-It is still an unreleased research draft. Final authorship, affiliation,
-citation, license, repository, tag, and release metadata remain open.
+Publication metadata is now fixed for this candidate: Bruce J. Swihart is the
+sole named author, no institutional affiliation is asserted, prose is licensed
+CC BY 4.0, and software is licensed MIT. The intended canonical repository is
+<https://github.com/swihart/minvol-degree3-contact-bound>. The public remote,
+hosted workflow, final release date and tag, immutable assets, and announcement
+remain pending.
 
 ## Paper
 
@@ -29,8 +33,27 @@ citation, license, repository, tag, and release metadata remain open.
 - [Rendered paper-guide PDF](rendered/markdown/paper/README.pdf)
 
 The reference manuscript states the proof architecture and claim limitations in
-nine pages. Its certificate-critical constants and lower-branch partition are
+ten pages. Its certificate-critical constants and lower-branch partition are
 generated from the exact JSON rather than copied manually.
+
+## Publication metadata
+
+- **Author:** Bruce J. Swihart
+- **Institutional affiliation:** none asserted in this release candidate
+- **Correspondence and verification reports:** the intended repository issue
+  tracker at <https://github.com/swihart/minvol-degree3-contact-bound/issues>
+- **Candidate version:** `v1.0.0-rc1`
+- **Target final tag:** `v1.0.0`
+- **Release date:** not yet assigned
+- **License:** CC BY 4.0 for paper/prose; MIT for software/build infrastructure
+- **Citation metadata:** [`CITATION.cff`](CITATION.cff)
+- **Licensing text:** [`LICENSE`](LICENSE)
+
+The repository description approved for the intended public remote is:
+
+> Paper, exact certificate, and reproducibility materials for a
+> contact-geometric universal lower bound in the three-dimensional
+> Blaschke-Lebesgue problem.
 
 ## Reviewer path
 
@@ -66,6 +89,8 @@ MINVOL UNIVERSAL CONTACT-BOUND BINARY64 AUDIT: PASS
 MINVOL ADVERSARIAL MUTATION SUITE: PASS
 MINVOL EXACT-CONSTANTS APPENDIX: CURRENT
 MINVOL RELEASE-DOCUMENT CHECK: PASS
+MINVOL CITATION METADATA CHECK: PASS
+MINVOL METADATA PREFLIGHT: PASS
 MINVOL PAPER-CERTIFICATE RECONCILIATION: PASS
 ```
 
@@ -190,13 +215,20 @@ repository-relative tree under `rendered/markdown/`.
 - This README: [Markdown](README.md) |
   [PDF](rendered/markdown/README.pdf)
 
+## Citation and license
+
+Use [`CITATION.cff`](CITATION.cff) for the preferred preprint citation. The
+paper and prose documentation are licensed under CC BY 4.0; software and build
+infrastructure are licensed under MIT. See [`LICENSE`](LICENSE) for the full
+split-license notice.
+
 ## Scope
 
 The package proposes a universal lower bound. It does not identify a minimizing
 body, prove sharpness or equality, or prove the Meissner conjecture. The
 Meissner value is an explicit-body comparison value, not a universal minimum
-proved here. The result has not yet been externally reproduced, peer reviewed,
-or publicly released.
+proved here. The result has not yet been externally reproduced or peer reviewed. This
+release candidate has not yet been pushed to the intended public repository.
 
 The earlier public MinVol spectral announcement remains a separate repository:
 [swihart/minvol-degree3-spectral-bound](https://github.com/swihart/minvol-degree3-spectral-bound).

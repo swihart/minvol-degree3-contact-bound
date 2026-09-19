@@ -1,7 +1,7 @@
 # AI assistance and provenance
 
-**Repository status:** public-release construction checkpoint
-**Current named author:** Bruce J. Swihart
+**Repository status:** release candidate `v1.0.0-rc1`
+**Sole named author:** Bruce J. Swihart
 **Primary AI system used:** OpenAI ChatGPT (GPT-5.6 Sol Pro)
 **Primary access period:** August-September 2026
 
@@ -40,12 +40,20 @@ The named author is responsible for:
 
 - the mathematical claims and their wording;
 - the accuracy of the provenance and verification record;
-- the final author list, affiliations, acknowledgments, and license;
+- the accuracy of the fixed authorship, no-affiliation statement, acknowledgments, and split license;
 - preserving corrections and superseded versions;
 - not presenting the work as peer reviewed or independently verified before
   such review occurs; and
 - ensuring that no private research history or unrelated private work is
   exposed in the public repository.
+
+## Authorship and affiliation decision
+
+Bruce J. Swihart is the sole named author of this release candidate. No
+institutional affiliation or ORCID is asserted. Correspondence and verification
+reports are directed to the intended repository issue tracker. OpenAI ChatGPT
+is disclosed as an extensively used research tool and is not an author,
+reviewer, or proof authority.
 
 ## Relationship to the HYRA predecessor
 
@@ -103,7 +111,7 @@ those used here.
 
 ## Disclosure in the paper and release
 
-Before release, the paper and repository metadata should include a concise AI
-assistance disclosure consistent with this document. Any later material change
-in the role of AI systems should be recorded in a new version rather than
-silently rewriting the history of the released package.
+The release-candidate paper, README, and citation metadata now identify the work
+as AI-assisted and name the primary hosted system used during this phase. Any
+later material change in the role of AI systems must be recorded in a new
+version rather than silently rewriting the history of a released package.

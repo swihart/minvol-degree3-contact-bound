@@ -19,7 +19,7 @@ for every three-dimensional convex body of constant width `d`.
 The public-format package is independent of the private repository layout and
 replays using only files contained in `certificate/`. Its exact Python verifier
 and independent Python binary64 audit pass in the construction environment.
-The archived base-R audit passes on the user's machine. Seven adversarial
+The archived base-R audit passes on the named author's machine. Seven adversarial
 mutations are also rejected by the production verification paths. `Rscript` is
 not installed in the construction container, so that language path was not
 rerun there.
@@ -36,7 +36,7 @@ rerun there.
 - strict exact near-Jung handoff surplus;
 - exact theorem coefficient and decimal enclosure;
 - byte-identical reconstruction of the authoritative certificate JSON;
-- independent base-R reconstruction on the user's machine;
+- independent base-R reconstruction on the named author's machine;
 - rejection of targeted lower-row, fan-radius, multiplier, section-hull,
   cap-allocation, disjointness, and theorem-coefficient mutations;
 - automatic reconciliation of the lean Paper v1 theorem constants and
@@ -55,11 +55,13 @@ rerun there.
 
 ## Remaining release gates
 
-1. final authorship, affiliation, acknowledgment, license, citation, repository,
-   tag, release-date, and archival metadata;
-2. final author copy edit and approval of the manuscript and public wording;
-3. a public release-candidate commit with green hosted Python, R, and document
-   jobs;
-4. clean tagged-checkout replay and release-asset verification;
+1. final author copy edit and approval of the manuscript and public wording;
+2. creation of the intended public remote and a release-candidate push;
+3. green hosted Python, R, and document jobs on the exact candidate;
+4. final release date, `v1.0.0` tag, clean tagged-checkout replay, and
+   release-asset verification;
 5. external mathematical review or reproduction when available; and
-6. explicit user approval before creation of a public remote or announcement.
+6. explicit named-author approval before the tag, release, or announcement.
+
+Authorship, no-affiliation wording, citation metadata, repository identity, and
+the split CC BY 4.0/MIT license are fixed for `v1.0.0-rc1`.

@@ -53,11 +53,17 @@ paper_text=$(mktemp)
 trap 'rm -f "$paper_text"' EXIT HUP INT TERM
 pdftotext "$PAPER_PDF" "$paper_text"
 grep -Fi "Bruce J. Swihart" "$paper_text" >/dev/null || \
-  fail "paper PDF does not contain the provisional author name"
+  fail "paper PDF does not contain the author name"
 grep -F "0.411877563780302" "$paper_text" >/dev/null || \
   fail "paper PDF does not contain the theorem coefficient"
-grep -F "unreleased computer-assisted research draft" "$paper_text" >/dev/null || \
-  fail "paper PDF does not contain the draft-status language"
+grep -Fi "release candidate v1.0.0-rc1" "$paper_text" >/dev/null || \
+  fail "paper PDF does not contain the release-candidate version"
+grep -Fi "no institutional affiliation is asserted" "$paper_text" >/dev/null || \
+  fail "paper PDF does not contain the affiliation statement"
+grep -F "github.com/swihart/minvol-degree3-contact-bound" "$paper_text" >/dev/null || \
+  fail "paper PDF does not contain the intended repository URL"
+grep -F "GPT-5.6 Sol Pro" "$paper_text" >/dev/null || \
+  fail "paper PDF does not contain the AI-system disclosure"
 grep -Fi "Meissner conjecture" "$paper_text" >/dev/null || \
   fail "paper PDF does not contain the limitation language"
 

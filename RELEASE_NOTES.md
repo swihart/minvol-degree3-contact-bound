@@ -1,10 +1,11 @@
 # Release notes
 
-## Unreleased `0.1.0-dev`
+## Release candidate `v1.0.0-rc1` (unreleased)
 
-This is the draft release record for a proposed computer-assisted universal
-lower bound in the three-dimensional Blaschke–Lebesgue problem. It is not yet a
-public release or immutable tag.
+This is the release-candidate record for a proposed computer-assisted
+universal lower bound in the three-dimensional Blaschke–Lebesgue problem. The
+candidate metadata and licensing are fixed, but no public release or immutable
+tag is asserted yet.
 
 ## Proposed result
 
@@ -22,7 +23,7 @@ circumradius assumption appears in the final theorem.
 
 ## Included in the draft package
 
-- a nine-page LaTeX manuscript and reference PDF;
+- a ten-page LaTeX manuscript and reference PDF;
 - one standalone exact-rational certificate;
 - immutable JSON, NPZ, TSV, and CSV proof objects;
 - an independent NumPy binary64 audit;
@@ -33,7 +34,8 @@ circumradius assumption appears in the final theorem.
 - reproducibility, trust-boundary, claims, source, audit, and proof ledgers;
 - paired Markdown/PDF documentation;
 - SHA-256 manifests for the repository, certificate, paper, and rendered docs;
-- a three-job GitHub Actions workflow for Python, R, and PDF/document checks.
+- a three-job GitHub Actions workflow for Python, R, and PDF/document checks;
+- final candidate authorship, repository, citation, and split-license metadata.
 
 ## Proof architecture
 
@@ -70,13 +72,26 @@ Completed in recorded environments:
 
 Still required before release:
 
-- final author, affiliation, acknowledgment, license, and citation metadata;
-- public repository creation and URL insertion;
-- green hosted jobs on the final commit and tag;
+- creation of the intended public repository and push of this candidate;
+- green hosted jobs on the exact release-candidate commit;
+- final release date and transition from `v1.0.0-rc1` to `v1.0.0`;
 - clean tagged-checkout replay;
 - immutable release assets and hashes;
-- explicit named-author approval of the paper, README, release notes, and
-  announcement.
+- explicit named-author approval of the final paper, README, release notes,
+  tag, and announcement.
+
+## Candidate publication metadata
+
+- sole named author: Bruce J. Swihart;
+- no institutional affiliation asserted;
+- intended canonical repository:
+  <https://github.com/swihart/minvol-degree3-contact-bound>;
+- preferred citation: `CITATION.cff`;
+- paper and prose license: CC BY 4.0;
+- software and build-infrastructure license: MIT;
+- candidate version: `v1.0.0-rc1`;
+- target final tag: `v1.0.0`;
+- final release date and archival identifier: not yet assigned.
 
 ## Scope and limitations
 

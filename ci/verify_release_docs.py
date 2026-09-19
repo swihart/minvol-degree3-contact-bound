@@ -66,6 +66,8 @@ PROHIBITED_TEXT = [
     "f3e54e68861677d6fd4b31664a1d85fe6350ee14",
     "PRIVATE WORKING DRAFT",
     "Author list to be finalized",
+    "0.1.0-dev",
+    "current author line is provisional",
     "/mnt/data/",
     "/Users/",
     "~/github/",
@@ -185,10 +187,27 @@ def main() -> None:
 
     version = (ROOT / "VERSION").read_text(encoding="ascii").strip()
     release_date = (ROOT / "RELEASE_DATE").read_text(encoding="ascii").strip()
-    if version == "0.1.0-dev" and release_date != "UNRELEASED":
-        raise SystemExit("development version must retain RELEASE_DATE=UNRELEASED")
-    if release_date == "UNRELEASED" and "DO NOT RELEASE YET" not in texts["RELEASE_CHECKLIST.md"]:
-        raise SystemExit("unreleased checklist lacks an explicit no-release decision")
+    if version != "v1.0.0-rc1":
+        raise SystemExit(f"unexpected release-candidate VERSION: {version}")
+    if release_date != "UNRELEASED":
+        raise SystemExit("release candidate must retain RELEASE_DATE=UNRELEASED")
+    if "DO NOT RELEASE YET" not in texts["RELEASE_CHECKLIST.md"]:
+        raise SystemExit("release-candidate checklist lacks an explicit no-release decision")
+
+    cff = (ROOT / "CITATION.cff").read_text(encoding="utf-8")
+    license_text = (ROOT / "LICENSE").read_text(encoding="utf-8")
+    for token in (
+        'given-names: "Bruce J."',
+        'family-names: "Swihart"',
+        'version: "1.0.0-rc1"',
+        'status: preprint',
+        'repository-code: "https://github.com/swihart/minvol-degree3-contact-bound"',
+    ):
+        if token not in cff:
+            raise SystemExit(f"citation metadata missing required token: {token}")
+    for token in ("CC BY 4.0", "MIT License", "Bruce J. Swihart"):
+        if token not in license_text:
+            raise SystemExit(f"license missing required token: {token}")
 
     link_count = sum(
         check_relative_links(relative, text) for relative, text in texts.items()

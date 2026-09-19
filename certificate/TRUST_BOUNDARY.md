@@ -141,7 +141,7 @@ The following require mathematical or release review beyond the finite replay:
 - the interpretation of the certificate fields in the manuscript;
 - equality, rigidity, sharpness, and minimizer questions;
 - Meissner extremality;
-- authorship, licensing, and publication metadata; and
+- publication metadata, licensing interpretation, and release administration; and
 - independent peer or expert review.
 
 ## Threat model

@@ -1,0 +1,43 @@
+cff-version: 1.2.0
+message: >-
+  Please cite the computer-assisted preprint in preferred-citation below and
+  identify the repository version used. This metadata describes release
+  candidate v1.0.0-rc1; no immutable public release is asserted yet.
+title: "Exact certificate and reproducibility package for a contact-geometric MinVol bound"
+type: software
+version: "1.0.0-rc1"
+repository-code: "https://github.com/swihart/minvol-degree3-contact-bound"
+url: "https://github.com/swihart/minvol-degree3-contact-bound"
+authors:
+  - family-names: "Swihart"
+    given-names: "Bruce J."
+abstract: >-
+  Standalone exact-rational certificate, manuscript, independent Python and
+  base-R audits, adversarial tests, and reproducibility materials for a
+  proposed universal contact-geometric lower bound in the three-dimensional
+  Blaschke-Lebesgue problem. The package is AI-assisted, non-peer-reviewed,
+  and seeks independent mathematical verification.
+keywords:
+  - "bodies of constant width"
+  - "Blaschke-Lebesgue problem"
+  - "convex geometry"
+  - "computer-assisted proof"
+  - "exact rational arithmetic"
+  - "reproducible research"
+preferred-citation:
+  type: unpublished
+  title: >-
+    A Certified Contact-Geometric Lower Bound for the Three-Dimensional
+    Blaschke--Lebesgue Problem
+  authors:
+    - family-names: "Swihart"
+      given-names: "Bruce J."
+  year: 2026
+  version: "1.0.0-rc1"
+  status: preprint
+  url: "https://github.com/swihart/minvol-degree3-contact-bound"
+  license: CC-BY-4.0
+  notes: >-
+    Release candidate. AI-assisted, computer-assisted, and non-peer-reviewed;
+    no institutional affiliation is asserted. The exact certificate and
+    verifier are the finite proof authority.

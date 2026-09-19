@@ -1,6 +1,6 @@
 # Reproducibility guide
 
-**Package status:** public-release construction checkpoint, not yet tagged or released
+**Package status:** release candidate `v1.0.0-rc1`, not yet public or tagged
 **Prepared:** September 19, 2026
 **Main certificate schema:** `minvol.universal_contact_bound.v1`
 
@@ -47,7 +47,7 @@ In that environment, the exact verifier, binary64 audit, ten reconstruction
 tests, seven adversarial mutation tests, paper reconciliation, manuscript
 build, Markdown/PDF build, and Poppler PDF preflight passed.
 
-### User-machine replay
+### Named-author machine replay
 
 The named author reproduced the standalone package on macOS with:
 
@@ -81,9 +81,10 @@ mathematical review.
 
 ## Fresh source-tree procedure
 
-Until a public remote and immutable tag exist, reproduce from the exact source
-archive or bundle supplied for review. After release, this section will be
-updated with the canonical repository URL and tag.
+Until the intended public remote and immutable tag exist, reproduce from the
+exact source archive or bundle supplied for review. The intended canonical URL
+is <https://github.com/swihart/minvol-degree3-contact-bound>; the target final
+tag is `v1.0.0`. Neither is represented here as an existing release.
 
 Enter the repository root:
 
@@ -170,6 +171,7 @@ OK
 MINVOL ADVERSARIAL MUTATION SUITE: PASS
 MINVOL EXACT-CONSTANTS APPENDIX: CURRENT
 MINVOL RELEASE-DOCUMENT CHECK: PASS
+MINVOL METADATA PREFLIGHT: PASS
 MINVOL PAPER-CERTIFICATE RECONCILIATION: PASS
 ```
 

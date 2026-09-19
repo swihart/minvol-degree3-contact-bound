@@ -18,7 +18,7 @@
   urlcolor=blue,
   pdftitle={A Certified Contact-Geometric Lower Bound for the Three-Dimensional Blaschke--Lebesgue Problem},
   pdfauthor={Bruce J. Swihart},
-  pdfsubject={Unreleased computer-assisted research draft; three-dimensional Blaschke--Lebesgue problem},
+  pdfsubject={Release candidate v1.0.0-rc1; computer-assisted preprint; three-dimensional Blaschke--Lebesgue problem},
   pdfkeywords={constant width, Blaschke--Lebesgue problem, convex geometry, computer-assisted proof, exact rational arithmetic}
 }
 
@@ -37,15 +37,16 @@
 \newcommand{\Id}{\operatorname{Id}}
 \newcommand{\dd}{\,d\sigma}
 \newcommand{\eps}{\varepsilon}
-\newcommand{\releaseversion}{0.1.0-dev}
-\newcommand{\releasedate}{September 19, 2026}
+\newcommand{\releaseversion}{v1.0.0-rc1}
+\newcommand{\candidatedate}{September 19, 2026}
+\newcommand{\repositoryurl}{https://github.com/swihart/minvol-degree3-contact-bound}
 
 \input{certificate_constants.tex}
 
 \title[Certified contact-geometric lower bound]{A Certified Contact-Geometric Lower Bound for the Three-Dimensional Blaschke--Lebesgue Problem}
 \author{Bruce J. Swihart}
-\thanks{Unreleased manuscript draft.  Authorship and affiliation metadata remain subject to final release sign-off.}
-\date{Version \releaseversion\ -- unreleased draft dated \releasedate}
+\thanks{No institutional affiliation is asserted. Correspondence and verification reports: \url{https://github.com/swihart/minvol-degree3-contact-bound/issues}.}
+\date{Release candidate \releaseversion\ -- \candidatedate}
 \subjclass[2020]{52A20, 52A40, 65G30}
 \keywords{Bodies of constant width, Blaschke--Lebesgue problem, convex geometry, computer-assisted proof, exact rational arithmetic}
 
@@ -76,12 +77,14 @@ the identity of a minimizer, or the Meissner conjecture.
 \begin{center}
 \fbox{\begin{minipage}{0.92\textwidth}
 \small\textbf{Verification status.}
-This is an unreleased computer-assisted research draft.  The standalone exact
-verifier, independent Python and base-R audits, reconstruction tests, and
-adversarial mutation tests have passed in the accompanying package.  A public
-release, final authorship metadata, external mathematical review, and peer
-review are not asserted.  The exact certificate JSON and exact verifier are
-the proof authority for the finite computations.
+This is release candidate \releaseversion\ for an AI-assisted,
+computer-assisted research preprint.  The standalone exact verifier,
+independent Python and base-R audits, reconstruction tests, and adversarial
+mutation tests have passed in the accompanying package.  The intended public
+repository is \url{\repositoryurl}.  A public release, hosted workflow,
+external mathematical reproduction, and peer review are not asserted.  The
+exact certificate JSON and exact verifier are the proof authority for the
+finite computations.
 \end{minipage}}
 \end{center}
 
@@ -612,10 +615,15 @@ proved here.
 
 \section*{Acknowledgments and disclosure}
 
-This manuscript and its verification package were developed in an AI-assisted
-research workflow.  The human author is responsible for the claims, source
-selection, release decisions, and correction of errors.  Detailed disclosure
-and provenance documentation will accompany the public release.
+This manuscript and its verification package were developed with extensive
+assistance from OpenAI ChatGPT (GPT-5.6 Sol Pro) during August--September 2026.
+The AI system is not an author, reviewer, or proof authority.  Bruce J. Swihart
+is the sole named author and is responsible for the claims, source selection,
+repository contents, release decisions, and correction of errors.  No
+institutional affiliation is asserted.  Detailed provenance is recorded in
+\path{AI_ASSISTANCE.md}.  The paper and prose are licensed CC BY 4.0; software
+and build infrastructure are licensed MIT.  The intended canonical repository
+is \url{\repositoryurl}.
 
 \begin{thebibliography}{99}
 

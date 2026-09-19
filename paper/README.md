@@ -13,9 +13,9 @@ $$
 
 for every three-dimensional convex body `K` of constant width `d`.
 
-The manuscript is an **unreleased computer-assisted research draft**. Its
-current author line is provisional pending final authorship and affiliation
-sign-off. It is not a peer-reviewed publication, does not establish sharpness
+The manuscript is a **release-candidate computer-assisted research draft**.
+Bruce J. Swihart is the sole named author, and no institutional affiliation is
+asserted. It is not a peer-reviewed publication, does not establish sharpness
 or equality, does not identify a minimizer, and does not prove the Meissner
 conjecture.
 
@@ -113,5 +113,21 @@ may be investigated.
 
 The reference PDF was rendered page by page during construction and checked for
 clipped text, overlapping tables, broken glyphs, and missing references. The
-release gate still requires final author review of every page after citation,
-license, version, repository URL, and affiliation metadata are fixed.
+release-candidate author, no-affiliation statement, citation, split license,
+version, and intended repository URL are fixed and checked automatically. Final
+named-author page approval remains a release gate after hosted document builds.
+
+## Publication metadata
+
+- **Sole named author:** Bruce J. Swihart
+- **Institutional affiliation:** none asserted
+- **Candidate version:** `v1.0.0-rc1`
+- **Target final tag:** `v1.0.0`
+- **Intended repository:**
+  <https://github.com/swihart/minvol-degree3-contact-bound>
+- **Paper/prose license:** CC BY 4.0
+- **Software/build license:** MIT
+- **Preferred citation:** repository-root `CITATION.cff`
+
+No public release, immutable tag, hosted workflow result, DOI, or external
+mathematical reproduction is asserted by this release-candidate checkpoint.

@@ -1,6 +1,6 @@
 # Verification status
 
-**Version:** `0.1.0-dev`
+**Version:** `v1.0.0-rc1`
 **Release date:** unreleased
 **Status date:** September 19, 2026
 
@@ -27,6 +27,18 @@ reconciliation, and documentation checks pass in the recorded environments.
 The result is not yet externally reproduced, peer reviewed, accepted, tagged,
 or publicly released.
 
+## Candidate publication metadata
+
+- sole named author: Bruce J. Swihart;
+- institutional affiliation: none asserted;
+- intended repository:
+  <https://github.com/swihart/minvol-degree3-contact-bound>;
+- candidate version: `v1.0.0-rc1`;
+- target final tag: `v1.0.0`;
+- prose license: CC BY 4.0;
+- software license: MIT;
+- final release date and archival identifier: pending.
+
 ## Verification matrix
 
 | ID | Verification item | Evidence | Status |
@@ -40,6 +52,7 @@ or publicly released.
 | P1 | Paper coefficient, split, lower rows, and main constants match certificate | `paper/reconcile_certificate.py` | Passed |
 | D1 | Exact-constants appendix matches certificate | `proof/generate_exact_constants.py` | Passed |
 | D2 | Required release documents and relative links are present | `ci/verify_release_docs.py` | Passed in this checkpoint |
+| D2a | Candidate author, repository, citation, and split-license metadata are internally consistent | `ci/preflight_metadata.sh`; `CITATION.cff`; `LICENSE` | Passed in this checkpoint |
 | D3 | Every repository Markdown source has a checksummed PDF counterpart | `ci/verify_doc_pairs.py` | Passed in construction environment |
 | P2 | Paper and documentation PDFs are readable, have embedded fonts, and expose extractable text | Poppler preflight in construction environment and hosted workflow definition | Passed in construction; hosted run pending |
 | C1 | Fresh standalone replay with no private path dependency | Clean extraction/bundle tests | Passed for recorded checkpoints |
@@ -92,15 +105,15 @@ The Meissner volume is used only as an explicit-body comparison value.
 
 ## Release boundary
 
-Before this status can be changed from an unreleased draft, the project still
-requires:
+Before this release candidate can become an immutable public release, the
+project still requires:
 
-1. final author, affiliation, acknowledgment, citation, license, repository,
-   and date metadata;
-2. author approval of the paper, README, release notes, and announcement text;
-3. creation of the public remote and a reviewed release-candidate commit;
-4. green hosted Python, R, and document jobs on that commit and tag;
-5. a fresh tagged-checkout replay and release-asset hash audit.
+1. creation of the intended public remote and push of the exact candidate;
+2. final author copy edit and approval;
+3. green hosted Python, R, and document jobs on that commit;
+4. assignment of the final release date and transition to tag `v1.0.0`;
+5. a fresh tagged-checkout replay and release-asset hash audit; and
+6. explicit approval before the tag, release, or announcement.
 
 External review remains a scientific goal after release and must not be implied
 by a green workflow.

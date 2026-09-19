@@ -1,0 +1,57 @@
+LICENSING NOTICE
+
+Copyright (c) 2026 Bruce J. Swihart
+
+This repository uses separate licenses for its prose research materials and its
+software.
+
+1. PAPER AND PROSE DOCUMENTATION
+
+Unless a file states otherwise, the paper, LaTeX source, Markdown documentation,
+rendered documentation PDFs, proof notes, verification records, and other prose
+materials are licensed under the Creative Commons Attribution 4.0 International
+License (CC BY 4.0).
+
+License: https://creativecommons.org/licenses/by/4.0/
+
+Suggested attribution for this release candidate:
+
+  Bruce J. Swihart, "A Certified Contact-Geometric Lower Bound for the
+  Three-Dimensional Blaschke--Lebesgue Problem," release candidate
+  v1.0.0-rc1, September 19, 2026,
+  https://github.com/swihart/minvol-degree3-contact-bound.
+
+2. SOFTWARE AND BUILD INFRASTRUCTURE
+
+Unless a file states otherwise, the Python, R, shell, Lua, workflow, and other
+source-code files are licensed under the MIT License:
+
+MIT License
+
+Copyright (c) 2026 Bruce J. Swihart
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+3. THIRD-PARTY MATERIALS
+
+Citations and links to third-party works do not change the copyright or license
+of those works. No rights are granted here to third-party materials that are
+not owned by Bruce J. Swihart. The proof package contains independently
+prepared files and citations to predecessor work; it does not relicense those
+external works.

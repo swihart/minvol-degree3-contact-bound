@@ -1,6 +1,6 @@
 # Release checklist
 
-**Candidate version:** `0.1.0-dev`
+**Candidate version:** `v1.0.0-rc1`
 **Candidate date:** unreleased
 **Checklist updated:** September 19, 2026
 
@@ -43,10 +43,11 @@ non-peer-reviewed research draft, but its absence must remain prominent.
 - [x] Paper/certificate reconciliation passes.
 - [x] Reference PDF builds and has been visually inspected page by page.
 - [x] Paper limitations and computer-assisted status are explicit.
-- [ ] Final author list and order approved.
-- [ ] Affiliations, corresponding author, ORCID identifiers, and acknowledgments
-      approved.
-- [ ] Repository URL, version, date, and archival identifier inserted.
+- [x] Sole author and author order approved: Bruce J. Swihart.
+- [x] No institutional affiliation is asserted; correspondence is directed to
+      the intended repository issue tracker; no ORCID is asserted.
+- [x] Candidate repository URL and version inserted; final release date and any
+      archival identifier remain intentionally unassigned.
 - [ ] Final PDF approved by every named author.
 
 ## D. Documentation
@@ -73,18 +74,21 @@ non-peer-reviewed research draft, but its absence must remain prominent.
 
 ## E. Metadata and legal
 
-- [ ] Public repository name confirmed.
-- [ ] Repository description confirmed.
-- [ ] License selected and `LICENSE` added.
-- [ ] `CITATION.cff` finalized and validated.
-- [ ] Preferred paper citation finalized.
-- [ ] Version changed from `0.1.0-dev` to approved release version.
-- [ ] `RELEASE_DATE` changed from `UNRELEASED` to the approved date.
+- [x] Intended public repository name confirmed:
+      `swihart/minvol-degree3-contact-bound`.
+- [x] Repository description confirmed.
+- [x] Split license selected and `LICENSE` added: CC BY 4.0 for paper/prose and
+      MIT for software/build infrastructure.
+- [x] `CITATION.cff` added and checked by the metadata preflight.
+- [x] Preferred paper citation finalized for the release candidate.
+- [x] Candidate version changed to `v1.0.0-rc1`.
+- [ ] `RELEASE_DATE` changed from `UNRELEASED` to the approved final date.
+- [ ] Candidate version changed from `v1.0.0-rc1` to final tag `v1.0.0`.
 - [ ] DOI or archival identifier added only after one exists.
-- [ ] Copyright and third-party data/license review completed.
+- [x] Copyright and third-party license boundary reviewed and documented.
 
-No license or citation metadata should be invented to make these boxes appear
-complete.
+The unchecked date, final-tag, and archival items cannot be completed before a
+successful hosted candidate replay and explicit release approval.
 
 ## F. Continuous integration and portability
 
@@ -126,6 +130,7 @@ complete.
 
 Current decision:
 
-> **DO NOT RELEASE YET.** The mathematical and documentation packages are
-> prepared, but authorship, licensing, citation, public-remote, hosted-CI,
-> tagged-replay, asset, and explicit approval gates remain open.
+> **DO NOT RELEASE YET.** The mathematical, documentation, authorship,
+> citation, and licensing packages are prepared. The public remote, hosted-CI,
+> final date/tag, tagged replay, release assets, and explicit publication
+> approvals remain open.
