@@ -1,0 +1,15 @@
+test_binary64_audit (test_universal_bound.UniversalContactBoundTests.test_binary64_audit) ... ok
+test_cap_allocations_and_cross_axis_disjointness (test_universal_bound.UniversalContactBoundTests.test_cap_allocations_and_cross_axis_disjointness) ... ok
+test_certificate_claims (test_universal_bound.UniversalContactBoundTests.test_certificate_claims) ... ok
+test_coordinate_width_sharpening (test_universal_bound.UniversalContactBoundTests.test_coordinate_width_sharpening) ... ok
+test_exact_rebuild_is_byte_identical (test_universal_bound.UniversalContactBoundTests.test_exact_rebuild_is_byte_identical) ... ok
+test_fan_reconstruction_and_reference_regression (test_universal_bound.UniversalContactBoundTests.test_fan_reconstruction_and_reference_regression) ... ok
+test_reference_fan_fingerprint (test_universal_bound.UniversalContactBoundTests.test_reference_fan_fingerprint) ... ok
+test_refined_o3a1_rows_are_gap_free_and_clear_o3b02 (test_universal_bound.UniversalContactBoundTests.test_refined_o3a1_rows_are_gap_free_and_clear_o3b02) ... ok
+test_sharp_determinant_census (test_universal_bound.UniversalContactBoundTests.test_sharp_determinant_census) ... ok
+test_standalone_public_paths (test_universal_bound.UniversalContactBoundTests.test_standalone_public_paths) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 55.409s
+
+OK

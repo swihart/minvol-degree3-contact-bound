@@ -1,0 +1,15 @@
+MINVOL PUBLIC EXPORT EQUIVALENCE AUDIT
+source_certificate_sha256: bb6a5d6ca2a60d63ee41dcebea6996cc7abae4a058209876d9d203f772aae3d7
+public_certificate_sha256: 7ea121aad900ce83798d7b1eef12d23a89a309622dbafb7ed50ef5fb016006a1
+theorem.coefficient_of_pi: MATCH
+circumradius_partition.split: MATCH
+lower_branch.rows: MATCH
+lower_branch.weakest_row: MATCH
+near_Jung.minimum_margin: MATCH
+near_Jung.minimum_margin_index: MATCH
+near_Jung.core_volume_lower: MATCH
+near_Jung.total_cap_lower: MATCH
+near_Jung.volume_lower: MATCH
+near_Jung.margin_over_theorem_upper: MATCH
+all_checked_fields_match: True
+note: this transcript records construction-time semantic equivalence; it is not an additional proof authority.

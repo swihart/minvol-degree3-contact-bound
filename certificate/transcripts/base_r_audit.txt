@@ -1,0 +1,17 @@
+refined O3A1 rows:             4
+angular grid / radial grid:    76800/40000000000
+minimum refined row margin:   1.879927434800000e-05
+fan orbit rows / vertices:    24833/98306
+dominant / tie active rays:   81663/16639
+minimum fan margin:           2.888904207092860e-10
+sharp deficiency upper:       0.019399125337335
+determinant squared lower:    0.990112274299406
+core volume lower:            0.411735710312777
+coordinate width lowers:      0.995185216461759/0.998387315752931/0.998387315752931
+axis cap lowers:              0.000050275601362/0.000046842650346/0.000046842650346
+three-pair cap lower:         0.000143960902055
+cross-axis gap:               0.637877649750931
+near-Jung volume lower:       0.411879671214832
+universal coefficient lower: 0.411877563780302
+gain over previous:           2.020570874850673e-05
+MINVOL UNIVERSAL CONTACT-BOUND BASE-R AUDIT: PASS

@@ -1,0 +1,19 @@
+refined O3A1 rows:          4
+minimum refined row coeff:     0.131123499722970
+refined row coeff margin:      1.880e-05
+minimum row inequality gap:    3.636e-21
+fan vertices:                  98306
+changed fan vertices:          18229
+minimum binary64 fan margin:   2.888902546002714e-10
+dominant/tie active rays:      81663/16639
+reference fan coefficient:     0.585182474560699
+sharp determinant squared:     0.990112274299406
+core volume lower:             0.411735710312777
+coordinate width lowers:       0.995185216461759/0.998387315752931/0.998387315752931
+axis cap lowers:               0.000050275601362/0.000046842650346/0.000046842650346
+three-pair cap lower:          0.000143960902055
+cross-axis gap:                0.637877649750932
+near-Jung lower:               0.411879671214832
+universal coefficient:         0.411877563780302
+gain over previous:            2.020570874855521e-05
+MINVOL UNIVERSAL CONTACT-BOUND BINARY64 AUDIT: PASS
