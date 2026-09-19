@@ -1,0 +1,749 @@
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,longtable,array,tabularx}
+\usepackage{microtype}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{xurl}
+\usepackage{enumitem}
+\geometry{margin=1in}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue,
+  pdftitle={A Certified Contact-Geometric Lower Bound for the Three-Dimensional Blaschke--Lebesgue Problem},
+  pdfauthor={Bruce J. Swihart},
+  pdfsubject={Unreleased computer-assisted research draft; three-dimensional Blaschke--Lebesgue problem},
+  pdfkeywords={constant width, Blaschke--Lebesgue problem, convex geometry, computer-assisted proof, exact rational arithmetic}
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\R}{\mathbb R}
+\newcommand{\Sph}{\mathbb S^2}
+\newcommand{\Vol}{\operatorname{Vol}}
+\newcommand{\conv}{\operatorname{conv}}
+\newcommand{\diam}{\operatorname{diam}}
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\dd}{\,d\sigma}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\releaseversion}{0.1.0-dev}
+\newcommand{\releasedate}{September 19, 2026}
+
+\input{certificate_constants.tex}
+
+\title[Certified contact-geometric lower bound]{A Certified Contact-Geometric Lower Bound for the Three-Dimensional Blaschke--Lebesgue Problem}
+\author{Bruce J. Swihart}
+\thanks{Unreleased manuscript draft.  Authorship and affiliation metadata remain subject to final release sign-off.}
+\date{Version \releaseversion\ -- unreleased draft dated \releasedate}
+\subjclass[2020]{52A20, 52A40, 65G30}
+\keywords{Bodies of constant width, Blaschke--Lebesgue problem, convex geometry, computer-assisted proof, exact rational arithmetic}
+
+\begin{document}
+
+\begin{abstract}
+Let $K\subset\R^3$ be a convex body of constant width $d>0$.  We give an
+exact-rational computer-assisted certificate for the universal estimate
+\[
+  \Vol(K)\ge \MainCoefficient\,d^3
+  =\MainDecimal\ldots\,d^3.
+\]
+The proof divides the possible circumradii at the rational value
+$R_*=\SplitRadius$.  Below $R_*$, a finite radial-propagation certificate
+refines the contact-geometric method of HYRA.  Above $R_*$, four balanced
+circumsphere contacts force a high-resolution polyhedral core; a sharp affine
+determinant transfer, a dominant-edge coordinate-width estimate, and six
+pairwise disjoint cone caps complete the argument.  Every claim-bearing
+finite comparison is checked with integers and rational arithmetic.  A
+binary64 Python implementation and a base-R implementation are independent
+numerical audits, and an adversarial suite verifies rejection of seven classes
+of corrupted proof objects.  This draft does not address equality, sharpness,
+the identity of a minimizer, or the Meissner conjecture.
+\end{abstract}
+
+\maketitle
+
+\begin{center}
+\fbox{\begin{minipage}{0.92\textwidth}
+\small\textbf{Verification status.}
+This is an unreleased computer-assisted research draft.  The standalone exact
+verifier, independent Python and base-R audits, reconstruction tests, and
+adversarial mutation tests have passed in the accompanying package.  A public
+release, final authorship metadata, external mathematical review, and peer
+review are not asserted.  The exact certificate JSON and exact verifier are
+the proof authority for the finite computations.
+\end{minipage}}
+\end{center}
+
+\section{Introduction}
+
+A convex body has constant width $d$ when every pair of parallel supporting
+planes orthogonal to a unit direction is separated by the same distance $d$.
+In the plane, the Blaschke--Lebesgue theorem identifies the Reuleaux triangle
+as the least-area body of prescribed constant width
+\cite{Lebesgue1914,Blaschke1915}.  The analogous three-dimensional problem is
+open.  The two classical Meissner bodies have common volume
+\[
+ V_M(d)=\frac{\pi}{12}\left(8-3\sqrt3\arccos\frac13\right)d^3
+       =0.419860045965080\ldots d^3,
+\]
+and are conjectured to minimize volume; this explicit comparison value is not
+a proved universal minimum \cite{KawohlWeber2011,Martini2019}.
+
+Chakerian proved the lower bound
+$\frac{\pi}{3}(3\sqrt6-7)d^3=0.364916122595\ldots d^3$
+\cite{Chakerian1966}.  Nishioka later obtained
+$\frac{4\pi}{33}d^3=0.380799109526\ldots d^3$ from a support-function
+formulation, spherical harmonics, and Bochner's formula
+\cite{Nishioka2026}.  A subsequent contact-geometric manuscript by HYRA
+combined the minimum circumsphere, radial propagation, a divergence estimate,
+and exact cap recovery to reach a certified coefficient above
+$0.411040473721188$ \cite{HYRA2026}.  The present certificate develops that
+contact-geometric route further.
+
+The main claim of the package is the following.
+
+\begin{theorem}[Main computer-assisted claim]\label{thm:main}
+Every convex body $K\subset\R^3$ of constant width $d>0$ satisfies
+\[
+ \boxed{\Vol(K)\ge \MainCoefficient\,d^3
+ =\MainDecimal\ldots\,d^3.}
+\]
+\end{theorem}
+
+The argument is homogeneous, so we work at width one.  If $R$ is the radius of
+a minimum circumscribed ball, Jung's theorem gives
+\[
+ \frac12\le R\le\frac{\sqrt6}{4}.
+\]
+The certificate uses the exact handoff
+\[
+ R_*=\SplitRadius=\SplitDecimal.
+\]
+A finite radial certificate covers $R\le R_*$.  The complementary interval is
+handled by a nearly tetrahedral four-contact configuration, a
+$\FanVertices$-ray forced fan, and six additional cone caps.  The near-Jung
+branch gives the strictly larger lower value
+$\NearDecimal\ldots$, leaving the final row of the radial partition as the
+unique bottleneck.
+
+The proof has two layers.  The geometric reductions are stated and proved in
+the text.  The finite claims are represented by immutable integer and rational
+objects and replayed by the exact verifier.  Section~\ref{sec:certificate}
+records the trust boundary and the division between proof authority and
+independent audits.
+
+\section{Constant-width identities and minimum circumsphere contacts}
+\label{sec:prelim}
+
+Let $h_K$ be the support function of a width-one body $K$.  Then
+\begin{equation}\label{eq:width-support}
+ h_K(u)+h_K(-u)=1\qquad(u\in\Sph).
+\end{equation}
+Consequently
+\begin{equation}\label{eq:difference-body}
+ K+(-K)=B(0,1),\qquad \diam K=1.
+\end{equation}
+In dimension three, Blaschke's identity relates volume and surface area:
+\begin{equation}\label{eq:blaschke}
+ S(K)=2\Vol(K)+\frac{2\pi}{3}.
+\end{equation}
+These standard identities are reviewed in
+\cite{ChakerianGroemer1983,Martini2019,Schneider2014}.
+
+Translate a minimum circumscribed ball to $B(0,R)$ and let
+$F=K\cap\partial B(0,R)$.  Minimality of the ball implies
+$0\in\conv F$.  Caratheodory's theorem therefore gives contact directions
+$u_i\in\Sph$ and positive weights $\lambda_i$ such that
+\begin{equation}\label{eq:contact-balance}
+ p_i=Ru_i\in K,\qquad
+ \sum_i\lambda_i=1,\qquad
+ \sum_i\lambda_i p_i=0,
+\end{equation}
+using at most four contacts.  Since $\diam K=1$,
+$|p_i-p_j|\le1$.  The usual balance argument yields $R^2\le3/8$.  When
+$R^2>1/3$, four contacts are necessary; this is the regime used in the
+near-Jung branch.
+
+Constant width also supplies an opposite point at each support point.
+
+\begin{lemma}[Opposite-point identity]\label{lem:opposite}
+If $x\in\partial K$ has an outer unit normal $n$, then $x-n\in K$.  Hence,
+when $K\subset B(0,R)$,
+\begin{equation}\label{eq:opposite-ineq}
+ \langle x,n\rangle\ge \frac{|x|^2+1-R^2}{2}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Let $y$ lie on the supporting plane opposite $x$ in direction $n$.  Width one
+gives $\langle x-y,n\rangle=1$, whereas \eqref{eq:difference-body} gives
+$|x-y|\le1$.  Equality in Cauchy--Schwarz forces $x-y=n$.  Since
+$x-n\in K\subset B(0,R)$, expanding $|x-n|^2\le R^2$ gives
+\eqref{eq:opposite-ineq}.
+\end{proof}
+
+Because $R<1$, the circumcenter lies in the interior of $K$.  We write
+$\rho:\Sph\to(0,\infty)$ for the radial function about that center.
+
+\section{The lower-circumradius radial certificate}
+\label{sec:lower}
+
+This section records the analytic reduction and the finite exact data used on
+$[1/2,R_*]$.  The construction follows the contact-geometric framework in
+\cite{HYRA2026}, with a refined terminal partition.
+
+\subsection{Transport inequality and tangent gap}
+
+For $0<m\le1-R^2$, define
+\[
+ F_m(x)=\frac{2x}{|x|^2+m}.
+\]
+By Lemma~\ref{lem:opposite}, $\langle F_m(x),n\rangle\ge1$ on every smooth
+support point.  Applying the divergence theorem and then spherical
+integration gives
+\begin{equation}\label{eq:transport}
+ 3V=\int_{\Sph}\rho^3\dd,
+ \qquad
+ S\le\int_{\Sph}\frac{2\rho^3}{\rho^2+m}\dd,
+\end{equation}
+first for $C^1$ bodies and then for arbitrary constant-width bodies by outer
+parallel regularization.
+
+Put
+\[
+ \varphi_m(X)=\frac{2X}{X^{2/3}+m}\qquad(X>0).
+\]
+A direct differentiation shows $\varphi_m''<0$.  If $aX+b$ is the tangent at
+$X=s_0^3$, the gap
+\[
+ G_{m,s_0}(s)=as^3+b-\frac{2s^3}{s^2+m}
+\]
+is nonnegative, vanishes only at $s_0$, and is monotone away from $s_0$.
+Writing $E_G=\int_{\Sph}G_{m,s_0}(\rho)\dd$, equations
+\eqref{eq:blaschke} and \eqref{eq:transport} imply
+\begin{equation}\label{eq:master}
+ V\ge\frac{2\pi/3-4\pi b+E_G}{3a-2},
+ \qquad 3a-2>0.
+\end{equation}
+Thus the purely analytic bound discards $E_G\ge0$, while a stronger finite
+certificate recovers part of the gap on forced spherical caps.
+
+\subsection{Rational radial propagation}
+
+Suppose $Ru_0\in K$.  Diameter one implies the antipodal ball estimate
+\begin{equation}\label{eq:antipodal-ball}
+ \rho(v)\le -R_*c+\sqrt{1-R_*^2(1-c^2)},
+ \qquad c=-\langle v,u_0\rangle\in[0,1],
+\end{equation}
+whenever $R_*\le R$.  In the other direction, the supporting-plane bound
+\eqref{eq:opposite-ineq} propagates a radial lower estimate from one direction
+to a nearby direction.  With
+\[
+ \cos\gamma_m(s)=\frac{s^2+m}{2s},
+\]
+the one-step upper propagation map is
+\begin{equation}\label{eq:propagation-map}
+ N_m(s,\delta)=
+ \frac{s(s^2+m)}{(s^2+m)\cos\delta-
+ \sqrt{4s^2-(s^2+m)^2}\sin\delta}.
+\end{equation}
+The certificate uses the contrapositive of this estimate to construct radial
+lower chains away from each contact.
+
+Every angle is represented by a rational tangent-half-angle grid:
+\begin{equation}\label{eq:rational-angle}
+ t_k=\frac{k}{N},\qquad
+ \cos\theta_k=\frac{1-t_k^2}{1+t_k^2},\qquad
+ \sin\theta_k=\frac{2t_k}{1+t_k^2}.
+\end{equation}
+After clearing the one square root in \eqref{eq:propagation-map}, each
+propagation step is reduced to signed integer polynomial inequalities.  The
+same is true for \eqref{eq:antipodal-ball}, cap disjointness, and the tangent-gap
+sum.  The resulting arrays therefore contain no floating-point proof step.
+
+\subsection{Finite partition}
+
+The exact lower branch contains twelve rows.  Four doubled-angular-grid cells
+replace a formerly insufficient parent row; their angular denominator is
+$76{,}800$ and their radial denominator is $4\cdot10^{10}$.  The weakest
+replacement margin over the terminal coefficient of $\pi$ is
+$1.8799274348\times10^{-5}$.  Appendix~\ref{app:lower-table} gives the complete
+gap-free table generated directly from the certificate JSON.  Its unique
+weakest row is \texttt{O3B02}, ending exactly at $R_*$.
+
+\section{Near-Jung contact geometry}
+\label{sec:contact}
+
+Assume now $R\ge R_*$ and use four contacts in
+\eqref{eq:contact-balance}.  Put $q=R^2$ and define the six edge deficiencies
+\begin{equation}\label{eq:deficiency}
+ e_{ij}=1-|p_i-p_j|^2\ge0,
+ \qquad S=\sum_{i<j}e_{ij}.
+\end{equation}
+The Gram-kernel relation is equivalent to
+\begin{equation}\label{eq:weighted-balance}
+ \lambda_i+\sum_{j\ne i}\lambda_j e_{ij}=1-2q.
+\end{equation}
+Summing over $i$ gives
+\begin{equation}\label{eq:weighted-sum}
+ \sum_{i<j}(\lambda_i+\lambda_j)e_{ij}=3-8q.
+\end{equation}
+Equation \eqref{eq:weighted-balance} implies $\lambda_i\le1-2q$; hence
+$\lambda_i+\lambda_j\ge4q-1$.  Therefore
+\begin{equation}\label{eq:scalar-budget}
+ \boxed{S\le E(R):=\frac{3-8R^2}{4R^2-1}.}
+\end{equation}
+The function $E(R)$ decreases on the Jung interval, so throughout the
+near-Jung branch
+\[
+ S\le E_*:=E(R_*)=\DeficiencyDecimal\ldots.
+\]
+
+\subsection{Affine reference coordinates}
+
+Let
+\[
+ v_0=(1,1,1),\quad v_1=(1,-1,-1),\quad
+ v_2=(-1,1,-1),\quad v_3=(-1,-1,1).
+\]
+There are an invertible linear map $L$ and a balance-center vector $c$ such
+that
+\[
+ p_i=L(v_i-c).
+\]
+Set $A=2\sqrt2L$ and $H=A^TA=8L^TL$.  The regular unit-edge tetrahedron
+corresponds to $H=I$.  Solving the six edge equations gives
+\begin{align}
+ H_{00}&=1+\tfrac12(e_{01}-e_{02}-e_{03}-e_{12}-e_{13}+e_{23}),\label{eq:h00}\\
+ H_{11}&=1+\tfrac12(-e_{01}+e_{02}-e_{03}-e_{12}+e_{13}-e_{23}),\label{eq:h11}\\
+ H_{22}&=1+\tfrac12(-e_{01}-e_{02}+e_{03}+e_{12}-e_{13}-e_{23}).\label{eq:h22}
+\end{align}
+
+The affine volume loss is controlled by a sharp scalar determinant estimate.
+
+\begin{proposition}[Determinant transfer]\label{prop:determinant}
+For nonnegative deficiencies with $S<3/2$,
+\begin{equation}\label{eq:determinant-bound}
+ \det H\ge1-\frac S2-\frac{S^2}{2}.
+\end{equation}
+Consequently, on the near-Jung branch,
+\[
+ \det H\ge\DeterminantDecimal\ldots.
+\]
+\end{proposition}
+
+\begin{proof}
+Use three edge vectors from one contact and write their normalized Gram matrix
+in terms of the six squared edge lengths $1-e_{ij}$.  Twice its determinant is
+$\det H$.  Expanding exactly and subtracting the right side of
+\eqref{eq:determinant-bound} produces fifteen quadratic cross terms, each with
+coefficient at least one, together with twelve negative squarefree cubic terms,
+each with coefficient $-1/2$, and additional nonnegative cubic terms.  Each
+pair of deficiency variables occurs in at most four of the negative triples.
+
+For a negative triple $abc$,
+\[
+ abc\le\frac{S}{3}(ab+ac+bc).
+\]
+The total negative cubic part is therefore at least
+$-(2S/3)\sum_{r<s}e_re_s$, whereas the positive quadratic part is at least
+$\sum_{r<s}e_re_s$.  Since $S<3/2$, the difference is nonnegative.  The exact
+verifier reconstructs the polynomial and checks the complete coefficient and
+pair-incidence census rather than trusting a stored expansion.
+\end{proof}
+
+\section{The high-resolution forced fan}
+\label{sec:fan}
+
+The near-Jung core is represented in the regular reference coordinates.  The
+unit sphere is subdivided by the cubical grid of resolution $N=128$.  After
+identifying shared face boundaries, the triangulation has
+\[
+ \FanVertices\text{ rays},\qquad
+ \FanFaces\text{ triangular cones},\qquad
+ \FanEdges\text{ edges}.
+\]
+The order-four stabilizer of the distinguished contact edge has
+$\FanOrbits$ ray orbits.
+
+For every ray, the certificate stores an integer radial numerator and a dyadic
+S-procedure multiplier.  The exact verifier reconstructs the grid, its
+triangulation, and the stabilizer orbits from first principles.  It then checks
+every ray inequality over the full nonnegative deficiency simplex
+\[
+ e_{01}\ge e_{ij},\qquad \sum e_{ij}\le E_*.
+\]
+The raywise optimization is exact: its candidates are the vertices forced by
+the dominant-edge budget, and all remaining arithmetic is rational.  Relative
+to the immutable reference fan, $\ChangedVertices$ radial numerators move
+inward while all inherited multiplier numerators remain fixed.  The least
+nontrivial exact margin is
+\[
+ \FanMarginDecimal\ldots>10^{-12}.
+\]
+
+Let $Q_i\in\mathbb Z^3$ be the reconstructed cubical rays and let $r_i$ be the
+certified rational radii.  Summing the signed determinants
+$\det(Q_i,Q_j,Q_k)r_ir_jr_k/6$ over the fixed cone triangulation gives the
+reference coefficient
+\[
+ C_{\rm fan}=\FanCoefficientDecimal\ldots.
+\]
+The affine determinant factor from Proposition~\ref{prop:determinant} then
+gives the physical forced-core estimate
+\begin{equation}\label{eq:core-volume}
+ \boxed{V_{\rm core}\ge\CoreDecimal\ldots.}
+\end{equation}
+The stored volume numerator is independently reconstructed from all
+$\FanFaces$ cones.
+
+\section{Dominant-edge coordinate widths}
+\label{sec:width}
+
+Relabel the contacts so that $e_{01}$ is a largest deficiency.  The fan atlas
+includes ties, so this does not discard any configuration.
+
+\begin{proposition}[Coordinate-specific transformed widths]\label{prop:widths}
+If $e_{01}\ge e_{ij}$ for every edge, then
+\[
+ H_{00}\le1+\frac S2,
+ \qquad
+ H_{11},H_{22}\le1+\frac S6.
+\]
+If $g_j=\sqrt{(H^{-1})_{jj}}$, then
+\begin{equation}\label{eq:width-lower}
+ g_0\ge\frac1{\sqrt{1+S/2}},
+ \qquad
+ g_1,g_2\ge\frac1{\sqrt{1+S/6}}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The first diagonal estimate follows immediately from \eqref{eq:h00}.  For the
+second,
+\[
+ S-3[2(H_{11}-1)]
+ =2(e_{01}-e_{02})+2(e_{01}-e_{13})
+  +4(e_{03}+e_{12}+e_{23})\ge0.
+\]
+The identity for $H_{22}$ is obtained by interchanging the corresponding
+indices.  Proposition~\ref{prop:determinant} makes $H$ positive definite, and
+Cauchy--Schwarz in the $H$-inner product gives
+$1\le H_{jj}(H^{-1})_{jj}$.
+\end{proof}
+
+Using $S\le E_*$ and exact rational lower enclosures for the square roots, the
+certificate obtains
+\[
+ (g_0,g_1,g_2)\ge
+ (\WidthZeroDecimal\ldots,\WidthOneDecimal\ldots,\WidthTwoDecimal\ldots).
+\]
+The distinction between the dominant direction and the two transverse
+directions is essential for the cap contribution.
+
+\section{Six optimized cone caps}
+\label{sec:caps}
+
+For coordinate axis $j$, let $h_{j,+}$ and $h_{j,-}$ be the exact signed
+supports of the reference fan.  Intersecting the fan with fixed rational planes
+below these supports gives exact convex section polygons of areas
+$A_{j,+}$ and $A_{j,-}$.  If $t_{j,+}$ and $t_{j,-}$ are the remaining exterior
+support extensions, Proposition~\ref{prop:widths} gives
+\begin{equation}\label{eq:total-extension}
+ t_{j,+}+t_{j,-}\ge
+ T_j:=g_j-\frac{h_{j,+}+h_{j,-}}{2\sqrt2}.
+\end{equation}
+
+A section of physical area $A$, lying a depth $d$ below the fan support, and
+an exterior support extension $t$ force a cone of volume at least
+\begin{equation}\label{eq:cap-profile}
+ \phi_{A,d}(t)=\frac{At^3}{24(d+t)^2}.
+\end{equation}
+For $t>0$,
+\[
+ \phi_{A,d}''(t)=\frac{Ad^2t}{4(d+t)^4}>0.
+\]
+Thus, subject to equality in \eqref{eq:total-extension}, each antipodal pair
+has a unique minimizing allocation.  The exact verifier brackets each
+stationary point by rationals at distance at most $10^{-20}$ and proves
+opposite derivative signs at the two bracket endpoints.
+
+\begin{table}[ht]
+\centering
+\caption{Certified physical cone-cap contributions at the handoff radius.}
+\label{tab:caps}
+\begin{tabular}{@{}c c c c@{}}
+\toprule
+Axis & Width lower & Section vertices $+/-$ & Pair contribution\\
+\midrule
+$0$ & $\WidthZeroDecimal\ldots$ & $\HullZeroPlus/\HullZeroMinus$ & $\CapZeroDecimal\ldots$\\
+$1$ & $\WidthOneDecimal\ldots$ & $\HullOnePlus/\HullOneMinus$ & $\CapOneDecimal\ldots$\\
+$2$ & $\WidthTwoDecimal\ldots$ & $\HullTwoPlus/\HullTwoMinus$ & $\CapTwoDecimal\ldots$\\
+\midrule
+\multicolumn{3}{r}{Total} & $\CapsDecimal\ldots$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The two caps associated with one axis lie in opposite support halfspaces.  For
+distinct axes, the balance-center uncertainty and the matrix inequality
+$H\succeq(1-E_*)I$ show that an overlap would force two signed coordinates to
+exceed the least fan support while every transformed body point remains in a
+fixed ellipsoid.  The exact contradiction gap is
+\[
+ \CrossAxisGapDecimal\ldots>0.
+\]
+Hence all six cap interiors are pairwise disjoint; possible boundary contacts
+have zero volume.
+
+\section{Universal assembly}
+\label{sec:assembly}
+
+Adding \eqref{eq:core-volume} and the three disjoint antipodal cap-pair
+contributions gives
+\[
+ V_{\rm near}\ge\NearDecimal\ldots.
+\]
+The exact margin over the upper rational enclosure of the coefficient in
+Theorem~\ref{thm:main} is
+\[
+ \HandoffMarginDecimal\ldots>0.
+\]
+Therefore the near-Jung construction covers
+$[R_*,\sqrt6/4]$.
+
+For $R\le R_*$, the exact partition in Section~\ref{sec:lower} applies.  Its
+unique weakest row is \texttt{O3B02}, whose exact coefficient is
+$\MainCoefficientOfPi\pi$.  The two branch endpoints agree exactly, so the
+union is the full Jung interval.  Finally, dilation from width one to width
+$d$ multiplies volume by $d^3$, completing the computer-assisted proof of
+Theorem~\ref{thm:main} under the trust boundary below.
+
+\section{Certificate architecture and trust boundary}
+\label{sec:certificate}
+
+The public-format proof package is standalone: no path points into the private
+research repository, and the complete replay begins from the files committed
+with this manuscript.
+
+\paragraph{Exact proof authority.}
+The program \texttt{certificate/certify\_universal\_bound.py} reconstructs the
+claim using Python integers and \texttt{Fraction} arithmetic.  NumPy is used to
+read immutable integer arrays, not to decide theorem inequalities.  The
+verifier checks the lower radial rows, reconstructs the fan and all cone
+volumes, verifies the determinant census and coordinate-width identities,
+rebuilds the six section polygons, proves the cap-allocation brackets and
+six-cap disjointness, checks the branch handoff, and regenerates the certificate
+JSON byte for byte.
+
+\paragraph{Independent audits.}
+A separately organized NumPy/binary64 program reconstructs the geometry
+numerically.  A base-R program checks the archived finite decimals and
+structural identities without importing Python.  Neither audit is used as proof
+authority.  The Python test suite also reconstructs theorem-critical objects,
+and seven adversarial tests alter one lower-row endpoint, one fan radius, one
+multiplier, one section-hull vertex, one cap bracket, one disjointness threshold,
+and one theorem digit.  Every altered object is rejected.
+
+\paragraph{Paper reconciliation.}
+The displayed certificate-critical constants and Appendix~\ref{app:lower-table}
+are generated from the machine-readable JSON by
+\texttt{paper/reconcile\_certificate.py}.  A stale or manually divergent TeX
+include fails verification.  The certificate used for this manuscript has
+SHA-256
+\[
+ \texttt{\CertificateSha}.
+\]
+
+\paragraph{Trusted components.}
+The finite proof trusts the semantics of CPython integer arithmetic,
+\path{fractions.Fraction}, JSON and NPZ parsing, the small exact verifier
+source, and the operating system's faithful reading of checksum-protected
+files.  It does not trust binary floating point for a theorem inequality.
+Typesetting software and generated PDF bytes are outside the mathematical trust
+boundary.
+
+\begin{table}[ht]
+\centering
+\caption{Principal certificate census.}
+\label{tab:census}
+\begin{tabular}{@{}lr@{}}
+\toprule
+Object & Count or certified value\\
+\midrule
+Circumradius split & $\SplitRadius$\\
+Lower-branch rows & $12$\\
+Fan rays & $\FanVertices$\\
+Fan triangular cones & $\FanFaces$\\
+Fan stabilizer orbits & $\FanOrbits$\\
+Changed fan vertices & $\ChangedVertices$\\
+Minimum exact fan margin & $\FanMarginDecimal\ldots$\\
+Exact section hulls & $6$\\
+Antipodal allocation brackets & $3$\\
+Near-Jung handoff margin & $\HandoffMarginDecimal\ldots$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Scope and limitations}
+\label{sec:limitations}
+
+The result is a universal lower-bound certificate.  It does not prove that the
+coefficient is sharp, characterize equality, identify a minimizing body, or
+establish Meissner extremality.  The explicit Meissner volume remains an upper
+bound for the unknown minimum, not a consequence of this certificate.  The
+paper also makes no claim of peer review or external independent reproduction.
+
+The present result combines a human-readable geometric reduction with a finite
+exact computation.  Future work may seek stronger circumradius-local estimates
+or alternative certificates, but no such refinement is used in the theorem
+proved here.
+
+\section*{Acknowledgments and disclosure}
+
+This manuscript and its verification package were developed in an AI-assisted
+research workflow.  The human author is responsible for the claims, source
+selection, release decisions, and correction of errors.  Detailed disclosure
+and provenance documentation will accompany the public release.
+
+\begin{thebibliography}{99}
+
+\bibitem{Blaschke1915}
+W.~Blaschke,
+\emph{Konvexe Bereiche gegebener konstanter Breite und kleinsten Inhalts},
+Math. Ann. 76 (1915), 504--513.
+
+\bibitem{Chakerian1966}
+G.~D. Chakerian,
+\emph{Sets of constant width},
+Pacific J. Math. 19 (1966), no.~1, 13--21.
+
+\bibitem{ChakerianGroemer1983}
+G.~D. Chakerian and H.~Groemer,
+\emph{Convex bodies of constant width},
+in \emph{Convexity and its Applications}, Birkh\"auser, 1983, 49--96.
+
+\bibitem{Harrell2002}
+E.~M. Harrell II,
+\emph{A direct proof of a theorem of Blaschke and Lebesgue},
+J. Geom. Anal. 12 (2002), no.~1, 81--88.
+
+\bibitem{HYRA2026}
+HYRA,
+\emph{A certified geometric lower bound for the three-dimensional
+Blaschke--Lebesgue problem}, manuscript dated August 15, 2026.
+
+\bibitem{Jung1901}
+H.~Jung,
+\emph{Ueber die kleinste Kugel, die eine r\"aumliche Figur einschliesst},
+J. Reine Angew. Math. 123 (1901), 241--257.
+
+\bibitem{KawohlWeber2011}
+B.~Kawohl and C.~Weber,
+\emph{Meissner's mysterious bodies},
+Math. Intelligencer 33 (2011), no.~3, 94--101.
+
+\bibitem{LachandOudet2007}
+T.~Lachand--Robert and E.~Oudet,
+\emph{Bodies of constant width in arbitrary dimension},
+Math. Nachr. 280 (2007), no.~7, 740--750.
+
+\bibitem{Lebesgue1914}
+H.~Lebesgue,
+\emph{Sur le probl\`eme des isop\'erim\`etres et sur les domaines de largeur constante},
+Bull. Soc. Math. France 42 (1914), 72--76.
+
+\bibitem{Martini2019}
+H.~Martini, L.~Montejano, and D.~Oliveros,
+\emph{Bodies of Constant Width: An Introduction to Convex Geometry with
+Applications}, Birkh\"auser/Springer, 2019.
+
+\bibitem{Nishioka2026}
+A.~Nishioka,
+\emph{An improved lower bound for the three-dimensional
+Blaschke--Lebesgue problem from spectral and dual perspectives},
+J. Math. Anal. Appl. 566 (2027), no.~1, article 131038;
+\href{https://doi.org/10.1016/j.jmaa.2026.131038}{doi:10.1016/j.jmaa.2026.131038};
+\href{https://arxiv.org/abs/2606.01754}{arXiv:2606.01754}.
+
+\bibitem{Schneider2014}
+R.~Schneider,
+\emph{Convex Bodies: The Brunn--Minkowski Theory}, 2nd expanded ed.,
+Cambridge University Press, 2014.
+
+\end{thebibliography}
+
+\appendix
+
+\section{Complete lower-circumradius partition}
+\label{app:lower-table}
+
+\input{lower_branch_table.tex}
+
+The exact row coefficients, angular and radial grids, positive and negative
+step counts, tangent radii, and the four refined proof arrays are stored under
+\texttt{certificate/certificates/}.  Decimal entries in
+Table~\ref{tab:lower-partition} are generated displays; the verifier compares
+exact rational coefficients of $\pi$.
+
+\section{Paper-facing exact constants}
+\label{app:constants}
+
+For convenient review, the principal width-normalized quantities are
+\begin{align*}
+R_*&=\SplitRadius=\SplitDecimal,\\
+E_*&=\DeficiencyDecimal\ldots,\\
+\det H&\ge\DeterminantDecimal\ldots,\\
+C_{\rm fan}&=\FanCoefficientDecimal\ldots,\\
+V_{\rm core}&\ge\CoreDecimal\ldots,\\
+V_{\rm caps}&\ge\CapsDecimal\ldots,\\
+V_{\rm near}&\ge\NearDecimal\ldots,\\
+V_{\rm universal}&=\MainCoefficient
+=\MainDecimal\ldots.
+\end{align*}
+Every displayed value in this list is regenerated from the certificate JSON.
+
+\section{Machine-readable proof objects}
+\label{app:objects}
+
+\begingroup
+\footnotesize
+\renewcommand{\arraystretch}{1.08}
+\begin{tabularx}{\dimexpr\textwidth-14pt\relax}{@{}>{\raggedright\arraybackslash}p{0.43\textwidth}X@{}}
+\toprule
+Path & Role\\
+\midrule
+\path{universal_contact_bound_certificate.json}
+& Theorem coefficient, exact branch data, fan and cap summaries, and claim boundary.\\
+\path{refined_lower_cell_1.npz}--\path{refined_lower_cell_4.npz}
+& Exact rational propagation chains replacing the insufficient lower-row cell.\\
+\path{universal_contact_fan.npz}
+& Integer radial data and dyadic multiplier numerators for the adjusted fan.\\
+\path{reference_near_jung_fan.npz}
+& Regression fan used to check nesting and inherited multipliers.\\
+\path{all_axis_pair_section_hulls.tsv}
+& Six exact section polygons used in the cone-cap calculation.\\
+\path{fan_orbit_margin_audit.tsv}
+& One exact margin record for each stabilizer orbit.\\
+\path{audit_constants.csv}
+& Exact/decimal bridge for the independent numerical audits.\\
+\bottomrule
+\end{tabularx}
+\endgroup
+
+The repository checksum manifests authenticate these objects before and after
+replay.  The exact verifier also rebuilds derived TSV, CSV, and JSON objects
+byte for byte.
+
+\end{document}

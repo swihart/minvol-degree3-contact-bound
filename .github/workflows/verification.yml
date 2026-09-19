@@ -18,9 +18,9 @@ concurrency:
 
 jobs:
   python-verification:
-    name: Exact certificate and Python audit
+    name: Exact certificate, Python audits, and paper reconciliation
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 25
 
     steps:
       - name: Check out repository
@@ -38,18 +38,22 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
 
-      - name: Verify archived certificate checksums
+      - name: Verify archived checksums
         run: |
+          python3 refresh_checksums.py --check
+          sha256sum -c SHA256SUMS.txt
           cd certificate
-          shasum -a 256 -c SHA256SUMS.txt
+          sha256sum -c SHA256SUMS.txt
+          cd ../paper
+          sha256sum -c SHA256SUMS.txt
 
-      - name: Run exact certificate, Python audits, and mutation tests
+      - name: Run exact certificate, audits, mutation tests, and paper reconciliation
         run: ./run_python_checks.sh
 
-      - name: Recheck archived certificate checksums
+      - name: Recheck archived checksums
         run: |
-          cd certificate
-          shasum -a 256 -c SHA256SUMS.txt
+          python3 refresh_checksums.py --check
+          sha256sum -c SHA256SUMS.txt
 
   r-verification:
     name: Independent base-R audit
@@ -67,3 +71,62 @@ jobs:
 
       - name: Run independent base-R audit
         run: ./run_r_checks.sh
+
+  document-builds:
+    name: Build and preflight paper and documentation PDFs
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      - name: Set up Pandoc
+        uses: r-lib/actions/setup-pandoc@v2
+        with:
+          pandoc-version: "3.10.1"
+
+      - name: Install TeX and PDF tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes --no-install-recommends \
+            latexmk \
+            lmodern \
+            poppler-utils \
+            texlive-fonts-recommended \
+            texlive-latex-extra \
+            texlive-xetex
+
+      - name: Build reconciled manuscript
+        run: ./build_paper.sh
+
+      - name: Build local Markdown-derived PDFs
+        run: ./build_markdown_pdfs.sh build/markdown
+
+      - name: Verify committed and rebuilt Markdown/PDF pairs
+        run: |
+          python3 ci/verify_doc_pairs.py --pdf-root rendered/markdown
+          python3 ci/verify_doc_pairs.py --pdf-root build/markdown
+
+      - name: Preflight committed reference PDFs
+        run: ./ci/preflight_pdfs.sh rendered/markdown paper/contact_geometric_bound.pdf
+
+      - name: Preflight locally rebuilt PDFs
+        run: ./ci/preflight_pdfs.sh build/markdown paper/build/contact_geometric_bound.pdf
+
+      - name: Upload locally built PDFs
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: typeset-pdfs
+          path: |
+            paper/build/contact_geometric_bound.pdf
+            build/markdown/**/*.pdf
+            build/markdown/SHA256SUMS.txt
+          if-no-files-found: error
+          retention-days: 14

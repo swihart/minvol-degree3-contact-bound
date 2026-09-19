@@ -8,6 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 CERTIFICATE = ROOT / "certificate"
+PAPER = ROOT / "paper"
 IGNORED_DIRS = {".git", ".venv", "__pycache__", "build", "ci-artifacts"}
 IGNORED_NAMES = {".DS_Store"}
 IGNORED_SUFFIXES = {".pyc", ".tmp"}
@@ -59,6 +60,7 @@ def main() -> None:
     parser.add_argument("--check", action="store_true", help="verify manifests without modifying them")
     args = parser.parse_args()
     process(CERTIFICATE, CERTIFICATE / "SHA256SUMS.txt", args.check)
+    process(PAPER, PAPER / "SHA256SUMS.txt", args.check)
     process(ROOT, ROOT / "SHA256SUMS.txt", args.check)
 
 

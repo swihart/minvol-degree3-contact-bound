@@ -38,7 +38,11 @@ rerun there.
 - byte-identical reconstruction of the authoritative certificate JSON;
 - independent base-R reconstruction on the user's machine; and
 - rejection of targeted lower-row, fan-radius, multiplier, section-hull,
-  cap-allocation, disjointness, and theorem-coefficient mutations.
+  cap-allocation, disjointness, and theorem-coefficient mutations;
+- automatic reconciliation of the lean Paper v1 theorem constants and
+  lower-branch table against the authoritative certificate JSON; and
+- paired Markdown/PDF renderings of the current root, certificate, and paper
+  guides, with PDF preflight and page-by-page manuscript inspection.
 
 ## Not established
 
@@ -50,9 +54,9 @@ rerun there.
 
 ## Remaining release gates
 
-1. automatic reconciliation with the final Paper v1 manuscript;
-2. paired Markdown/PDF public documentation and visual PDF inspection;
-3. final authorship, license, citation, tag, and release metadata;
-4. clean tagged-checkout replay and release-asset verification;
-5. external mathematical review or reproduction when available; and
-6. user approval before creation of a public remote or announcement.
+1. the complete release-document set, including reproducibility, trust-boundary,
+   source-ledger, audit, citation, license, and release notes in paired formats;
+2. final authorship, affiliation, license, citation, tag, and release metadata;
+3. clean tagged-checkout replay and release-asset verification;
+4. external mathematical review or reproduction when available; and
+5. user approval before creation of a public remote or announcement.

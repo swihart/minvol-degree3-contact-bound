@@ -50,7 +50,7 @@ section hulls, determinant transfer, all three cap allocations, cross-axis
 disjointness, and the universal handoff.
 
 No private Git history, branch name, commit identifier, bundle, chat handoff, or
-Paper v2 object is included.
+private research object is included.
 
 ## Quick replay
 
@@ -72,6 +72,7 @@ OK
 Ran 7 tests
 OK
 MINVOL ADVERSARIAL MUTATION SUITE: PASS
+MINVOL PAPER-CERTIFICATE RECONCILIATION: PASS
 ```
 
 The committed transcript `transcripts/base_r_audit.txt` records a successful
@@ -185,7 +186,11 @@ Completed here:
 - ten Python unit tests, including explicit standalone-path checks;
 - seven adversarial mutation tests covering every requested proof-object class;
 - construction-time semantic comparison against the source theorem certificate; all ten checked theorem-critical fields match (see `transcripts/export_equivalence.txt`);
-- pre- and post-replay SHA-256 verification.
+- pre- and post-replay SHA-256 verification;
+- automatic reconciliation of the lean Paper v1 theorem constants and
+  gap-free lower-branch table against the authoritative certificate JSON; and
+- construction and visual/PDF preflight of the current manuscript and core
+  paired Markdown/PDF guides.
 
 Completed on the user's machine:
 
@@ -199,8 +204,8 @@ Not completed here:
 - a second base-R execution in the construction container, because `Rscript`
   is unavailable there;
 - external mathematical review;
-- reconciliation against the final Paper v1 manuscript and public
-  documentation; and
-- final authorship, licensing, citation, release, and archival metadata.
+- the complete release-document set and final public copy edit; and
+- final authorship, affiliation, licensing, citation, release, and archival
+  metadata.
 
 The latter items remain release gates.
