@@ -43,7 +43,7 @@ jobs:
           cd certificate
           shasum -a 256 -c SHA256SUMS.txt
 
-      - name: Run exact certificate and Python audits
+      - name: Run exact certificate, Python audits, and mutation tests
         run: ./run_python_checks.sh
 
       - name: Recheck archived certificate checksums

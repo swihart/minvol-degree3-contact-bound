@@ -96,6 +96,19 @@ def sha256(path: Path) -> str:
     return h.hexdigest()
 
 
+def require_byte_identical(path: Path, expected: bytes, label: str) -> None:
+    """Reject a missing or altered exact rendering.
+
+    The full verifier first reconstructs ``expected`` from the exact proof
+    objects and then requires the archived rendering at ``path`` to agree
+    byte-for-byte.  The helper is intentionally small so the adversarial
+    mutation suite can exercise the same production rejection path without
+    rewriting repository files.
+    """
+    if not path.exists() or path.read_bytes() != expected:
+        raise RuntimeError(label)
+
+
 def fs(x: Fraction) -> str:
     return f"{x.numerator}/{x.denominator}" if x.denominator != 1 else str(x.numerator)
 
@@ -224,8 +237,12 @@ def verify_refined_rows(write: bool) -> list[dict[str, Any]]:
     blob = "".join(lines).encode("ascii")
     if write:
         ROW_AUDIT.write_bytes(blob)
-    elif not ROW_AUDIT.exists() or ROW_AUDIT.read_bytes() != blob:
-        raise RuntimeError("refined O3A1 row audit is not byte-identical")
+    else:
+        require_byte_identical(
+            ROW_AUDIT,
+            blob,
+            "refined O3A1 row audit is not byte-identical",
+        )
     return rows
 
 
@@ -275,6 +292,70 @@ def verify_coordinate_width_lemma() -> dict[str, Any]:
     }
 
 
+def verify_fan_input_structure(
+    reference_path: Path = REFERENCE_FAN,
+    fan_path: Path = FAN_DATA,
+) -> dict[str, Any]:
+    """Load and semantically validate the two immutable fan NPZ objects.
+
+    File fingerprints are checked by :func:`verify_fan_and_caps` before this
+    routine is called in the theorem replay.  Keeping the structural checks in
+    a separate production helper lets the adversarial suite bypass only the
+    fingerprint gate and verify that altered array contents are rejected by
+    the exact fan logic itself.
+    """
+    with np.load(reference_path, allow_pickle=False) as reference:
+        reference_radial = np.asarray(reference["Aint"], dtype=np.int64).copy()
+        reference_delta = np.asarray(reference["delta_num"], dtype=np.int64).copy()
+        reference_R = Fraction(int(reference["R_num"]), int(reference["R_den"]))
+        reference_volnum = int(str(reference["volnum"].item()))
+        reference_volden = int(str(reference["volden"].item()))
+
+    with np.load(fan_path, allow_pickle=False) as data:
+        radial = np.asarray(data["Aint"], dtype=np.int64).copy()
+        delta = np.asarray(data["delta_num"], dtype=np.int64).copy()
+        data_R_num = int(data["R_num"])
+        data_R_den = int(data["R_den"])
+        data_dbits = int(data["DBITS"])
+        data_volnum = int(str(data["volnum"].item()))
+        data_volden = int(str(data["volden"].item()))
+
+    if reference_radial.shape != (98_306,) or reference_delta.shape != (98_306,):
+        raise AssertionError("reference fan data shape mismatch")
+    if radial.shape != (98_306,) or delta.shape != (98_306,):
+        raise AssertionError("new fan data shape mismatch")
+    if np.any(radial <= 0) or np.any(radial > reference_radial):
+        raise AssertionError("new fan is not nested in the reference fan")
+    if not np.array_equal(delta, reference_delta):
+        raise AssertionError("new fan changed inherited S-procedure multipliers")
+    if data_R_num != R_SPLIT.numerator or data_R_den != R_SPLIT.denominator:
+        raise AssertionError("new fan split metadata mismatch")
+    if data_dbits != P.DBITS:
+        raise AssertionError("new fan multiplier-bit metadata mismatch")
+
+    qvec, faces, edges, index = P.reconstruct_cube_fan()
+    orbits = P.stabilizer_orbits(qvec, index)
+    for orbit in orbits:
+        if len({int(radial[i]) for i in orbit}) != 1 or len({int(delta[i]) for i in orbit}) != 1:
+            raise AssertionError("new fan is not edge-stabilizer invariant")
+
+    return {
+        "reference_radial": reference_radial,
+        "reference_delta": reference_delta,
+        "reference_R": reference_R,
+        "reference_volnum": reference_volnum,
+        "reference_volden": reference_volden,
+        "radial": radial,
+        "delta": delta,
+        "data_volnum": data_volnum,
+        "data_volden": data_volden,
+        "qvec": qvec,
+        "faces": faces,
+        "edges": edges,
+        "orbits": orbits,
+    }
+
+
 def verify_fan_and_caps(write: bool) -> dict[str, Any]:
     expected = {
         REFERENCE_CERT: REFERENCE_CERT_SHA256,
@@ -286,30 +367,16 @@ def verify_fan_and_caps(write: bool) -> dict[str, Any]:
             raise RuntimeError(f"proof-object fingerprint mismatch: {path}")
 
     reference_cert = json.loads(REFERENCE_CERT.read_text())
-    reference = np.load(REFERENCE_FAN, allow_pickle=False)
-    data = np.load(FAN_DATA, allow_pickle=False)
-    reference_radial = np.asarray(reference["Aint"], dtype=np.int64)
-    reference_delta = np.asarray(reference["delta_num"], dtype=np.int64)
-    radial = np.asarray(data["Aint"], dtype=np.int64)
-    delta = np.asarray(data["delta_num"], dtype=np.int64)
-    if radial.shape != (98_306,) or delta.shape != (98_306,):
-        raise AssertionError("new fan data shape mismatch")
-    if np.any(radial <= 0) or np.any(radial > reference_radial):
-        raise AssertionError("new fan is not nested in the reference fan")
-    if not np.array_equal(delta, reference_delta):
-        raise AssertionError("new fan changed inherited S-procedure multipliers")
-    if int(data["R_num"]) != R_SPLIT.numerator or int(data["R_den"]) != R_SPLIT.denominator:
-        raise AssertionError("new fan split metadata mismatch")
-    if int(data["DBITS"]) != P.DBITS:
-        raise AssertionError("new fan multiplier-bit metadata mismatch")
-
-    qvec, faces, edges, index = P.reconstruct_cube_fan()
-    orbits = P.stabilizer_orbits(qvec, index)
-    for orbit in orbits:
-        if len({int(radial[i]) for i in orbit}) != 1 or len({int(delta[i]) for i in orbit}) != 1:
-            raise AssertionError("new fan is not edge-stabilizer invariant")
-
-    reference_R = Fraction(int(reference["R_num"]), int(reference["R_den"]))
+    fan_input = verify_fan_input_structure()
+    reference_radial = fan_input["reference_radial"]
+    reference_delta = fan_input["reference_delta"]
+    radial = fan_input["radial"]
+    delta = fan_input["delta"]
+    qvec = fan_input["qvec"]
+    faces = fan_input["faces"]
+    edges = fan_input["edges"]
+    orbits = fan_input["orbits"]
+    reference_R = fan_input["reference_R"]
     reference_E = (3 - 8 * reference_R * reference_R) / (4 * reference_R * reference_R - 1)
     expected_reference_min = Fraction(reference_cert["near_jung_reference_fan"]["minimum_margin"])
     expected_reference_index = int(reference_cert["near_jung_reference_fan"]["minimum_margin_index"])
@@ -363,8 +430,12 @@ def verify_fan_and_caps(write: bool) -> dict[str, Any]:
     audit_blob = "".join(audit_lines).encode("ascii")
     if write:
         FAN_AUDIT.write_bytes(audit_blob)
-    elif not FAN_AUDIT.exists() or FAN_AUDIT.read_bytes() != audit_blob:
-        raise RuntimeError("fan orbit audit is not byte-identical")
+    else:
+        require_byte_identical(
+            FAN_AUDIT,
+            audit_blob,
+            "fan orbit audit is not byte-identical",
+        )
 
     raw_den = 6 * P.N**3 * (1 << P.BITS) ** 3
     reference_raw_num = 0
@@ -375,9 +446,9 @@ def verify_fan_and_caps(write: bool) -> dict[str, Any]:
         minimum_cone_det = determinant if minimum_cone_det is None else min(minimum_cone_det, determinant)
         reference_raw_num += int(reference_radial[i]) * int(reference_radial[j]) * int(reference_radial[k]) * determinant
         raw_num += int(radial[i]) * int(radial[j]) * int(radial[k]) * determinant
-    if reference_raw_num != int(str(reference["volnum"].item())) or raw_den != int(str(reference["volden"].item())):
+    if reference_raw_num != fan_input["reference_volnum"] or raw_den != fan_input["reference_volden"]:
         raise AssertionError("reconstructed reference fan volume mismatch")
-    if raw_num != int(str(data["volnum"].item())) or raw_den != int(str(data["volden"].item())):
+    if raw_num != fan_input["data_volnum"] or raw_den != fan_input["data_volden"]:
         raise AssertionError("stored new fan volume mismatch")
     C = Fraction(raw_num, 2 * raw_den)
 
@@ -410,8 +481,12 @@ def verify_fan_and_caps(write: bool) -> dict[str, Any]:
     hull_blob = "".join(hull_lines).encode("ascii")
     if write:
         HULL_AUDIT.write_bytes(hull_blob)
-    elif not HULL_AUDIT.exists() or HULL_AUDIT.read_bytes() != hull_blob:
-        raise RuntimeError("all-axis section hull audit is not byte-identical")
+    else:
+        require_byte_identical(
+            HULL_AUDIT,
+            hull_blob,
+            "all-axis section hull audit is not byte-identical",
+        )
 
     # The full coordinate list contains nearly 300,000 exact fractions.  The
     # six small hulls, areas, and supports are now independent of it.
@@ -509,8 +584,12 @@ def write_audit_constants(values: dict[str, Fraction], write: bool) -> None:
     blob = "".join(lines).encode("ascii")
     if write:
         AUDIT_CONSTANTS.write_bytes(blob)
-    elif not AUDIT_CONSTANTS.exists() or AUDIT_CONSTANTS.read_bytes() != blob:
-        raise RuntimeError("audit constants are not byte-identical")
+    else:
+        require_byte_identical(
+            AUDIT_CONSTANTS,
+            blob,
+            "audit constants are not byte-identical",
+        )
 
 
 def build_certificate(write: bool = False) -> dict[str, Any]:
@@ -729,8 +808,12 @@ def build_certificate(write: bool = False) -> dict[str, Any]:
     blob = (json.dumps(cert, indent=2, sort_keys=True) + "\n").encode("ascii")
     if write:
         CERT_PATH.write_bytes(blob)
-    elif not CERT_PATH.exists() or CERT_PATH.read_bytes() != blob:
-        raise RuntimeError("certificate JSON is not byte-identical")
+    else:
+        require_byte_identical(
+            CERT_PATH,
+            blob,
+            "certificate JSON is not byte-identical",
+        )
     return cert
 
 

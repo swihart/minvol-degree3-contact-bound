@@ -19,7 +19,10 @@ for every three-dimensional convex body of constant width `d`.
 The public-format package is independent of the private repository layout and
 replays using only files contained in `certificate/`. Its exact Python verifier
 and independent Python binary64 audit pass in the construction environment.
-The base-R audit has not been run there.
+The archived base-R audit passes on the user's machine. Seven adversarial
+mutations are also rejected by the production verification paths. `Rscript` is
+not installed in the construction container, so that language path was not
+rerun there.
 
 ## Established inside this package
 
@@ -32,7 +35,10 @@ The base-R audit has not been run there.
 - three exact cap-pair lower bounds and six-cap disjointness;
 - strict exact near-Jung handoff surplus;
 - exact theorem coefficient and decimal enclosure;
-- byte-identical reconstruction of the authoritative certificate JSON.
+- byte-identical reconstruction of the authoritative certificate JSON;
+- independent base-R reconstruction on the user's machine; and
+- rejection of targeted lower-row, fan-radius, multiplier, section-hull,
+  cap-allocation, disjointness, and theorem-coefficient mutations.
 
 ## Not established
 
@@ -44,9 +50,9 @@ The base-R audit has not been run there.
 
 ## Remaining release gates
 
-1. base-R replay on the user's machine;
-2. adversarial mutation tests for the principal proof-object classes;
-3. fresh-clone replay in at least one additional environment;
-4. automatic reconciliation with the final Paper v1 manuscript;
-5. final authorship, license, citation, tag, and release metadata;
+1. automatic reconciliation with the final Paper v1 manuscript;
+2. paired Markdown/PDF public documentation and visual PDF inspection;
+3. final authorship, license, citation, tag, and release metadata;
+4. clean tagged-checkout replay and release-asset verification;
+5. external mathematical review or reproduction when available; and
 6. user approval before creation of a public remote or announcement.

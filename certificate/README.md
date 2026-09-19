@@ -12,10 +12,10 @@ $$
 $$
 
 **Status:** internally replayed proposed exact universal certificate. The package
-has passed its exact Python replay and an independent binary64 Python audit in
-the construction environment. The base-R audit remains a required external
-release gate. The result has not yet been externally reproduced, peer reviewed,
-or published.
+has passed its exact Python replay, an independent binary64 Python audit, and
+seven adversarial rejection tests in the construction environment. The archived
+base-R audit has independently passed on the user's machine. The result has not
+yet been externally reproduced, peer reviewed, or published.
 
 This package does not prove sharpness, equality, rigidity, identification of a
 minimizer, or Meissner extremality.
@@ -35,6 +35,9 @@ directory:
 - `certificates/universal_contact_fan.npz` is the adjusted 98,306-ray fan;
 - `certificates/refined_lower_cell_1.npz` through
   `refined_lower_cell_4.npz` are the exact replacement cells;
+- `test_universal_bound.py` supplies reconstruction and regression tests;
+- `test_adversarial_mutations.py` perturbs temporary copies of seven
+  theorem-critical objects and requires rejection;
 - the TSV and CSV files are byte-checked exact/audit renderings; and
 - `certificates/universal_contact_bound_certificate.json` is the authoritative
   assembled machine-readable theorem certificate.
@@ -66,12 +69,17 @@ PROPOSED UNIVERSAL LOWER BOUND ABOVE 0.4118775: EXACTLY CERTIFIED BY THIS PACKAG
 MINVOL UNIVERSAL CONTACT-BOUND BINARY64 AUDIT: PASS
 Ran 10 tests
 OK
+Ran 7 tests
+OK
+MINVOL ADVERSARIAL MUTATION SUITE: PASS
 ```
 
-With base R installed, run the audit. Before the first public commit, archive its output from the repository root and refresh the manifests:
+The committed transcript `transcripts/base_r_audit.txt` records a successful
+base-R replay on the user's machine. To reproduce or deliberately refresh it,
+run from the repository root:
 
 ```sh
-./run_r_checks.sh | tee certificate/transcripts/base_r_audit.txt
+./run_r_checks.sh 2>&1 | tee certificate/transcripts/base_r_audit.txt
 ```
 
 ```sh
@@ -143,6 +151,25 @@ audit, not the proof authority. `audit_universal_bound.R` independently checks
 archived exact decimal renderings and reconstructs the cap allocations and
 assembly using base R; it is also an audit, not the proof authority.
 
+## Adversarial rejection coverage
+
+The mutation suite never changes a tracked repository file. It creates a
+temporary copy, changes exactly one targeted object, and requires the production
+verifier path to reject it. The seven committed cases are:
+
+1. a lower-row interval endpoint;
+2. a final-fan radial numerator;
+3. an inherited S-procedure multiplier;
+4. a section-hull vertex;
+5. a cap-allocation bracket endpoint;
+6. a cross-axis disjointness threshold; and
+7. one digit of the theorem coefficient.
+
+The first three tests bypass only the immutable-file fingerprint and exercise
+the underlying exact semantic checks. The remaining four exercise the same
+byte-identical reconstruction gate used by the full exact verifier. The archived
+result is in `transcripts/adversarial_mutations.txt`.
+
 NumPy is trusted only to read immutable integer arrays and to support the
 independent numerical audit. Floating-point arithmetic is not used to justify
 the theorem.
@@ -156,15 +183,24 @@ Completed here:
 - reference-fan fingerprint and exact-margin regression;
 - independent binary64 audit;
 - ten Python unit tests, including explicit standalone-path checks;
+- seven adversarial mutation tests covering every requested proof-object class;
 - construction-time semantic comparison against the source theorem certificate; all ten checked theorem-critical fields match (see `transcripts/export_equivalence.txt`);
 - pre- and post-replay SHA-256 verification.
 
+Completed on the user's machine:
+
+- a clean Python 3.14 virtual-environment replay;
+- the independent base-R audit, including the required final pass marker;
+- pre- and post-replay checksum verification; and
+- creation of the fresh-history root commit from a clean working tree.
+
 Not completed here:
 
-- base-R replay, because `Rscript` is unavailable;
-- fresh-machine replay outside this container;
+- a second base-R execution in the construction container, because `Rscript`
+  is unavailable there;
 - external mathematical review;
-- adversarial mutation suite beyond the current fingerprint and byte-identity
-  tests.
+- reconciliation against the final Paper v1 manuscript and public
+  documentation; and
+- final authorship, licensing, citation, release, and archival metadata.
 
 The latter items remain release gates.

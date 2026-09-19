@@ -1,0 +1,13 @@
+test_rejects_cap_allocation_bracket_mutation (__main__.AdversarialMutationTests.test_rejects_cap_allocation_bracket_mutation) ... ok
+test_rejects_disjointness_threshold_mutation (__main__.AdversarialMutationTests.test_rejects_disjointness_threshold_mutation) ... ok
+test_rejects_fan_radial_numerator_mutation (__main__.AdversarialMutationTests.test_rejects_fan_radial_numerator_mutation) ... ok
+test_rejects_lower_row_endpoint_mutation (__main__.AdversarialMutationTests.test_rejects_lower_row_endpoint_mutation) ... ok
+test_rejects_s_procedure_multiplier_mutation (__main__.AdversarialMutationTests.test_rejects_s_procedure_multiplier_mutation) ... ok
+test_rejects_section_hull_vertex_mutation (__main__.AdversarialMutationTests.test_rejects_section_hull_vertex_mutation) ... ok
+test_rejects_theorem_coefficient_digit_mutation (__main__.AdversarialMutationTests.test_rejects_theorem_coefficient_digit_mutation) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 1.103s
+
+OK
+MINVOL ADVERSARIAL MUTATION SUITE: PASS
