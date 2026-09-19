@@ -75,6 +75,12 @@ PROHIBITED_TEXT = [
 
 LINK_RE = re.compile(r"(?<!!)\[[^\]]+\]\(([^)]+)\)")
 
+GITHUB_MATH_FORBIDDEN = {
+    r"\operatorname": r"use \mathrm{...} instead of \operatorname{...}",
+    r"\[": r"use $$ display-math delimiters instead of \[",
+    r"\]": r"use $$ display-math delimiters instead of \]",
+}
+
 
 def read_text(relative: str) -> str:
     path = ROOT / relative
@@ -133,6 +139,13 @@ def check_relative_links(relative: str, text: str) -> int:
 
 def main() -> None:
     texts = {relative: read_text(relative) for relative in REQUIRED_MARKDOWN}
+
+    for relative, text in texts.items():
+        for token, guidance in GITHUB_MATH_FORBIDDEN.items():
+            if token in text:
+                raise SystemExit(
+                    f"GitHub-incompatible math token in {relative}: {token!r}; {guidance}"
+                )
 
     rational_fragment, exact_decimal = theorem_strings()
     decimal_prefix = exact_decimal[:17] if exact_decimal else "0.411877563780302"

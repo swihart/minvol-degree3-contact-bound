@@ -7,7 +7,7 @@ preprint and exact reproducibility package for the proposed universal bound
 
 $$
 \boxed{
-\operatorname{Vol}(K)\ge
+\mathrm{Vol}(K)\ge
 \frac{26220940089713\pi}{200000000000000}\,d^3
 =0.41187756378030227424817892598\ldots d^3
 }
@@ -18,12 +18,14 @@ for every convex body `K` in `R^3` of constant width `d`.
 The release candidate contains a standalone exact certificate, independent
 Python and base-R audits, adversarial rejection tests, and a lean Paper v1
 manuscript reconciled automatically against the machine-readable certificate.
-Publication metadata is now fixed for this candidate: Bruce J. Swihart is the
-sole named author, no institutional affiliation is asserted, prose is licensed
-CC BY 4.0, and software is licensed MIT. The intended canonical repository is
-<https://github.com/swihart/minvol-degree3-contact-bound>. The public remote,
-hosted workflow, final release date and tag, immutable assets, and announcement
-remain pending.
+Publication metadata is fixed for this candidate: Bruce J. Swihart is the sole
+named author, no institutional affiliation is asserted, prose is licensed CC BY
+4.0, and software is licensed MIT. The canonical repository currently exists as
+a private staging repository at
+<https://github.com/swihart/minvol-degree3-contact-bound>. Three hosted jobs and
+a complete named-author fresh-clone replay passed on audited candidate commit
+`892d4bc6fad07950e78da66e45b95063a6415af6`. The final release date and tag,
+immutable assets, visibility change, and announcement remain pending.
 
 ## Paper
 
@@ -49,11 +51,33 @@ generated from the exact JSON rather than copied manually.
 - **Citation metadata:** [`CITATION.cff`](CITATION.cff)
 - **Licensing text:** [`LICENSE`](LICENSE)
 
-The repository description approved for the intended public remote is:
+The repository description approved for the canonical repository is:
 
 > Paper, exact certificate, and reproducibility materials for a
 > contact-geometric universal lower bound in the three-dimensional
 > Blaschke-Lebesgue problem.
+
+## Remote release-candidate audit
+
+The audited release-candidate commit is:
+
+```text
+892d4bc6fad07950e78da66e45b95063a6415af6
+Add release-candidate citation and licensing metadata
+```
+
+The hosted workflow at
+<https://github.com/swihart/minvol-degree3-contact-bound/actions/runs/35468019663>
+completed all three jobs successfully: exact/Python verification, independent
+base R, and paper/document build plus Poppler preflight. A separate fresh clone
+of that commit reproduced the complete Python and R replay under Python 3.14.7,
+NumPy 2.3.5, and R 4.6.1; rebuilt the ten-page paper and all 22 Markdown/PDF
+pairs; and ended with an empty `git status --short`.
+
+The audit-transfer hashes and exact environment record are in
+[`CLEAN_CLONE_CHECK.md`](CLEAN_CLONE_CHECK.md) and
+[`certificate/evidence/rc1_remote_audit.json`](certificate/evidence/rc1_remote_audit.json).
+This is reproducibility evidence, not external mathematical review.
 
 ## Reviewer path
 
@@ -88,6 +112,7 @@ MINVOL UNIVERSAL CONTACT-BOUND CERTIFICATE: EXACT
 MINVOL UNIVERSAL CONTACT-BOUND BINARY64 AUDIT: PASS
 MINVOL ADVERSARIAL MUTATION SUITE: PASS
 MINVOL EXACT-CONSTANTS APPENDIX: CURRENT
+MINVOL REMOTE-EVIDENCE CHECK: PASS
 MINVOL RELEASE-DOCUMENT CHECK: PASS
 MINVOL CITATION METADATA CHECK: PASS
 MINVOL METADATA PREFLIGHT: PASS
@@ -227,8 +252,9 @@ split-license notice.
 The package proposes a universal lower bound. It does not identify a minimizing
 body, prove sharpness or equality, or prove the Meissner conjecture. The
 Meissner value is an explicit-body comparison value, not a universal minimum
-proved here. The result has not yet been externally reproduced or peer reviewed. This
-release candidate has not yet been pushed to the intended public repository.
+proved here. The result has not been externally reproduced or peer reviewed.
+The release candidate has been pushed only to a private staging repository;
+there is no public release, immutable tag, or publication claim yet.
 
 The earlier public MinVol spectral announcement remains a separate repository:
 [swihart/minvol-degree3-spectral-bound](https://github.com/swihart/minvol-degree3-spectral-bound).

@@ -73,7 +73,7 @@ def render() -> str:
         "represents the proposed inequality",
         "",
         "$$",
-        "\\operatorname{Vol}(K)\\ge",
+        "\\mathrm{Vol}(K)\\ge",
         f"\\frac{{{coefficient_num}\\pi}}{{{coefficient_den}}}d^3",
         "=" + theorem["coefficient_decimal_lower"] + "\\ldots d^3.",
         "$$",

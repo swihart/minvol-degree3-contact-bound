@@ -121,7 +121,7 @@ Repository role:
 - exact support-function formulation at the level of the infimum;
 - volume-energy identity and support-tensor box constraint;
 - spherical-harmonic/Bochner lower bound
-  $\operatorname{Vol}(K)\ge 4\pi d^3/33$;
+  $\mathrm{Vol}(K)\ge 4\pi d^3/33$;
 - comparison point for subsequent MinVol results.
 
 Publisher metadata and the final article identifier were checked on September

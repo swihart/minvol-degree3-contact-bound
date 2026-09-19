@@ -1,6 +1,6 @@
 # Reproducibility guide
 
-**Package status:** release candidate `v1.0.0-rc1`, not yet public or tagged
+**Package status:** private-staging release candidate `v1.0.0-rc1`, not yet public or tagged
 **Prepared:** September 19, 2026
 **Main certificate schema:** `minvol.universal_contact_bound.v1`
 
@@ -12,7 +12,7 @@ documentation.
 The proposed theorem represented by the package is
 
 $$
-\operatorname{Vol}(K)\ge
+\mathrm{Vol}(K)\ge
 \frac{26220940089713\pi}{200000000000000}\,d^3
 =0.41187756378030227424817892598\ldots d^3
 $$
@@ -47,44 +47,71 @@ In that environment, the exact verifier, binary64 audit, ten reconstruction
 tests, seven adversarial mutation tests, paper reconciliation, manuscript
 build, Markdown/PDF build, and Poppler PDF preflight passed.
 
-### Named-author machine replay
+### Named-author remote fresh-clone replay
 
-The named author reproduced the standalone package on macOS with:
+The named author cloned the private staging remote at audited commit
+`892d4bc6fad07950e78da66e45b95063a6415af6` and reproduced the complete
+package on macOS with:
 
 ```text
-Python 3.14
+Python 3.14.7
 NumPy 2.3.5
-base R available
+R 4.6.1
+TeX Live 2023
 ```
 
-The exact verifier, binary64 audit, ten reconstruction tests, and base-R audit
-passed. The posted transcript did not record the exact R version, so this
-document does not infer one. The local Mac did not have Poppler installed;
-full `pdfinfo`, `pdffonts`, and `pdftotext` preflight is therefore assigned to
-the GitHub Actions document job, matching the workflow used for the first
-public MinVol release.
+The exact verifier, binary64 audit, ten reconstruction tests, seven mutation
+tests, release-document and metadata checks, paper reconciliation, base-R
+audit, paper build, and all 22 committed and rebuilt Markdown/PDF pair checks
+passed. The final `git status --short` was empty, and the resulting bundle
+recorded the complete five-commit history.
+
+The local Mac did not have Poppler installed. Full `pdfinfo`, `pdffonts`, and
+`pdftotext` preflight was therefore supplied by the successful hosted document
+job rather than waived.
 
 ### Continuous integration
 
-The workflow `.github/workflows/verification.yml` is configured for:
+Workflow run
+<https://github.com/swihart/minvol-degree3-contact-bound/actions/runs/35468019663>
+checked out audited candidate commit
+`892d4bc6fad07950e78da66e45b95063a6415af6` in all three jobs. The downloaded
+logs contain all required pass markers for:
 
-- Ubuntu 24.04;
-- Python 3.13;
-- NumPy 2.3.5 from `requirements.txt`;
+- exact certificate, binary64 audit, ten tests, seven mutation tests, metadata,
+  release documents, and paper reconciliation;
+- the independent base-R audit; and
+- the paper, 22-document build, pair checks, and committed/rebuilt Poppler
+  preflight.
+
+The recorded hosted environment was:
+
+- Ubuntu 24.04.5 LTS, runner image version `20260907.300.1`;
+- CPython 3.13.15 and NumPy 2.3.5;
 - R 4.6.1, using base R only;
 - Pandoc 3.10.1;
-- XeLaTeX and `latexmk`; and
+- TeX Live 2023/Debian; and
 - Poppler `pdfinfo`, `pdffonts`, and `pdftotext`.
 
-A green hosted workflow is a release gate, but it does not replace
-mathematical review.
+The run passed three of three jobs. This is portability and reproducibility
+evidence; it does not replace mathematical review.
+
+### Remote-evidence record
+
+The audit-transfer manifest and the bundle, fresh-replay transcript, and hosted
+log archive were independently hashed after upload. Their exact SHA-256 values
+and structural conclusions are recorded in
+[`CLEAN_CLONE_CHECK.md`](CLEAN_CLONE_CHECK.md) and
+[`certificate/evidence/rc1_remote_audit.json`](certificate/evidence/rc1_remote_audit.json).
+The structural checker is `ci/verify_remote_evidence.py`.
 
 ## Fresh source-tree procedure
 
-Until the intended public remote and immutable tag exist, reproduce from the
-exact source archive or bundle supplied for review. The intended canonical URL
-is <https://github.com/swihart/minvol-degree3-contact-bound>; the target final
-tag is `v1.0.0`. Neither is represented here as an existing release.
+The canonical repository currently exists as a private staging remote at
+<https://github.com/swihart/minvol-degree3-contact-bound>. Authorized reviewers
+may clone that remote; otherwise reproduce from the exact reviewed bundle. The
+target final tag is `v1.0.0`, but no immutable tag or public release is
+represented here as existing.
 
 Enter the repository root:
 
@@ -170,6 +197,7 @@ Ran 7 tests
 OK
 MINVOL ADVERSARIAL MUTATION SUITE: PASS
 MINVOL EXACT-CONSTANTS APPENDIX: CURRENT
+MINVOL REMOTE-EVIDENCE CHECK: PASS
 MINVOL RELEASE-DOCUMENT CHECK: PASS
 MINVOL METADATA PREFLIGHT: PASS
 MINVOL PAPER-CERTIFICATE RECONCILIATION: PASS

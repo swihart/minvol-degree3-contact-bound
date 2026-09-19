@@ -9,7 +9,7 @@ boundary.
 The package represents the proposed theorem
 
 $$
-\operatorname{Vol}(K)\ge
+\mathrm{Vol}(K)\ge
 \frac{26220940089713\pi}{200000000000000}\,d^3
 $$
 

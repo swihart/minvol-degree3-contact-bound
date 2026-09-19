@@ -4,8 +4,9 @@
 
 This is the release-candidate record for a proposed computer-assisted
 universal lower bound in the three-dimensional Blaschke–Lebesgue problem. The
-candidate metadata and licensing are fixed, but no public release or immutable
-tag is asserted yet.
+candidate metadata and licensing are fixed. The audited candidate has passed a
+three-job hosted workflow and a complete named-author fresh-clone replay, but no
+public release or immutable tag is asserted yet.
 
 ## Proposed result
 
@@ -13,7 +14,7 @@ For every convex body $K\subset\mathbb R^3$ of constant width $d>0$, the
 package represents the proposed inequality
 
 $$
-\operatorname{Vol}(K)\ge
+\mathrm{Vol}(K)\ge
 \frac{26220940089713\pi}{200000000000000}\,d^3
 =0.4118775637803022742481789259828398710\ldots d^3.
 $$
@@ -63,29 +64,37 @@ Completed in recorded environments:
 
 - exact finite verification and byte-identical certificate reconstruction;
 - independent Python binary64 audit;
-- independent base-R audit on the named author's machine;
+- independent base-R audit on the named author's machine and hosted R 4.6.1;
 - ten regression tests and seven mutation tests;
 - paper/certificate and exact-appendix reconciliation;
-- manuscript and Markdown/PDF builds;
-- construction-environment Poppler preflight and visual PDF inspection;
-- clean-source/fresh-extraction checks.
+- manuscript and 22 Markdown/PDF builds;
+- hosted Poppler preflight of committed and rebuilt PDFs;
+- a private staging-remote push of candidate commit
+  `892d4bc6fad07950e78da66e45b95063a6415af6`;
+- three green hosted jobs at
+  <https://github.com/swihart/minvol-degree3-contact-bound/actions/runs/35468019663>;
+- a complete named-author fresh-clone replay under Python 3.14.7, NumPy 2.3.5,
+  and R 4.6.1; and
+- a clean fresh-clone working tree and complete five-commit bundle.
 
 Still required before release:
 
-- creation of the intended public repository and push of this candidate;
-- green hosted jobs on the exact release-candidate commit;
+- green hosted jobs on this evidence-bearing commit;
+- final named-author copy and page approval;
 - final release date and transition from `v1.0.0-rc1` to `v1.0.0`;
-- clean tagged-checkout replay;
 - immutable release assets and hashes;
+- green hosted jobs and a clean replay from the exact final tag; and
 - explicit named-author approval of the final paper, README, release notes,
-  tag, and announcement.
+  tag, visibility change, GitHub Release, and announcement.
 
 ## Candidate publication metadata
 
 - sole named author: Bruce J. Swihart;
 - no institutional affiliation asserted;
-- intended canonical repository:
+- private staging repository and intended canonical repository:
   <https://github.com/swihart/minvol-degree3-contact-bound>;
+- audited candidate commit:
+  `892d4bc6fad07950e78da66e45b95063a6415af6`;
 - preferred citation: `CITATION.cff`;
 - paper and prose license: CC BY 4.0;
 - software and build-infrastructure license: MIT;

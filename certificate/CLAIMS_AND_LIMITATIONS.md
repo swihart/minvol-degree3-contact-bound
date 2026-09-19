@@ -6,7 +6,7 @@ The exact certificate and manuscript represent the universal statement
 
 $$
 \boxed{
-\operatorname{Vol}(K)\ge
+\mathrm{Vol}(K)\ge
 \frac{26220940089713\pi}{200000000000000}\,d^3
 =0.41187756378030227424817892598\ldots d^3
 }

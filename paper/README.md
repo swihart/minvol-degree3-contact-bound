@@ -6,7 +6,7 @@ This directory contains the lean Paper v1 manuscript for the proposed exact
 universal contact-geometric lower bound
 
 $$
-\operatorname{Vol}(K)\ge
+\mathrm{Vol}(K)\ge
 \frac{26220940089713\pi}{200000000000000}\,d^3
 =0.41187756378030227424817892598\ldots d^3
 $$
@@ -114,8 +114,11 @@ may be investigated.
 The reference PDF was rendered page by page during construction and checked for
 clipped text, overlapping tables, broken glyphs, and missing references. The
 release-candidate author, no-affiliation statement, citation, split license,
-version, and intended repository URL are fixed and checked automatically. Final
-named-author page approval remains a release gate after hosted document builds.
+version, and repository URL are fixed and checked automatically. The hosted
+document job on audited candidate commit
+`892d4bc6fad07950e78da66e45b95063a6415af6` rebuilt the ten-page paper and
+passed Poppler preflight. Final named-author page approval remains a release
+gate.
 
 ## Publication metadata
 
@@ -123,11 +126,14 @@ named-author page approval remains a release gate after hosted document builds.
 - **Institutional affiliation:** none asserted
 - **Candidate version:** `v1.0.0-rc1`
 - **Target final tag:** `v1.0.0`
-- **Intended repository:**
+- **Private staging and intended canonical repository:**
   <https://github.com/swihart/minvol-degree3-contact-bound>
+- **Audited hosted workflow:**
+  <https://github.com/swihart/minvol-degree3-contact-bound/actions/runs/35468019663>
 - **Paper/prose license:** CC BY 4.0
 - **Software/build license:** MIT
 - **Preferred citation:** repository-root `CITATION.cff`
 
-No public release, immutable tag, hosted workflow result, DOI, or external
-mathematical reproduction is asserted by this release-candidate checkpoint.
+No public release, immutable tag, DOI, or external mathematical reproduction
+is asserted by this release-candidate checkpoint. The recorded hosted workflow
+and named-author fresh clone are reproducibility evidence, not peer review.

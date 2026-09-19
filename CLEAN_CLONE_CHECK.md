@@ -1,153 +1,178 @@
-# Recorded clean-source and fresh-extraction checks
+# Recorded clean-source, hosted, and fresh-clone checks
 
-**Record date:** September 19, 2026
-**Package version:** `v1.0.0-rc1`
-**Intended public remote:** `https://github.com/swihart/minvol-degree3-contact-bound` (not yet created)
+- **Record date:** September 19, 2026
+- **Package version:** `v1.0.0-rc1`
+- **Staging repository:**
+  <https://github.com/swihart/minvol-degree3-contact-bound>
+- **Visibility during this audit:** private
+- **Audited candidate commit:**
+  `892d4bc6fad07950e78da66e45b95063a6415af6`
+- **Hosted workflow:**
+  <https://github.com/swihart/minvol-degree3-contact-bound/actions/runs/35468019663>
 
-This document records reproducibility tests performed while constructing the
-fresh-history public package. A final tagged-checkout test will be added before
-release.
+This document records the clean-source, hosted continuous-integration, and
+fresh-clone evidence for the release candidate. The repository still requires a
+final tagged-checkout replay before publication.
 
 ## Results at a glance
 
-| Checkpoint | Source form | Result |
+| Checkpoint | Result |
+|---|---|
+| Standalone certificate (`21a1750`) | Exact Python, binary64, ten tests, base R, checksums, and clean status passed |
+| Adversarial mutation suite (`068be1f`) | Seven representative corruptions rejected |
+| Lean Paper v1 (`b11a13a`) | Paper reconciliation, builds, paired documents, and PDF checks passed |
+| Complete release documentation (`dc4017a`) | Release-document, exact-constants, link, checksum, and PDF checks passed |
+| Release-candidate metadata (`892d4bc`) | Author, citation, repository, version, and split-license metadata passed |
+| Hosted candidate workflow | Three of three jobs completed successfully on `892d4bc` |
+| Remote fresh-clone replay | Full Python/R replay, paper build, 22 document pairs, complete bundle, and clean status passed |
+
+## 1. Curated fresh history
+
+The audited bundle contains exactly five fresh-history commits:
+
+```text
+21a175010fb18d74e11286ef0e1135cb32c47053 Add standalone exact universal certificate
+068be1ff4bd7d815714445ec24549715eef0e5aa Add adversarial certificate mutation tests
+b11a13a145ebb09218dca542057b1d44700cb48e Add the lean Paper v1 manuscript
+dc4017ae564f8680eddbb9f1b4407ff1bd45991e Add the complete release documentation
+892d4bc6fad07950e78da66e45b95063a6415af6 Add release-candidate citation and licensing metadata
+```
+
+`git fsck --full` passed, the bundle records a complete SHA-1 history, and no
+private research branch or private repository history is present.
+
+## 2. Transfer integrity
+
+The four audit-transfer files were checked against the uploaded manifest. The
+manifest itself has SHA-256
+
+```text
+3f958520e0e119cad4db97d60a2ac3702b8144a8f6228068bdfeb6d43124f57d
+```
+
+The three transferred evidence artifacts are:
+
+**Main-branch bundle**
+
+```text
+filename: minvol-degree3-contact-bound-v1.0.0-rc1-main.bundle
+SHA-256: 2c324230f02ba4cb2541e0d353cc7906ae460cac0a768267144f650a0278a1a3
+```
+
+**Fresh-clone replay transcript**
+
+```text
+filename: minvol-degree3-contact-bound-v1.0.0-rc1-fresh-replay.txt
+SHA-256: ce2abd06646fdf89d6e60b9069ee55451715a35970afedd24e4acf0d1d64de7f
+```
+
+**GitHub Actions log archive**
+
+```text
+filename: minvol-degree3-contact-bound-v1.0.0-rc1-github-actions-logs.zip
+SHA-256: 44fc68b36e05153fabd2a93aaa4b092b946016b9eb10bcecf37d7bf5c6b4ad3a
+```
+
+The GitHub Actions ZIP contains 36 entries, passes ZIP integrity testing, and
+expands to 564,330 bytes. These raw transfer artifacts are audit inputs rather
+than tracked theorem objects. Their hashes and conclusions are indexed in
+`certificate/evidence/rc1_remote_audit.json`.
+
+## 3. Hosted workflow on the audited candidate
+
+Workflow run
+<https://github.com/swihart/minvol-degree3-contact-bound/actions/runs/35468019663>
+checked out commit
+`892d4bc6fad07950e78da66e45b95063a6415af6` in all three jobs.
+The named author reported all three jobs green, and the downloaded logs contain
+all required pass markers with no error marker or nonzero command exit.
+
+| Hosted job | Principal evidence | Result |
 |---|---|---|
-| Standalone certificate root | Git bundle at commit `21a175010fb18d74e11286ef0e1135cb32c47053` | Exact Python, binary64, ten tests, base R, checksums, and clean status passed |
-| Adversarial mutation overlay | Clean clone of the standalone bundle plus overlay | Seven corruptions rejected; full Python path and checksums passed |
-| Lean Paper v1 overlay | Clean clone of the preceding content plus overlay | Paper reconciliation, manuscript build, Markdown pairs, checksums, and construction-environment PDF preflight passed |
-| Complete release-document overlay | Clean clone of the preceding content plus this checkpoint | Exact/reconciliation/document checks and fresh-extraction PDF build/preflight passed during packaging |
+| Exact certificate, audits, metadata, release docs, and paper reconciliation | Exact verifier; binary64 audit; 10 regression tests; 7 mutation tests; metadata, release-doc, and paper checks | PASS |
+| Independent base-R audit | Base R reconstruction on R 4.6.1 | PASS |
+| Build and preflight paper and documentation PDFs | Ten-page paper; 22 Markdown/PDF pairs; committed and rebuilt Poppler preflight | PASS |
 
-The later overlay checkpoints were constructed before their user-side commit
-hashes were available to this document. They are identified by content and
-archive checksums in the corresponding transfer records rather than by invented
-Git identifiers.
+The hosted runners used Ubuntu 24.04.5 LTS, runner image
+`ubuntu-24.04` version `20260907.300.1`. The Python job used CPython 3.13.15
+and NumPy 2.3.5. The R job used R 4.6.1. The document job used Pandoc 3.10.1,
+TeX Live 2023/Debian, and Poppler.
 
-## 1. Standalone certificate bundle
+The document job also uploaded a temporary typeset-PDF artifact. Its recorded
+run-scoped URL is
+<https://github.com/swihart/minvol-degree3-contact-bound/actions/runs/35468019663/artifacts/10591743752>.
+That artifact is not an immutable release asset and may expire.
 
-The first fresh-history commit was
+## 4. Fresh clone from the staging remote
 
-```text
-21a175010fb18d74e11286ef0e1135cb32c47053
-Add standalone exact universal certificate
-```
-
-The named author verified the supplied ZIP checksum, initialized an empty
-`main` repository, checked both SHA-256 manifests, installed NumPy 2.3.5 in a
-Python 3.14 virtual environment, and ran the exact verifier, independent
-binary64 audit, and ten tests. The independent base-R audit also ended with its
-required pass marker.
-
-After the transcript and manifests were refreshed, all checksums passed and
-`git status --short` was empty before and after the root commit.
-
-## 2. Mutation checkpoint
-
-A clean clone of the bundle was used to apply the adversarial-test overlay. The
-complete Python path passed and seven deliberately corrupted objects were all
-rejected. Root and certificate checksum manifests passed before and after the
-run. A second clean extraction of the final overlay reproduced the same result.
-
-The theorem coefficient and authoritative certificate JSON did not change.
-
-## 3. Paper checkpoint
-
-The lean Paper v1 overlay was applied to the post-mutation tree. The following
-passed in the construction environment:
-
-- exact and binary64 certificate paths;
-- ten reconstruction tests;
-- seven mutation tests;
-- paper/certificate reconciliation;
-- clean LaTeX build;
-- Markdown/PDF source pairing;
-- Poppler page/font/text preflight;
-- page-by-page visual inspection of the ten-page release-candidate manuscript;
-- all nested checksum manifests.
-
-On the named author's Mac, the manuscript and Markdown builds and pair checks
-passed. Poppler was not installed locally, so `pdfinfo`, `pdffonts`, and
-`pdftotext` preflight was correctly deferred to the hosted Ubuntu document job.
-No repository change was needed for that local dependency difference.
-
-The named author reported the Paper v1 commit complete with a clean working tree
-at 1:41 PM Eastern time on September 19, 2026. The exact commit hash will be
-recorded after the next repository bundle or before release.
-
-## 4. Release-document checkpoint
-
-The release-document checkpoint adds the reproducibility, trust-boundary,
-claims, audit, source-ledger, exact-constants, proof-ledger, release-note, and
-release-checklist materials. During construction it was applied to a clean
-reconstruction of the committed content and tested as a fresh extraction.
-
-The packaging audit requires:
-
-- current root, certificate, paper, and rendered-document manifests;
-- exact certificate and mutation suites;
-- exact-constants generation check;
-- release-document presence, claim-boundary, and relative-link checks;
-- paper/certificate reconciliation;
-- one PDF for every Markdown source;
-- valid embedded-font and extractable-text preflight in the construction
-  environment;
-- clean staged-diff checks.
-
-The exact results and archive hash are reported with the overlay transfer. The
-named author's local base-R replay remains required after applying the overlay,
-because R is unavailable in the construction container.
-
-## Environment notes
-
-### Construction environment
+The named author cloned the private staging remote and began the audit at
+`2026-09-19 16:58:42 EDT`. The fresh clone reported:
 
 ```text
-Linux x86_64
-Python 3.13.5
-NumPy 2.3.5
-Rscript unavailable
-Pandoc, XeLaTeX, latexmk, and Poppler available
+branch: main
+HEAD: 892d4bc6fad07950e78da66e45b95063a6415af6
+origin/main: 892d4bc6fad07950e78da66e45b95063a6415af6
+public-history commits: 5
+Python: 3.14.7
+NumPy: 2.3.5
+R: 4.6.1
+TeX Live: 2023
 ```
 
-### Named-author Mac replay
+Before execution, the root, certificate, paper, and rendered-document checksum
+manifests passed. The fresh-clone transcript then records all of the following:
 
 ```text
-macOS
-Python 3.14
-NumPy 2.3.5
-base R available
-Poppler command-line tools not installed
+MINVOL UNIVERSAL CONTACT-BOUND CERTIFICATE: EXACT
+MINVOL UNIVERSAL CONTACT-BOUND BINARY64 AUDIT: PASS
+Ran 10 tests
+OK
+Ran 7 tests
+OK
+MINVOL ADVERSARIAL MUTATION SUITE: PASS
+MINVOL EXACT-CONSTANTS APPENDIX: CURRENT
+MINVOL RELEASE-DOCUMENT CHECK: PASS
+MINVOL CITATION METADATA CHECK: PASS
+MINVOL METADATA PREFLIGHT: PASS
+MINVOL PAPER-CERTIFICATE RECONCILIATION: PASS
+MINVOL UNIVERSAL CONTACT-BOUND BASE-R AUDIT: PASS
+MINVOL UNIVERSAL CONTACT-BOUND REPLAY: PASS
+MINVOL PAPER BUILD: PASS
+MINVOL MARKDOWN PDF BUILD: PASS
+MINVOL MARKDOWN/PDF PAIR CHECK: PASS
 ```
 
-The exact R version was not captured in the archived local transcript and is
-therefore not inferred. The hosted workflow declares R 4.6.1.
+The paper rebuilt to ten pages. Both the 22 committed Markdown/PDF pairs and
+the 22 local rebuild pairs passed. The Mac did not run Poppler locally; the
+successful hosted document job supplies that required page/font/text preflight.
 
-## Interpretation
+After all replay and build steps, `git status --short` was empty. The bundle
+created from that fresh clone points `refs/heads/main` to the audited candidate
+and records complete history.
 
-These checks show that the supplied source tree is self-contained, the finite
-programs replay in multiple implementations, the documentation builds, and no
-private repository is needed. They do not establish independent mathematical
-review, peer review, novelty, or correctness of every conceptual reduction.
+## 5. Interpretation
 
-## Final release requirement
+This evidence shows that the candidate is self-contained, replays from the
+actual remote on the named author's machine, and passes the three-platform
+hosted workflow. It also confirms that the public-format history is the intended
+five-commit history and that the replay leaves tracked source unchanged.
 
-After public metadata is finalized, the project must repeat the following from
-a fresh checkout of the exact release tag:
+It does **not** establish external mathematical reproduction, peer review,
+novelty, correctness of every conceptual reduction, sharpness, a minimizing
+body, or Meissner extremality. The fresh-clone audit was performed by the named
+author, and the hosted jobs execute project-supplied programs.
 
-1. checksum verification;
-2. full Python and base-R replay;
-3. paper and Markdown builds;
-4. hosted Poppler preflight;
-5. metadata and release-asset verification;
-6. final clean working-tree check.
+## 6. Remaining final-release check
 
-The resulting commit, tag, environments, workflow URLs, and any harmless PDF
-binary variation should be recorded here rather than silently omitted.
+The next evidence-bearing commit changes documentation and therefore must
+receive its own green three-job hosted run. Before publication, the project must
+also:
 
-## Metadata and legal checkpoint
-
-The release-candidate metadata gate fixes the sole named author, absence of an
-asserted institutional affiliation, intended repository name and description,
-preferred citation, and split CC BY 4.0/MIT license. `ci/preflight_metadata.sh`
-checks those decisions against the paper, README, `CITATION.cff`, `LICENSE`,
-`VERSION`, and `RELEASE_DATE`. A public-remote clone and hosted workflow record
-remain pending and must be appended before release.
+1. complete the named-author final copy and page approval;
+2. assign the final date and change `v1.0.0-rc1` to `v1.0.0`;
+3. build immutable release assets from the exact final commit;
+4. create and verify the annotated `v1.0.0` tag;
+5. repeat the complete replay from a fresh checkout of that tag;
+6. obtain a green three-job workflow on the immutable tag; and
+7. receive explicit approval before changing visibility, publishing the GitHub
+   Release, or announcing the result.

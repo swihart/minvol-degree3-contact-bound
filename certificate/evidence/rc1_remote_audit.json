@@ -1,0 +1,101 @@
+{
+  "schema": "minvol.rc1_remote_audit.v1",
+  "recorded_at_utc": "2026-09-19T21:18:00Z",
+  "candidate": {
+    "version": "v1.0.0-rc1",
+    "repository": "https://github.com/swihart/minvol-degree3-contact-bound",
+    "repository_visibility_at_audit": "private staging",
+    "branch": "main",
+    "commit": "892d4bc6fad07950e78da66e45b95063a6415af6",
+    "commit_subject": "Add release-candidate citation and licensing metadata",
+    "fresh_history_commit_count": 5
+  },
+  "hosted_workflow": {
+    "run_id": 35468019663,
+    "run_url": "https://github.com/swihart/minvol-degree3-contact-bound/actions/runs/35468019663",
+    "started_at_utc": "2026-09-19T20:38:41Z",
+    "completed_at_utc": "2026-09-19T20:41:24Z",
+    "checked_out_commit": "892d4bc6fad07950e78da66e45b95063a6415af6",
+    "runner": {
+      "operating_system": "Ubuntu 24.04.5 LTS",
+      "runner_image": "ubuntu-24.04",
+      "runner_image_version": "20260907.300.1"
+    },
+    "jobs": [
+      {
+        "name": "Exact certificate, audits, metadata, release docs, and paper reconciliation",
+        "result": "success",
+        "python": "3.13.15",
+        "numpy": "2.3.5",
+        "required_markers_observed": true
+      },
+      {
+        "name": "Independent base-R audit",
+        "result": "success",
+        "r": "4.6.1",
+        "required_markers_observed": true
+      },
+      {
+        "name": "Build and preflight paper and documentation PDFs",
+        "result": "success",
+        "pandoc": "3.10.1",
+        "pdftex": "3.141592653-2.6-1.40.25 (TeX Live 2023/Debian)",
+        "committed_pdf_preflight": "pass",
+        "rebuilt_pdf_preflight": "pass",
+        "paired_markdown_pdfs": 22,
+        "required_markers_observed": true
+      }
+    ],
+    "typeset_artifact_url": "https://github.com/swihart/minvol-degree3-contact-bound/actions/runs/35468019663/artifacts/10591743752"
+  },
+  "fresh_clone": {
+    "audit_started": "2026-09-19T16:58:42-04:00",
+    "remote": "git@github.com:swihart/minvol-degree3-contact-bound.git",
+    "branch": "main",
+    "head": "892d4bc6fad07950e78da66e45b95063a6415af6",
+    "origin_main": "892d4bc6fad07950e78da66e45b95063a6415af6",
+    "fresh_history_commit_count": 5,
+    "environment": {
+      "operating_system": "macOS",
+      "python": "3.14.7",
+      "numpy": "2.3.5",
+      "r": "4.6.1",
+      "tex_live": "2023"
+    },
+    "checksum_verification_before_execution": "pass",
+    "complete_language_replay": "pass",
+    "paper_build_pages": 10,
+    "markdown_sources": 22,
+    "paired_reference_pdfs": 22,
+    "paired_rebuilt_pdfs": 22,
+    "final_git_status_short_empty": true,
+    "bundle_records_complete_history": true
+  },
+  "transfer_artifacts": {
+    "manifest": {
+      "filename": "minvol-degree3-contact-bound-v1.0.0-rc1-transfer-SHA256SUMS.txt",
+      "sha256": "3f958520e0e119cad4db97d60a2ac3702b8144a8f6228068bdfeb6d43124f57d"
+    },
+    "main_bundle": {
+      "filename": "minvol-degree3-contact-bound-v1.0.0-rc1-main.bundle",
+      "sha256": "2c324230f02ba4cb2541e0d353cc7906ae460cac0a768267144f650a0278a1a3"
+    },
+    "fresh_replay": {
+      "filename": "minvol-degree3-contact-bound-v1.0.0-rc1-fresh-replay.txt",
+      "sha256": "ce2abd06646fdf89d6e60b9069ee55451715a35970afedd24e4acf0d1d64de7f"
+    },
+    "github_actions_logs": {
+      "filename": "minvol-degree3-contact-bound-v1.0.0-rc1-github-actions-logs.zip",
+      "sha256": "44fc68b36e05153fabd2a93aaa4b092b946016b9eb10bcecf37d7bf5c6b4ad3a",
+      "zip_entries": 36,
+      "zip_integrity": "pass"
+    }
+  },
+  "claim_boundary": {
+    "external_mathematical_reproduction": false,
+    "peer_review": false,
+    "public_release": false,
+    "immutable_tag": false,
+    "meissner_extremality": false
+  }
+}

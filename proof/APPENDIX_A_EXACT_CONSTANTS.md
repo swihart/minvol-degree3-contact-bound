@@ -22,7 +22,7 @@ For every convex body $K\subset\mathbb R^3$ of constant width $d>0$, the package
 represents the proposed inequality
 
 $$
-\operatorname{Vol}(K)\ge
+\mathrm{Vol}(K)\ge
 \frac{26220940089713\pi}{200000000000000}d^3
 =0.4118775637803022742481789259828398710025748462041567278\ldots d^3.
 $$

@@ -6,16 +6,17 @@ For every three-dimensional convex body `K` of constant width `d`, the package
 proposes the universal inequality
 
 $$
-\operatorname{Vol}(K)\ge
+\mathrm{Vol}(K)\ge
 \frac{26220940089713\pi}{200000000000000}\,d^3
 =0.41187756378030227424817892598\ldots d^3.
 $$
 
-**Status:** internally replayed proposed exact universal certificate. The package
-has passed its exact Python replay, an independent binary64 Python audit, and
-seven adversarial rejection tests in the construction environment. The archived
-base-R audit has independently passed on the named author's machine. The result has not
-yet been externally reproduced, peer reviewed, or published.
+**Status:** standalone release-candidate replay of a proposed exact universal
+certificate. The package has passed its exact Python replay, independent
+binary64 Python and base-R implementation audits, seven adversarial rejection
+tests, a three-job hosted workflow, and a complete named-author fresh-clone
+replay. The result has not been externally reproduced, peer reviewed, tagged,
+or publicly released.
 
 This package does not prove sharpness, equality, rigidity, identification of a
 minimizer, or Meissner extremality.
@@ -64,7 +65,11 @@ The certificate is accompanied by:
 - [`CLAIMS_AND_LIMITATIONS.md`](CLAIMS_AND_LIMITATIONS.md), fixing the public
   claim boundary; and
 - [`INDEPENDENT_AUDIT.md`](INDEPENDENT_AUDIT.md), recording implementations,
-  environments, mutations, and remaining external-review needs.
+  environments, mutations, hosted/fresh-clone evidence, and remaining
+  external-review needs; and
+- [`evidence/rc1_remote_audit.json`](evidence/rc1_remote_audit.json), indexing
+  the audited candidate commit, hosted workflow, fresh clone, and transfer
+  hashes.
 
 The proof overview, claim graph, exact constants, source ledger, and internal
 proof audit are under [`../proof/`](../proof/). The complete reviewer path is
@@ -91,6 +96,7 @@ Ran 7 tests
 OK
 MINVOL ADVERSARIAL MUTATION SUITE: PASS
 MINVOL EXACT-CONSTANTS APPENDIX: CURRENT
+MINVOL REMOTE-EVIDENCE CHECK: PASS
 MINVOL RELEASE-DOCUMENT CHECK: PASS
 MINVOL METADATA PREFLIGHT: PASS
 MINVOL PAPER-CERTIFICATE RECONCILIATION: PASS
@@ -215,21 +221,29 @@ Completed here:
 - generated exact-constants appendix verification; and
 - release-document presence, claim-boundary, and relative-link verification.
 
-Completed on the named author's machine:
+Completed on the named author's machine and staging remote:
 
-- a clean Python 3.14 virtual-environment replay;
-- the independent base-R audit, including the required final pass marker;
-- pre- and post-replay checksum verification; and
-- creation of the fresh-history root commit from a clean working tree.
+- a clean fresh clone of audited commit
+  `892d4bc6fad07950e78da66e45b95063a6415af6`;
+- a complete Python 3.14.7 and base-R 4.6.1 replay, including the required
+  final pass markers;
+- pre- and post-replay checksum verification;
+- paper and 22-document rebuild and pair verification;
+- an empty final `git status --short`;
+- creation and verification of a complete five-commit bundle; and
+- three green hosted jobs at
+  <https://github.com/swihart/minvol-degree3-contact-bound/actions/runs/35468019663>,
+  including hosted Poppler preflight.
 
 Not completed here:
 
-- a second base-R execution in the construction container, because `Rscript`
-  is unavailable there;
+- a second base-R execution in the assistant construction container, because
+  `Rscript` is unavailable there;
 - external mathematical review;
-- final public copy edit and author sign-off; and
-- public-remote creation, hosted workflow execution, final date/tag, release
-  assets, and archival metadata.
+- final public copy edit and author sign-off;
+- final date/version transition and immutable tag;
+- tagged-checkout replay and release-asset verification; and
+- visibility change, GitHub Release, announcement, and archival metadata.
 
 Authorship, no-affiliation wording, citation metadata, repository identity, and
 the split CC BY 4.0/MIT license are fixed for this release candidate. The

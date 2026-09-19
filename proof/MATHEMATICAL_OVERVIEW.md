@@ -21,7 +21,7 @@ the theorem proposed here.
 The present package represents the universal lower bound
 
 $$
-\operatorname{Vol}(K)\ge
+\mathrm{Vol}(K)\ge
 \frac{26220940089713\pi}{200000000000000}\,d^3
 =0.4118775637803022742\ldots d^3.
 $$
@@ -46,7 +46,7 @@ $$
 so the diameter is one. In three dimensions, Blaschke's identity gives
 
 $$
-S(K)=2\operatorname{Vol}(K)+\frac{2\pi}{3}.
+S(K)=2\mathrm{Vol}(K)+\frac{2\pi}{3}.
 $$
 
 This converts a surface-area estimate into a volume estimate.
