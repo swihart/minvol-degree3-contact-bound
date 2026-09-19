@@ -51,7 +51,8 @@ python3 -m pip install -r requirements.txt
 ```
 
 Run the exact verifier, binary64 audit, ten reconstruction tests, seven
-adversarial mutation tests, and paper/certificate reconciliation:
+adversarial mutation tests, exact-constants and release-document checks, and
+paper/certificate reconciliation:
 
 ```sh
 ./run_python_checks.sh
@@ -63,6 +64,8 @@ Expected final markers include:
 MINVOL UNIVERSAL CONTACT-BOUND CERTIFICATE: EXACT
 MINVOL UNIVERSAL CONTACT-BOUND BINARY64 AUDIT: PASS
 MINVOL ADVERSARIAL MUTATION SUITE: PASS
+MINVOL EXACT-CONSTANTS APPENDIX: CURRENT
+MINVOL RELEASE-DOCUMENT CHECK: PASS
 MINVOL PAPER-CERTIFICATE RECONCILIATION: PASS
 ```
 
@@ -125,10 +128,63 @@ independent audits.
 
 ## Documentation
 
+The editable sources are Markdown. Checksummed reference PDFs mirror the same
+repository-relative tree under `rendered/markdown/`.
+
+### Status, release, and provenance
+
+- Verification status: [Markdown](VERIFICATION_STATUS.md) |
+  [PDF](rendered/markdown/VERIFICATION_STATUS.pdf)
+- Reproducibility guide: [Markdown](REPRODUCIBILITY.md) |
+  [PDF](rendered/markdown/REPRODUCIBILITY.pdf)
+- Clean-source record: [Markdown](CLEAN_CLONE_CHECK.md) |
+  [PDF](rendered/markdown/CLEAN_CLONE_CHECK.pdf)
+- AI assistance and provenance: [Markdown](AI_ASSISTANCE.md) |
+  [PDF](rendered/markdown/AI_ASSISTANCE.pdf)
+- Draft release notes: [Markdown](RELEASE_NOTES.md) |
+  [PDF](rendered/markdown/RELEASE_NOTES.pdf)
+- Release checklist: [Markdown](RELEASE_CHECKLIST.md) |
+  [PDF](rendered/markdown/RELEASE_CHECKLIST.pdf)
+
+### Certificate documentation
+
+- Certificate specification:
+  [Markdown](certificate/CERTIFICATE_SPECIFICATION.md) |
+  [PDF](rendered/markdown/certificate/CERTIFICATE_SPECIFICATION.pdf)
+- Trust boundary: [Markdown](certificate/TRUST_BOUNDARY.md) |
+  [PDF](rendered/markdown/certificate/TRUST_BOUNDARY.pdf)
+- Claims and limitations:
+  [Markdown](certificate/CLAIMS_AND_LIMITATIONS.md) |
+  [PDF](rendered/markdown/certificate/CLAIMS_AND_LIMITATIONS.pdf)
+- Independent-audit record:
+  [Markdown](certificate/INDEPENDENT_AUDIT.md) |
+  [PDF](rendered/markdown/certificate/INDEPENDENT_AUDIT.pdf)
 - Certificate guide: [Markdown](certificate/README.md) |
   [PDF](rendered/markdown/certificate/README.pdf)
 - Certificate status: [Markdown](certificate/STATUS.md) |
   [PDF](rendered/markdown/certificate/STATUS.pdf)
+
+### Mathematical proof documentation
+
+- Mathematical overview: [Markdown](proof/MATHEMATICAL_OVERVIEW.md) |
+  [PDF](rendered/markdown/proof/MATHEMATICAL_OVERVIEW.pdf)
+- Claim dependencies: [Markdown](proof/CLAIM_DEPENDENCIES.md) |
+  [PDF](rendered/markdown/proof/CLAIM_DEPENDENCIES.pdf)
+- Proof ledger: [Markdown](proof/PROOF_LEDGER.md) |
+  [PDF](rendered/markdown/proof/PROOF_LEDGER.pdf)
+- Internal proof audit: [Markdown](proof/PROOF_AUDIT.md) |
+  [PDF](rendered/markdown/proof/PROOF_AUDIT.pdf)
+- Source ledger: [Markdown](proof/SOURCE_LEDGER.md) |
+  [PDF](rendered/markdown/proof/SOURCE_LEDGER.pdf)
+- Appendix A, exact constants:
+  [Markdown](proof/APPENDIX_A_EXACT_CONSTANTS.md) |
+  [PDF](rendered/markdown/proof/APPENDIX_A_EXACT_CONSTANTS.pdf)
+- Appendix B, certificate architecture:
+  [Markdown](proof/APPENDIX_B_CERTIFICATE_ARCHITECTURE.md) |
+  [PDF](rendered/markdown/proof/APPENDIX_B_CERTIFICATE_ARCHITECTURE.pdf)
+- Appendix C, replay transcripts:
+  [Markdown](proof/APPENDIX_C_REPLAY_TRANSCRIPTS.md) |
+  [PDF](rendered/markdown/proof/APPENDIX_C_REPLAY_TRANSCRIPTS.pdf)
 - Paper guide: [Markdown](paper/README.md) |
   [PDF](rendered/markdown/paper/README.pdf)
 - This README: [Markdown](README.md) |

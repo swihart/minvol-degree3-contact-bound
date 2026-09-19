@@ -18,7 +18,7 @@ concurrency:
 
 jobs:
   python-verification:
-    name: Exact certificate, Python audits, and paper reconciliation
+    name: Exact certificate, audits, release docs, and paper reconciliation
     runs-on: ubuntu-24.04
     timeout-minutes: 25
 
@@ -47,7 +47,7 @@ jobs:
           cd ../paper
           sha256sum -c SHA256SUMS.txt
 
-      - name: Run exact certificate, audits, mutation tests, and paper reconciliation
+      - name: Run exact certificate, audits, mutation tests, release docs, and paper reconciliation
         run: ./run_python_checks.sh
 
       - name: Recheck archived checksums

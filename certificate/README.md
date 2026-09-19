@@ -52,6 +52,24 @@ disjointness, and the universal handoff.
 No private Git history, branch name, commit identifier, bundle, chat handoff, or
 private research object is included.
 
+
+## Public documentation map
+
+The certificate is accompanied by:
+
+- [`CERTIFICATE_SPECIFICATION.md`](CERTIFICATE_SPECIFICATION.md), defining the
+  JSON, NPZ, TSV, and CSV interfaces;
+- [`TRUST_BOUNDARY.md`](TRUST_BOUNDARY.md), distinguishing exact authority from
+  audits and trusted infrastructure;
+- [`CLAIMS_AND_LIMITATIONS.md`](CLAIMS_AND_LIMITATIONS.md), fixing the public
+  claim boundary; and
+- [`INDEPENDENT_AUDIT.md`](INDEPENDENT_AUDIT.md), recording implementations,
+  environments, mutations, and remaining external-review needs.
+
+The proof overview, claim graph, exact constants, source ledger, and internal
+proof audit are under [`../proof/`](../proof/). The complete reviewer path is
+linked from the repository [`README.md`](../README.md).
+
 ## Quick replay
 
 Create and activate a Python environment, install the pinned requirement from
@@ -72,6 +90,8 @@ OK
 Ran 7 tests
 OK
 MINVOL ADVERSARIAL MUTATION SUITE: PASS
+MINVOL EXACT-CONSTANTS APPENDIX: CURRENT
+MINVOL RELEASE-DOCUMENT CHECK: PASS
 MINVOL PAPER-CERTIFICATE RECONCILIATION: PASS
 ```
 
@@ -189,8 +209,10 @@ Completed here:
 - pre- and post-replay SHA-256 verification;
 - automatic reconciliation of the lean Paper v1 theorem constants and
   gap-free lower-branch table against the authoritative certificate JSON; and
-- construction and visual/PDF preflight of the current manuscript and core
-  paired Markdown/PDF guides.
+- construction and visual/PDF preflight of the current manuscript and complete
+  paired Markdown/PDF release-document set;
+- generated exact-constants appendix verification; and
+- release-document presence, claim-boundary, and relative-link verification.
 
 Completed on the user's machine:
 
@@ -204,8 +226,8 @@ Not completed here:
 - a second base-R execution in the construction container, because `Rscript`
   is unavailable there;
 - external mathematical review;
-- the complete release-document set and final public copy edit; and
-- final authorship, affiliation, licensing, citation, release, and archival
-  metadata.
+- final public copy edit and author sign-off; and
+- final authorship, affiliation, licensing, citation, repository, release, and
+  archival metadata.
 
 The latter items remain release gates.

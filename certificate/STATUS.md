@@ -36,13 +36,14 @@ rerun there.
 - strict exact near-Jung handoff surplus;
 - exact theorem coefficient and decimal enclosure;
 - byte-identical reconstruction of the authoritative certificate JSON;
-- independent base-R reconstruction on the user's machine; and
+- independent base-R reconstruction on the user's machine;
 - rejection of targeted lower-row, fan-radius, multiplier, section-hull,
   cap-allocation, disjointness, and theorem-coefficient mutations;
 - automatic reconciliation of the lean Paper v1 theorem constants and
-  lower-branch table against the authoritative certificate JSON; and
-- paired Markdown/PDF renderings of the current root, certificate, and paper
-  guides, with PDF preflight and page-by-page manuscript inspection.
+  lower-branch table against the authoritative certificate JSON;
+- generated exact-constants and release-document consistency checks; and
+- paired Markdown/PDF renderings of the complete release-document set, with
+  construction-environment PDF preflight and page-by-page inspection.
 
 ## Not established
 
@@ -54,9 +55,11 @@ rerun there.
 
 ## Remaining release gates
 
-1. the complete release-document set, including reproducibility, trust-boundary,
-   source-ledger, audit, citation, license, and release notes in paired formats;
-2. final authorship, affiliation, license, citation, tag, and release metadata;
-3. clean tagged-checkout replay and release-asset verification;
-4. external mathematical review or reproduction when available; and
-5. user approval before creation of a public remote or announcement.
+1. final authorship, affiliation, acknowledgment, license, citation, repository,
+   tag, release-date, and archival metadata;
+2. final author copy edit and approval of the manuscript and public wording;
+3. a public release-candidate commit with green hosted Python, R, and document
+   jobs;
+4. clean tagged-checkout replay and release-asset verification;
+5. external mathematical review or reproduction when available; and
+6. explicit user approval before creation of a public remote or announcement.
