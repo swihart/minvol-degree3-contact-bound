@@ -73,14 +73,14 @@ The hosted evidence above refers to
 
 | ID | Claim | Status |
 |---|---|---|
-| P1 | Lean ten-page Paper v1 manuscript is present | Completed draft |
+| P1 | Focused ten-page Paper v1 manuscript is present | Completed draft |
 | P2 | Complete release-document set is present in Markdown and PDF | Completed; 22 paired documents |
-| P3 | Release-candidate author list and no-affiliation statement are fixed | Completed for `v1.0.0-rc1` |
-| P4 | Split license and release-candidate citation metadata are fixed | Completed for `v1.0.0-rc1` |
+| P3 | Final author list and no-affiliation statement are fixed | Completed for `v1.0.0` |
+| P4 | Split license and final citation metadata are fixed | Completed for `v1.0.0` |
 | P5 | Private staging remote exists and the audited candidate was pushed | Completed at commit `892d4bc6...` |
 | P6 | Hosted Python, R, and document jobs are green on the audited candidate | Completed on run `35468019663` |
 | P7 | Fresh staging-remote clone replay is recorded | Completed; final status clean |
-| P8 | Evidence-bearing commit receives its own hosted run | RELEASE-PENDING |
+| P8 | Final `v1.0.0` release commit receives its own hosted run | RELEASE-PENDING |
 | P9 | Immutable final tag and release assets exist | RELEASE-PENDING |
 | P10 | Repository visibility is public and GitHub Release is published | RELEASE-PENDING |
 | P11 | External subject-matter reviewer has checked the theorem | EXTERNAL REVIEW NEEDED |
@@ -96,16 +96,16 @@ review.
 
 ## Current bottleneck
 
-The mathematical, finite-certificate, authorship, citation, licensing, hosted-
-candidate, and fresh-clone gates are complete for audited commit
-`892d4bc6fad07950e78da66e45b95063a6415af6`. The remaining release bottlenecks
-are:
+The mathematical, finite-certificate, authorship, citation, licensing,
+hosted-pre-release, fresh-clone, README-rendering, and Table 3 presentation
+gates are complete. The remaining publication bottlenecks are:
 
-1. green hosted jobs on this evidence-bearing commit;
-2. final named-author copy edit and page approval;
-3. final release date and transition to `v1.0.0`;
-4. immutable release assets and independent asset-hash verification;
-5. annotated `v1.0.0` tag, green tag workflow, and fresh tagged-checkout replay;
-6. explicit approval of the final README, paper, release notes, tag, visibility
-   change, release, and announcement; and
+1. green hosted jobs on the final `v1.0.0` release commit;
+2. final named-author approval of the complete paper, release notes, and
+   announcement wording;
+3. an annotated `v1.0.0` tag and green tag-triggered workflow;
+4. a clean replay from a fresh checkout of the tag;
+5. deterministic release assets and independent post-download hash
+   verification;
+6. explicit approval of the visibility change and GitHub Release; and
 7. external mathematical review after release.

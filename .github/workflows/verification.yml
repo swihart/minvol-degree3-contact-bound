@@ -25,6 +25,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -80,6 +82,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -118,6 +122,27 @@ jobs:
 
       - name: Preflight locally rebuilt PDFs
         run: ./ci/preflight_pdfs.sh build/markdown paper/build/contact_geometric_bound.pdf
+
+      - name: Build and verify release-asset preview
+        if: ${{ !startsWith(github.ref, 'refs/tags/') }}
+        run: |
+          ./build_release_assets.sh --preview
+          ./verify_release_assets.sh
+
+      - name: Build and verify tagged release assets
+        if: ${{ startsWith(github.ref, 'refs/tags/') }}
+        run: |
+          ./build_release_assets.sh
+          ./verify_release_assets.sh
+
+      - name: Upload tagged release assets
+        if: ${{ startsWith(github.ref, 'refs/tags/') }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: minvol-contact-bound-v1.0.0-release-assets
+          path: release/build/*
+          if-no-files-found: error
+          retention-days: 90
 
       - name: Upload locally built PDFs
         if: always()

@@ -1,7 +1,7 @@
 # Reproducibility guide
 
-**Package status:** private-staging release candidate `v1.0.0-rc1`, not yet public or tagged
-**Prepared:** September 19, 2026
+**Package status:** release `v1.0.0` (September 20, 2026)
+**Prepared:** September 20, 2026
 **Main certificate schema:** `minvol.universal_contact_bound.v1`
 
 This guide explains how to reproduce the exact certificate, the independent
@@ -107,11 +107,10 @@ The structural checker is `ci/verify_remote_evidence.py`.
 
 ## Fresh source-tree procedure
 
-The canonical repository currently exists as a private staging remote at
-<https://github.com/swihart/minvol-degree3-contact-bound>. Authorized reviewers
-may clone that remote; otherwise reproduce from the exact reviewed bundle. The
-target final tag is `v1.0.0`, but no immutable tag or public release is
-represented here as existing.
+The canonical repository is
+<https://github.com/swihart/minvol-degree3-contact-bound>. For a release replay,
+check out the immutable `v1.0.0` tag or download the corresponding GitHub
+Release assets and verify their `SHA256SUMS.txt` before execution.
 
 Enter the repository root:
 
@@ -200,6 +199,7 @@ MINVOL EXACT-CONSTANTS APPENDIX: CURRENT
 MINVOL REMOTE-EVIDENCE CHECK: PASS
 MINVOL RELEASE-DOCUMENT CHECK: PASS
 MINVOL METADATA PREFLIGHT: PASS
+MINVOL RELEASE PREFLIGHT: PASS
 MINVOL PAPER-CERTIFICATE RECONCILIATION: PASS
 ```
 
@@ -311,6 +311,35 @@ If Poppler is not available locally, record that fact and rely on the hosted
 document job. Do not weaken or delete the preflight script merely to make a
 local command return success.
 
+## Release-asset build and verification
+
+Before the immutable tag exists, exercise the deterministic packager in preview
+mode:
+
+```sh
+./build_release_assets.sh --preview
+```
+
+Verify every generated file, archive member, and SHA-256 entry:
+
+```sh
+./verify_release_assets.sh
+```
+
+From the exact `v1.0.0` tagged checkout, build the release assets without the
+preview flag:
+
+```sh
+./build_release_assets.sh
+```
+
+The tagged mode refuses a dirty tree and refuses a `HEAD` that is not tagged
+`v1.0.0`. The output under `release/build/` contains the paper PDF, paper-source
+archive, standalone certificate archive, paired-documentation archive, replay
+records, release notes in Markdown and PDF, a machine-readable release record,
+and one `SHA256SUMS.txt`. Downloaded GitHub Release assets should be reverified
+with the same verifier in a clean directory.
+
 ## Clean-tree check
 
 After all replay steps and deliberate builds:
@@ -319,7 +348,7 @@ After all replay steps and deliberate builds:
 git status --short
 ```
 
-A release-candidate replay should leave the tracked source tree clean. Local
+A release replay should leave the tracked source tree clean. Local
 outputs under ignored `build/`, `.venv/`, and `ci-artifacts/` directories do
 not count as tracked changes.
 

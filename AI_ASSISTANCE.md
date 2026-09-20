@@ -1,9 +1,11 @@
 # AI assistance and provenance
 
-**Repository status:** release candidate `v1.0.0-rc1`
+**Repository status:** release `v1.0.0` (September 20, 2026)
 **Sole named author:** Bruce J. Swihart
 **Primary AI system used:** OpenAI ChatGPT (GPT-5.6 Sol Pro)
-**Primary access period:** August-September 2026
+**Primary access period:** August-September 2026<br>
+**Canonical repository:** <https://github.com/swihart/minvol-degree3-contact-bound><br>
+**Versioned release:** <https://github.com/swihart/minvol-degree3-contact-bound/releases/tag/v1.0.0>
 
 ## Scope of AI assistance
 
@@ -49,7 +51,7 @@ The named author is responsible for:
 
 ## Authorship and affiliation decision
 
-Bruce J. Swihart is the sole named author of this release candidate. No
+Bruce J. Swihart is the sole named author of release `v1.0.0`. No
 institutional affiliation or ORCID is asserted. Correspondence and verification
 reports are directed to the intended repository issue tracker. OpenAI ChatGPT
 is disclosed as an extensively used research tool and is not an author,
@@ -81,7 +83,7 @@ These layers improve traceability and make discrepancies easier to detect.
 They do not turn an AI-assisted draft into an independently reviewed theorem.
 The current designation is:
 
-> AI-assisted, non-peer-reviewed computer-assisted research draft seeking
+> AI-assisted, non-peer-reviewed computer-assisted preprint seeking
 > independent mathematical verification.
 
 ## AI output that is not proof authority
@@ -111,7 +113,7 @@ those used here.
 
 ## Disclosure in the paper and release
 
-The release-candidate paper, README, and citation metadata now identify the work
+The released paper, README, and citation metadata identify the work
 as AI-assisted and name the primary hosted system used during this phase. Any
 later material change in the role of AI systems must be recorded in a new
 version rather than silently rewriting the history of a released package.

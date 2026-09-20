@@ -1,6 +1,6 @@
 # Source ledger and dated literature check
 
-**Ledger date:** September 19, 2026
+**Ledger date:** September 20, 2026
 **Scope:** sources used to frame, derive, compare, and document the proposed
 universal contact-geometric lower bound
 
@@ -191,7 +191,7 @@ The paper-facing constants are generated from the certificate JSON by
 
 ## Dated recent-literature check
 
-A targeted web check was performed on **September 19, 2026** using publisher,
+A targeted web check was performed on **September 20, 2026** using publisher,
 arXiv, and official repository records. It checked:
 
 - final bibliographic metadata for Nishioka's article;
@@ -202,8 +202,15 @@ arXiv, and official repository records. It checked:
   polyhedra,” and close variants.
 
 The check located related 2026 work on extremal-diameter graphs and particular
-constant-width constructions, but did not locate a later public claim of a
-universal coefficient exceeding the one proposed here.
+constant-width constructions. In particular, B. Bogosel's preprint
+*Isoperimetric Problems Related to Extremal Diameter Graphs in 3D: Theoretical
+and Numerical Aspects* (arXiv:2608.26395, submitted August 26, 2026) gives an
+exact supremal reformulation of the three-dimensional area problem and reports
+numerical optimization over finite diameter graphs; its abstract explicitly
+states that those computations do not certify the global maximum for a fixed
+graph. It does not state a new universal volume lower coefficient. The targeted
+check did not locate a later public claim of a universal coefficient exceeding
+the one proposed here.
 
 That statement is intentionally narrow. It is **not** a guarantee of novelty,
 priority, completeness, or absence of unpublished work. Search-engine coverage,

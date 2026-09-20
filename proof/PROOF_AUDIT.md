@@ -263,7 +263,7 @@ certificate requires a new version and explicit coefficient comparison.
 ## 9. Literature and precedence audit
 
 The source ledger was checked against official publisher, arXiv, and public
-repository records on September 19, 2026. That targeted search did not locate a
+repository records on September 20, 2026. That targeted search did not locate a
 later public universal coefficient exceeding the proposed one. This is not a
 systematic novelty review and should not be reported as one.
 

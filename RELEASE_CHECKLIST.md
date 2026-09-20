@@ -1,10 +1,10 @@
 # Release checklist
 
-**Candidate version:** `v1.0.0-rc1`
-**Candidate date:** unreleased
-**Checklist updated:** September 19, 2026
-**Audited candidate commit:** `892d4bc6fad07950e78da66e45b95063a6415af6`
-**Hosted workflow:** <https://github.com/swihart/minvol-degree3-contact-bound/actions/runs/35468019663>
+**Release version:** `v1.0.0`<br>
+**Release date:** September 20, 2026<br>
+**Checklist updated:** September 20, 2026<br>
+**Audited pre-release commit:** `892d4bc6fad07950e78da66e45b95063a6415af6`<br>
+**Audited hosted workflow:** <https://github.com/swihart/minvol-degree3-contact-bound/actions/runs/35468019663>
 
 A checked item means that evidence exists in the current construction
 checkpoint. It does not authorize publication by itself.
@@ -22,8 +22,8 @@ checkpoint. It does not authorize publication by itself.
 - [ ] Independent subject-matter reviewer has checked the mathematical
       reduction.
 
-The unchecked external-review item is not required to label a release as a
-non-peer-reviewed research draft, but its absence must remain prominent.
+The unchecked external-review item is not required to label the release as a
+non-peer-reviewed research preprint, but its absence must remain prominent.
 
 ## B. Exact certificate and audits
 
@@ -38,23 +38,24 @@ non-peer-reviewed research draft, but its absence must remain prominent.
 - [x] Export-equivalence record checks ten theorem-critical fields.
 - [x] Complete replay passes from a fresh clone of the staging remote at
       commit `892d4bc6fad07950e78da66e45b95063a6415af6`.
-- [ ] Complete replay passes from the immutable final release tag on a fresh
-      machine.
+- [ ] Complete replay passes from a fresh checkout of the immutable `v1.0.0`
+      tag.
 
 ## C. Paper
 
-- [x] Lean Paper v1 contains only the proof supporting this coefficient.
+- [x] Focused Paper v1 contains only the proof supporting this coefficient.
 - [x] The theorem coefficient and proof-critical constants are generated from
       the certificate.
 - [x] Paper/certificate reconciliation passes.
-- [x] Reference PDF builds and has been visually inspected page by page.
+- [x] Reference PDF builds and has been visually inspected page by page during
+      construction.
+- [x] Table 3 row spacing was repaired and approved by the named author.
 - [x] Paper limitations and computer-assisted status are explicit.
 - [x] Sole author and author order approved: Bruce J. Swihart.
 - [x] No institutional affiliation is asserted; correspondence is directed to
       the repository issue tracker; no ORCID is asserted.
-- [x] Candidate repository URL and version inserted; final release date and any
-      archival identifier remain intentionally unassigned.
-- [ ] Final PDF approved by every named author.
+- [x] Version, date, canonical repository, and versioned release URL inserted.
+- [ ] Final ten-page PDF approved in full by the named author for publication.
 
 ## D. Documentation
 
@@ -73,11 +74,13 @@ non-peer-reviewed research draft, but its absence must remain prominent.
 - [x] Replay-transcript appendix.
 - [x] AI-assistance and provenance disclosure.
 - [x] Clean-source, hosted, and fresh-clone record.
-- [x] Draft release notes and release checklist.
+- [x] Release notes and release checklist.
 - [x] Every Markdown source has a checksummed PDF counterpart.
 - [x] Remote evidence is indexed in
       `certificate/evidence/rc1_remote_audit.json`.
-- [ ] Final copy edit and link review by the named author.
+- [x] GitHub README math syntax uses supported `$$` and `\mathrm` forms.
+- [x] Named author approved the README after hosted rendering repair.
+- [ ] Final release notes and link review approved by the named author.
 
 ## E. Metadata and legal
 
@@ -87,15 +90,14 @@ non-peer-reviewed research draft, but its absence must remain prominent.
 - [x] Split license selected and `LICENSE` added: CC BY 4.0 for paper/prose and
       MIT for software/build infrastructure.
 - [x] `CITATION.cff` added and checked by the metadata preflight.
-- [x] Preferred paper citation finalized for the release candidate.
-- [x] Candidate version changed to `v1.0.0-rc1`.
-- [ ] `RELEASE_DATE` changed from `UNRELEASED` to the approved final date.
-- [ ] Candidate version changed from `v1.0.0-rc1` to final tag `v1.0.0`.
+- [x] Preferred paper citation finalized for version `v1.0.0`.
+- [x] `RELEASE_DATE` is `2026-09-20`.
+- [x] `VERSION` is `v1.0.0`.
 - [ ] DOI or archival identifier added only after one exists.
 - [x] Copyright and third-party license boundary reviewed and documented.
 
-The unchecked date, final-tag, and archival items cannot be completed before
-explicit final approval.
+The unchecked DOI item is informational; no DOI is required for the initial
+GitHub release, and none is implied.
 
 ## F. Continuous integration and portability
 
@@ -105,41 +107,44 @@ explicit final approval.
 - [x] Local Mac without Poppler is documented rather than treated as a theorem
       failure.
 - [x] PDF byte identity across platforms is not required.
-- [x] Three hosted jobs are green on audited candidate commit
+- [x] Three hosted jobs are green on audited pre-release commit
       `892d4bc6fad07950e78da66e45b95063a6415af6`.
-- [x] The successful candidate run is recorded at
+- [x] The successful pre-release run is recorded at
       <https://github.com/swihart/minvol-degree3-contact-bound/actions/runs/35468019663>.
 - [x] A fresh clone of that commit completed the Python and base-R replay,
       rebuilt the paper and 22 documentation PDFs, and ended clean.
-- [ ] Three hosted jobs are green on this evidence-bearing commit after it is
-      pushed.
-- [ ] Three hosted jobs are green on the immutable release tag.
-- [ ] Clean tagged-checkout replay is recorded in `CLEAN_CLONE_CHECK.md`.
+- [x] Three hosted jobs are green on the rendering-repair/evidence commit, as
+      reported by the named author.
+- [ ] Three hosted jobs are green on the final release commit.
+- [ ] Three hosted jobs are green on the immutable `v1.0.0` tag.
+- [ ] Clean tagged-checkout replay is completed and archived.
 
 ## G. Release assets
 
-- [ ] Paper PDF asset built from the tagged checkout.
-- [ ] Paper-source archive built from the tagged checkout.
-- [ ] Standalone certificate archive built from the tagged checkout.
-- [ ] Documentation archive built from the tagged checkout.
-- [ ] Replay-transcript archive built from the tagged checkout.
-- [ ] One release-asset `SHA256SUMS.txt` generated and independently checked.
-- [ ] Every downloaded asset reverified in a clean directory.
-- [ ] Release notes PDF generated from the final Markdown source.
+- [x] Deterministic release-asset builder and verifier are included.
+- [x] Preview paper PDF asset builds and verifies.
+- [x] Preview paper-source archive builds and verifies.
+- [x] Preview standalone certificate archive builds and verifies.
+- [x] Preview documentation archive builds and verifies.
+- [x] Preview replay-transcript archive builds and verifies.
+- [x] Preview release record and one asset `SHA256SUMS.txt` build and verify.
+- [x] Release notes PDF is generated from the final Markdown source.
+- [ ] All assets are rebuilt from the exact `v1.0.0` tagged checkout.
+- [ ] Every downloaded tagged asset is reverified in a clean directory.
 
 ## H. Public wording and approval
 
-- [x] Draft wording says "computer-assisted" and "not peer reviewed."
-- [x] Draft wording does not say "sharp," "optimal," "proved Meissner," or
+- [x] Wording says "computer-assisted" and "not peer reviewed."
+- [x] Wording does not say "sharp," "optimal," "proved Meissner," or
       "independently certified."
-- [x] Earlier public spectral repository is clearly separate.
+- [x] [Earlier public MinVol spectral repository](https://github.com/swihart/minvol-degree3-spectral-bound) is clearly separate.
 - [x] Private sequel results and history are absent.
 - [x] Named author approved creation and use of the private staging remote.
-- [ ] Named author approves README.
-- [ ] Named author approves theorem wording.
-- [ ] Named author approves final PDF.
-- [ ] Named author approves release notes.
-- [ ] Named author approves announcement text.
+- [x] Named author approves the README.
+- [x] Named author approves the theorem wording as displayed in the README.
+- [ ] Named author approves the final PDF in full.
+- [ ] Named author approves the final release notes.
+- [ ] Named author approves the announcement text.
 - [ ] Named author explicitly approves changing repository visibility to
       public.
 - [ ] Named author explicitly approves creation of the GitHub Release.
@@ -148,9 +153,10 @@ explicit final approval.
 
 Current decision:
 
-> **DO NOT RELEASE YET.** The mathematical, documentation, authorship,
-> citation, licensing, hosted-candidate, and fresh-clone gates have passed for
-> commit `892d4bc6fad07950e78da66e45b95063a6415af6`. The evidence commit,
-> final copy approval, date/version transition, immutable tag, tagged replay,
-> release assets, visibility change, and explicit publication approvals remain
-> open.
+> **PREPARED FOR THE FINAL TAG GATE - DO NOT PUBLISH YET.** Version/date
+> metadata, final README rendering, Table 3 spacing, exact verification,
+> documentation, release tooling, and pre-release reproducibility evidence are
+> prepared. Publication still requires green final-commit and tag workflows, a
+> clean tagged replay, tagged-asset verification, final PDF/release-note/
+> announcement approval, and explicit approval of the visibility change and
+> GitHub Release.

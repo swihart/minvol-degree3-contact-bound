@@ -2,7 +2,7 @@
 
 ## Status
 
-This directory contains the lean Paper v1 manuscript for the proposed exact
+This directory contains the focused Paper v1 manuscript for the proposed exact
 universal contact-geometric lower bound
 
 $$
@@ -13,11 +13,10 @@ $$
 
 for every three-dimensional convex body `K` of constant width `d`.
 
-The manuscript is a **release-candidate computer-assisted research draft**.
-Bruce J. Swihart is the sole named author, and no institutional affiliation is
-asserted. It is not a peer-reviewed publication, does not establish sharpness
-or equality, does not identify a minimizer, and does not prove the Meissner
-conjecture.
+The manuscript is version `v1.0.0` of an **AI-assisted, computer-assisted,
+non-peer-reviewed research preprint**. Bruce J. Swihart is the sole named
+author, and no institutional affiliation is asserted. It does not establish
+sharpness or equality, identify a minimizer, or prove the Meissner conjecture.
 
 ## Files
 
@@ -89,8 +88,8 @@ MINVOL PAPER BUILD: PASS
 
 The build uses a fixed source-date epoch and canonicalizes the PDF trailer ID.
 Equivalent PDF bytes are nevertheless not required across all TeX engines,
-font maps, operating systems, or compression libraries. The mathematical
-proof authority is the exact certificate and verifier, not PDF serialization.
+font maps, operating systems, or compression libraries. The mathematical proof
+authority is the exact certificate and verifier, not PDF serialization.
 
 ## Manuscript boundary
 
@@ -111,29 +110,30 @@ may be investigated.
 
 ## Visual review
 
-The reference PDF was rendered page by page during construction and checked for
-clipped text, overlapping tables, broken glyphs, and missing references. The
-release-candidate author, no-affiliation statement, citation, split license,
-version, and repository URL are fixed and checked automatically. The hosted
-document job on audited candidate commit
-`892d4bc6fad07950e78da66e45b95063a6415af6` rebuilt the ten-page paper and
-passed Poppler preflight. Final named-author page approval remains a release
-gate.
+The reference PDF was rendered page by page and checked for clipped text,
+overlapping tables, broken glyphs, and missing references. Table 3 uses local
+row-height controls so that stacked exact fractions do not overlap. The author,
+no-affiliation statement, citation, split license, version, release date, and
+repository URL are checked automatically. The hosted document workflow rebuilds
+the ten-page paper and performs Poppler readability, embedded-font, and
+extractable-text preflight.
 
 ## Publication metadata
 
 - **Sole named author:** Bruce J. Swihart
 - **Institutional affiliation:** none asserted
-- **Candidate version:** `v1.0.0-rc1`
-- **Target final tag:** `v1.0.0`
-- **Private staging and intended canonical repository:**
+- **Version:** `v1.0.0`
+- **Release date:** September 20, 2026
+- **Canonical repository:**
   <https://github.com/swihart/minvol-degree3-contact-bound>
-- **Audited hosted workflow:**
+- **Versioned release:**
+  <https://github.com/swihart/minvol-degree3-contact-bound/releases/tag/v1.0.0>
+- **Audited pre-release workflow:**
   <https://github.com/swihart/minvol-degree3-contact-bound/actions/runs/35468019663>
 - **Paper/prose license:** CC BY 4.0
 - **Software/build license:** MIT
 - **Preferred citation:** repository-root `CITATION.cff`
 
-No public release, immutable tag, DOI, or external mathematical reproduction
-is asserted by this release-candidate checkpoint. The recorded hosted workflow
-and named-author fresh clone are reproducibility evidence, not peer review.
+The recorded hosted workflow and named-author fresh clone are reproducibility
+evidence, not peer review or external mathematical verification. No DOI or
+other archival identifier is asserted unless one is assigned later.

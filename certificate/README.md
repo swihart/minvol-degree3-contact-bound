@@ -11,12 +11,11 @@ $$
 =0.41187756378030227424817892598\ldots d^3.
 $$
 
-**Status:** standalone release-candidate replay of a proposed exact universal
+**Status:** standalone release `v1.0.0` of a proposed exact universal
 certificate. The package has passed its exact Python replay, independent
 binary64 Python and base-R implementation audits, seven adversarial rejection
 tests, a three-job hosted workflow, and a complete named-author fresh-clone
-replay. The result has not been externally reproduced, peer reviewed, tagged,
-or publicly released.
+replay. External mathematical reproduction and peer review have not occurred.
 
 This package does not prove sharpness, equality, rigidity, identification of a
 minimizer, or Meissner extremality.
@@ -99,6 +98,7 @@ MINVOL EXACT-CONSTANTS APPENDIX: CURRENT
 MINVOL REMOTE-EVIDENCE CHECK: PASS
 MINVOL RELEASE-DOCUMENT CHECK: PASS
 MINVOL METADATA PREFLIGHT: PASS
+MINVOL RELEASE PREFLIGHT: PASS
 MINVOL PAPER-CERTIFICATE RECONCILIATION: PASS
 ```
 
@@ -214,7 +214,7 @@ Completed here:
 - seven adversarial mutation tests covering every requested proof-object class;
 - construction-time semantic comparison against the source theorem certificate; all ten checked theorem-critical fields match (see `transcripts/export_equivalence.txt`);
 - pre- and post-replay SHA-256 verification;
-- automatic reconciliation of the lean Paper v1 theorem constants and
+- automatic reconciliation of the focused Paper v1 theorem constants and
   gap-free lower-branch table against the authoritative certificate JSON; and
 - construction and visual/PDF preflight of the current manuscript and complete
   paired Markdown/PDF release-document set;
@@ -235,16 +235,14 @@ Completed on the named author's machine and staging remote:
   <https://github.com/swihart/minvol-degree3-contact-bound/actions/runs/35468019663>,
   including hosted Poppler preflight.
 
-Not completed here:
+Not completed in the assistant construction container:
 
-- a second base-R execution in the assistant construction container, because
-  `Rscript` is unavailable there;
+- a second base-R execution, because `Rscript` is unavailable there;
 - external mathematical review;
-- final public copy edit and author sign-off;
-- final date/version transition and immutable tag;
-- tagged-checkout replay and release-asset verification; and
-- visibility change, GitHub Release, announcement, and archival metadata.
+- the tag-triggered replay on the immutable `v1.0.0` tag;
+- tagged release-asset download and independent re-verification; and
+- any later archival DOI assignment.
 
-Authorship, no-affiliation wording, citation metadata, repository identity, and
-the split CC BY 4.0/MIT license are fixed for this release candidate. The
-remaining items are release gates.
+Authorship, no-affiliation wording, citation metadata, repository identity,
+version/date metadata, and the split CC BY 4.0/MIT license are fixed for
+release `v1.0.0`.

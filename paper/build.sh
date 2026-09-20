@@ -5,7 +5,7 @@ PAPER_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 REPO_ROOT=$(CDPATH= cd -- "$PAPER_DIR/.." && pwd)
 cd "$PAPER_DIR"
 
-export SOURCE_DATE_EPOCH=${SOURCE_DATE_EPOCH:-1789776000}
+export SOURCE_DATE_EPOCH=${SOURCE_DATE_EPOCH:-1789862400}
 export FORCE_SOURCE_DATE=${FORCE_SOURCE_DATE:-1}
 
 python3 reconcile_certificate.py --check

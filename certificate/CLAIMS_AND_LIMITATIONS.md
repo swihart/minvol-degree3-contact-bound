@@ -35,8 +35,9 @@ This means:
 - the package is still an AI-assisted, non-peer-reviewed research draft.
 
 The word **exact** refers to the arithmetic of the finite certificate. It does
-not mean that the full proof has been formalized in a proof assistant or
-independently reviewed.
+not mean that the full proof has been formalized in Lean or another proof
+assistant, and it does not mean that the argument has been independently
+reviewed.
 
 ## Claims established inside the finite package
 
@@ -112,7 +113,7 @@ continuity.
 
 ## Status words that may be used
 
-Before public release and external review, acceptable descriptions include:
+For public release and before external review, acceptable descriptions include:
 
 - proposed exact universal certificate;
 - computer-assisted research draft;
@@ -120,7 +121,7 @@ Before public release and external review, acceptable descriptions include:
 - independently audited in Python and base R; and
 - seeking independent mathematical verification.
 
-Descriptions that should not be used at this stage include:
+Descriptions that should not be used without new evidence include:
 
 - peer reviewed;
 - independently verified;

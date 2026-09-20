@@ -1,9 +1,13 @@
 # MinVol three-dimensional contact bound
 
-**Release candidate `v1.0.0-rc1` - not yet public**
+**Release:** [v1.0.0](https://github.com/swihart/minvol-degree3-contact-bound/releases/tag/v1.0.0) (September 20, 2026)<br>
+**Author:** Bruce J. Swihart<br>
+**Status:** AI-assisted, non-peer-reviewed computer-assisted research preprint seeking independent mathematical verification<br>
+**Canonical repository:** [github.com/swihart/minvol-degree3-contact-bound](https://github.com/swihart/minvol-degree3-contact-bound)<br>
+**AI system disclosed:** OpenAI ChatGPT (GPT-5.6 Sol Pro), accessed August-September 2026
 
-This fresh-history repository is being prepared for a computer-assisted
-preprint and exact reproducibility package for the proposed universal bound
+This repository is the paper, exact certificate, and reproducibility package for
+the proposed universal bound
 
 $$
 \boxed{
@@ -15,17 +19,12 @@ $$
 
 for every convex body `K` in `R^3` of constant width `d`.
 
-The release candidate contains a standalone exact certificate, independent
-Python and base-R audits, adversarial rejection tests, and a lean Paper v1
-manuscript reconciled automatically against the machine-readable certificate.
-Publication metadata is fixed for this candidate: Bruce J. Swihart is the sole
-named author, no institutional affiliation is asserted, prose is licensed CC BY
-4.0, and software is licensed MIT. The canonical repository currently exists as
-a private staging repository at
-<https://github.com/swihart/minvol-degree3-contact-bound>. Three hosted jobs and
-a complete named-author fresh-clone replay passed on audited candidate commit
-`892d4bc6fad07950e78da66e45b95063a6415af6`. The final release date and tag,
-immutable assets, visibility change, and announcement remain pending.
+The package contains a standalone exact-rational certificate, independent
+binary64 Python and base-R audits, ten reconstruction tests, seven adversarial
+proof-object mutation tests, a ten-page manuscript, and paired Markdown/PDF
+documentation. Bruce J. Swihart is the sole named author; no institutional
+affiliation is asserted. The paper and prose are licensed CC BY 4.0, while the
+software and build infrastructure are licensed MIT.
 
 ## Paper
 
@@ -34,50 +33,41 @@ immutable assets, visibility change, and announcement remain pending.
 - [Paper build and reconciliation guide](paper/README.md)
 - [Rendered paper-guide PDF](rendered/markdown/paper/README.pdf)
 
-The reference manuscript states the proof architecture and claim limitations in
-ten pages. Its certificate-critical constants and lower-branch partition are
-generated from the exact JSON rather than copied manually.
+The manuscript explains the geometric reduction, the two circumradius
+branches, and the finite certificate architecture. Every theorem-critical
+constant and the complete lower-branch partition are generated from the
+machine-readable certificate rather than copied manually.
 
 ## Publication metadata
 
 - **Author:** Bruce J. Swihart
-- **Institutional affiliation:** none asserted in this release candidate
-- **Correspondence and verification reports:** the intended repository issue
-  tracker at <https://github.com/swihart/minvol-degree3-contact-bound/issues>
-- **Candidate version:** `v1.0.0-rc1`
-- **Target final tag:** `v1.0.0`
-- **Release date:** not yet assigned
+- **Institutional affiliation:** none asserted
+- **Correspondence and verification reports:**
+  <https://github.com/swihart/minvol-degree3-contact-bound/issues>
+- **Version:** `v1.0.0`
+- **Release date:** September 20, 2026
+- **Versioned release:**
+  <https://github.com/swihart/minvol-degree3-contact-bound/releases/tag/v1.0.0>
 - **License:** CC BY 4.0 for paper/prose; MIT for software/build infrastructure
 - **Citation metadata:** [`CITATION.cff`](CITATION.cff)
 - **Licensing text:** [`LICENSE`](LICENSE)
 
-The repository description approved for the canonical repository is:
+## Verification record
 
-> Paper, exact certificate, and reproducibility materials for a
-> contact-geometric universal lower bound in the three-dimensional
-> Blaschke-Lebesgue problem.
+Before the final version transition, the release-candidate commit
+`892d4bc6fad07950e78da66e45b95063a6415af6` passed a three-job hosted workflow
+covering exact/Python verification, independent base R, and paper/document
+builds with Poppler preflight. A separate fresh clone of that commit reproduced
+the complete Python and R replay under Python 3.14.7, NumPy 2.3.5, and R 4.6.1;
+rebuilt the ten-page paper and all 22 Markdown/PDF pairs; and ended with an
+empty `git status --short`.
 
-## Remote release-candidate audit
-
-The audited release-candidate commit is:
-
-```text
-892d4bc6fad07950e78da66e45b95063a6415af6
-Add release-candidate citation and licensing metadata
-```
-
-The hosted workflow at
-<https://github.com/swihart/minvol-degree3-contact-bound/actions/runs/35468019663>
-completed all three jobs successfully: exact/Python verification, independent
-base R, and paper/document build plus Poppler preflight. A separate fresh clone
-of that commit reproduced the complete Python and R replay under Python 3.14.7,
-NumPy 2.3.5, and R 4.6.1; rebuilt the ten-page paper and all 22 Markdown/PDF
-pairs; and ended with an empty `git status --short`.
-
-The audit-transfer hashes and exact environment record are in
+The archived evidence and exact transfer hashes are in
 [`CLEAN_CLONE_CHECK.md`](CLEAN_CLONE_CHECK.md) and
 [`certificate/evidence/rc1_remote_audit.json`](certificate/evidence/rc1_remote_audit.json).
-This is reproducibility evidence, not external mathematical review.
+The final `v1.0.0` tag is required to pass the same three hosted jobs before the
+GitHub Release is published. These are reproducibility checks, not peer review
+or external mathematical verification.
 
 ## Reviewer path
 
@@ -87,7 +77,7 @@ This is reproducibility evidence, not external mathematical review.
 3. Verify the checksum manifests.
 4. Run the exact and independent Python paths with `./run_python_checks.sh`.
 5. With base R installed, run the complete replay with `./run_all.sh`.
-6. Build the paper and Markdown documentation in a clean environment.
+6. Consult the proof ledger, source ledger, and trust-boundary document.
 
 ## Replay
 
@@ -98,14 +88,14 @@ python3 -m pip install -r requirements.txt
 ```
 
 Run the exact verifier, binary64 audit, ten reconstruction tests, seven
-adversarial mutation tests, exact-constants and release-document checks, and
-paper/certificate reconciliation:
+adversarial mutation tests, exact-constants and release-document checks,
+release metadata preflight, and paper/certificate reconciliation:
 
 ```sh
 ./run_python_checks.sh
 ```
 
-Expected final markers include:
+Expected markers include:
 
 ```text
 MINVOL UNIVERSAL CONTACT-BOUND CERTIFICATE: EXACT
@@ -116,6 +106,7 @@ MINVOL REMOTE-EVIDENCE CHECK: PASS
 MINVOL RELEASE-DOCUMENT CHECK: PASS
 MINVOL CITATION METADATA CHECK: PASS
 MINVOL METADATA PREFLIGHT: PASS
+MINVOL RELEASE PREFLIGHT: PASS
 MINVOL PAPER-CERTIFICATE RECONCILIATION: PASS
 ```
 
@@ -123,12 +114,6 @@ With base R installed, run all language paths:
 
 ```sh
 ./run_all.sh
-```
-
-To refresh the archived base-R transcript deliberately:
-
-```sh
-./run_r_checks.sh 2>&1 | tee certificate/transcripts/base_r_audit.txt
 ```
 
 After changing a protected source, transcript, or reference artifact, refresh
@@ -142,7 +127,7 @@ python3 refresh_checksums.py
 python3 refresh_checksums.py --check
 ```
 
-## Build documentation
+## Build documentation and release assets
 
 Build the paper without overwriting its committed reference PDF:
 
@@ -157,8 +142,22 @@ Build local PDFs for every Markdown source under `build/markdown/`:
 ```
 
 The committed Markdown/PDF pairs are under `rendered/markdown/`. Their pairing
-and PDF preflight checks are run by continuous integration and can also be run
-locally.
+and PDF preflight checks run in continuous integration.
+
+Preview and verify the deterministic release-asset set before tagging:
+
+```sh
+./build_release_assets.sh --preview
+```
+
+```sh
+./verify_release_assets.sh
+```
+
+From the exact tagged checkout, omit `--preview`. The resulting release bundle
+contains the paper PDF, paper source, standalone certificate, paired
+documentation, replay records, release notes in Markdown/PDF, a machine-readable
+release record, and one SHA-256 manifest.
 
 ## Proof architecture
 
@@ -174,7 +173,7 @@ a 98,306-ray polyhedral core. An exact determinant transfer, a dominant-edge
 coordinate-width estimate, and three optimized antipodal cap pairs produce a
 near-Jung lower bound strictly above the bottleneck. Exact integer and rational
 arithmetic supplies the finite proof authority; binary64 Python and base R are
-independent audits.
+independent numerical audits.
 
 ## Documentation
 
@@ -191,7 +190,7 @@ repository-relative tree under `rendered/markdown/`.
   [PDF](rendered/markdown/CLEAN_CLONE_CHECK.pdf)
 - AI assistance and provenance: [Markdown](AI_ASSISTANCE.md) |
   [PDF](rendered/markdown/AI_ASSISTANCE.pdf)
-- Draft release notes: [Markdown](RELEASE_NOTES.md) |
+- Release notes: [Markdown](RELEASE_NOTES.md) |
   [PDF](rendered/markdown/RELEASE_NOTES.pdf)
 - Release checklist: [Markdown](RELEASE_CHECKLIST.md) |
   [PDF](rendered/markdown/RELEASE_CHECKLIST.pdf)
@@ -252,11 +251,11 @@ split-license notice.
 The package proposes a universal lower bound. It does not identify a minimizing
 body, prove sharpness or equality, or prove the Meissner conjecture. The
 Meissner value is an explicit-body comparison value, not a universal minimum
-proved here. The result has not been externally reproduced or peer reviewed.
-The release candidate has been pushed only to a private staging repository;
-there is no public release, immutable tag, or publication claim yet.
+proved here. The result has not been externally reproduced or peer reviewed. The finite
+certificate is not a Lean theorem-prover formalization; here, **exact** means
+exact integer and rational arithmetic checked by the included programs.
 
 The earlier public MinVol spectral announcement remains a separate repository:
 [swihart/minvol-degree3-spectral-bound](https://github.com/swihart/minvol-degree3-spectral-bound).
-Further universal refinements are under investigation but are outside this v1
-package.
+Further universal refinements are under investigation but are outside this
+version.

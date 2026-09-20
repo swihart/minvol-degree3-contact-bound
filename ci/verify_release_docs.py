@@ -81,6 +81,16 @@ GITHUB_MATH_FORBIDDEN = {
     r"\]": r"use $$ display-math delimiters instead of \]",
 }
 
+PRIOR_MINVOL_REPOSITORY = "https://github.com/swihart/minvol-degree3-spectral-bound"
+PRIOR_REPOSITORY_DOCS = (
+    "README.md",
+    "RELEASE_NOTES.md",
+    "RELEASE_CHECKLIST.md",
+)
+AMBIGUOUS_MANUSCRIPT_LABEL = re.compile(
+    r"\b[Ll]ean\s+(?:ten-page\s+)?(?:Paper|manuscript)\b"
+)
+
 
 def read_text(relative: str) -> str:
     path = ROOT / relative
@@ -146,6 +156,17 @@ def main() -> None:
                 raise SystemExit(
                     f"GitHub-incompatible math token in {relative}: {token!r}; {guidance}"
                 )
+        if AMBIGUOUS_MANUSCRIPT_LABEL.search(text):
+            raise SystemExit(
+                f"ambiguous manuscript label in {relative}; use 'focused Paper v1' "
+                "and reserve 'Lean' for the theorem prover"
+            )
+
+    for relative in PRIOR_REPOSITORY_DOCS:
+        if PRIOR_MINVOL_REPOSITORY not in texts[relative]:
+            raise SystemExit(
+                f"previous public MinVol repository is not hyperlinked in {relative}"
+            )
 
     rational_fragment, exact_decimal = theorem_strings()
     decimal_prefix = exact_decimal[:17] if exact_decimal else "0.411877563780302"
@@ -180,13 +201,14 @@ def main() -> None:
                 raise SystemExit(f"private or provisional text leaked into {relative}: {prohibited}")
 
     source_ledger = texts["proof/SOURCE_LEDGER.md"]
-    if "September 19, 2026" not in source_ledger:
+    if "September 20, 2026" not in source_ledger:
         raise SystemExit("source ledger lacks the dated literature-check stamp")
     for token in (
         "10.1016/j.jmaa.2026.131038",
         "Tencent-Hunyuan/Hyra-results",
         "10.1007/s00454-024-00688-0",
         "not a systematic novelty review",
+        "arXiv:2608.26395",
     ):
         if token not in source_ledger:
             raise SystemExit(f"source ledger missing required provenance token: {token}")
@@ -200,19 +222,56 @@ def main() -> None:
 
     version = (ROOT / "VERSION").read_text(encoding="ascii").strip()
     release_date = (ROOT / "RELEASE_DATE").read_text(encoding="ascii").strip()
-    if version != "v1.0.0-rc1":
-        raise SystemExit(f"unexpected release-candidate VERSION: {version}")
-    if release_date != "UNRELEASED":
-        raise SystemExit("release candidate must retain RELEASE_DATE=UNRELEASED")
-    if "DO NOT RELEASE YET" not in texts["RELEASE_CHECKLIST.md"]:
-        raise SystemExit("release-candidate checklist lacks an explicit no-release decision")
+    if version != "v1.0.0":
+        raise SystemExit(f"unexpected final VERSION: {version}")
+    if release_date != "2026-09-20":
+        raise SystemExit(f"unexpected final RELEASE_DATE: {release_date}")
+    if "PREPARED FOR THE FINAL TAG GATE" not in texts["RELEASE_CHECKLIST.md"]:
+        raise SystemExit("release checklist lacks the final-tag gate decision")
+
+    final_public_docs = (
+        "README.md",
+        "RELEASE_NOTES.md",
+        "AI_ASSISTANCE.md",
+        "paper/README.md",
+    )
+    for relative in final_public_docs:
+        text = texts[relative]
+        for obsolete in (
+            "v1.0.0-rc1",
+            "UNRELEASED",
+            "DO NOT RELEASE YET",
+            "Candidate version",
+            "Target final tag",
+            "not yet public",
+        ):
+            if obsolete in text:
+                raise SystemExit(f"obsolete release wording in {relative}: {obsolete}")
+        for required in (
+            "v1.0.0",
+            "September 20, 2026",
+            "https://github.com/swihart/minvol-degree3-contact-bound/releases/tag/v1.0.0",
+        ):
+            if required not in text:
+                raise SystemExit(f"final release metadata missing from {relative}: {required}")
+
+    for executable in (
+        "build_release_assets.sh",
+        "verify_release_assets.sh",
+        "release/build_release_assets.py",
+        "release/verify_release_assets.py",
+    ):
+        path = ROOT / executable
+        if not path.is_file():
+            raise SystemExit(f"release tooling missing: {executable}")
 
     cff = (ROOT / "CITATION.cff").read_text(encoding="utf-8")
     license_text = (ROOT / "LICENSE").read_text(encoding="utf-8")
     for token in (
         'given-names: "Bruce J."',
         'family-names: "Swihart"',
-        'version: "1.0.0-rc1"',
+        'version: "1.0.0"',
+        'date-released: "2026-09-20"',
         'status: preprint',
         'repository-code: "https://github.com/swihart/minvol-degree3-contact-bound"',
     ):
@@ -228,6 +287,7 @@ def main() -> None:
 
     print(f"Required Markdown documents: {len(REQUIRED_MARKDOWN)}")
     print(f"Theorem-bearing documents:   {len(THEOREM_DOCS)}")
+    print(f"Prior-repository links:      {len(PRIOR_REPOSITORY_DOCS)}")
     print(f"Relative links checked:      {link_count}")
     print("MINVOL RELEASE-DOCUMENT CHECK: PASS")
 

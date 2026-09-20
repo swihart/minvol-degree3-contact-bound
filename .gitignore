@@ -12,3 +12,6 @@ ci-artifacts/
 # Local build and extraction products
 build/
 *.tmp
+
+# Generated release assets
+release/build/

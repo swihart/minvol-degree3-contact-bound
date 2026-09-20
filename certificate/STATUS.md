@@ -14,7 +14,7 @@ for every three-dimensional convex body of constant width `d`.
 
 ## Current classification
 
-**PROPOSED EXACT UNIVERSAL CERTIFICATE - STANDALONE RELEASE-CANDIDATE REPLAY**
+**PROPOSED EXACT UNIVERSAL CERTIFICATE - STANDALONE RELEASE v1.0.0**
 
 The public-format package is independent of the private repository layout and
 replays using only files contained in this fresh-history repository. Its exact
@@ -22,10 +22,12 @@ Python verifier, independent Python binary64 audit, independent base-R audit,
 seven adversarial mutations, paper/document checks, hosted three-job workflow,
 and named-author fresh-clone replay pass in the recorded environments.
 
-The audited candidate is
+The audited pre-release state is
 `892d4bc6fad07950e78da66e45b95063a6415af6`. Its successful hosted workflow is
 <https://github.com/swihart/minvol-degree3-contact-bound/actions/runs/35468019663>.
-The staging repository remains private, and no immutable release tag exists.
+The release metadata is `v1.0.0`, dated September 20, 2026. The immutable tag
+and GitHub Release remain operational publication gates until their workflows
+and downloaded assets are verified.
 
 ## Established inside this package
 
@@ -43,7 +45,7 @@ The staging repository remains private, and no immutable release tag exists.
   hosted R 4.6.1;
 - rejection of targeted lower-row, fan-radius, multiplier, section-hull,
   cap-allocation, disjointness, and theorem-coefficient mutations;
-- automatic reconciliation of the lean Paper v1 theorem constants and
+- automatic reconciliation of the focused Paper v1 theorem constants and
   lower-branch table against the authoritative certificate JSON;
 - generated exact-constants and release-document consistency checks;
 - paired Markdown/PDF renderings of the complete release-document set;
@@ -56,23 +58,22 @@ The hosted and fresh-clone evidence is indexed in
 ## Not established
 
 - external independent mathematical reproduction;
-- peer review or publication;
+- peer review or journal acceptance;
 - sharpness, equality, or rigidity;
 - identification of a minimizer;
 - Meissner extremality;
-- an immutable final tag or public GitHub Release.
+- an archival DOI or external subject-matter reproduction.
 
-## Remaining release gates
+## Remaining publication gates
 
-1. green hosted Python, R, and document jobs on this evidence-bearing commit;
-2. final named-author copy edit and approval of the manuscript and public
-   wording;
-3. final release date and transition from `v1.0.0-rc1` to `v1.0.0`;
-4. immutable release assets and an independently checked asset manifest;
-5. clean tagged-checkout replay and green hosted jobs on the exact tag;
-6. explicit named-author approval before changing visibility, creating the
+1. green hosted Python, R, and document jobs on the final release commit;
+2. an annotated `v1.0.0` tag pointing to that exact commit;
+3. clean tagged-checkout replay and green hosted jobs on the tag;
+4. tagged release assets and an independently checked download manifest;
+5. explicit named-author approval before changing visibility, creating the
    GitHub Release, or announcing the result; and
-7. external mathematical review or reproduction when available.
+6. external mathematical review or reproduction when available.
 
-Authorship, no-affiliation wording, citation metadata, repository identity, and
-the split CC BY 4.0/MIT license are fixed for `v1.0.0-rc1`.
+Authorship, no-affiliation wording, citation metadata, repository identity,
+release date, version, and the split CC BY 4.0/MIT license are fixed for
+`v1.0.0`.

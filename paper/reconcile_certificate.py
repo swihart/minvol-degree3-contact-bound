@@ -25,6 +25,8 @@ EXPECTED_SCHEMA = "minvol.universal_contact_bound.v1"
 FORBIDDEN_PUBLIC_TOKENS = (
     "PRIVATE WORKING DRAFT",
     "Author list to be finalized",
+    "v1.0.0-rc1",
+    "UNRELEASED",
 )
 
 
@@ -229,6 +231,9 @@ def validate_paper_source() -> None:
         r"\input{lower_branch_table.tex}",
         r"\MainCoefficient",
         r"\CertificateSha",
+        r"\newcommand{\releaseversion}{v1.0.0}",
+        r"\newcommand{\releasedate}{September 20, 2026}",
+        r"releases/tag/v1.0.0",
     )
     for token in required:
         if token not in text:

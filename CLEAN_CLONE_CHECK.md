@@ -1,8 +1,9 @@
 # Recorded clean-source, hosted, and fresh-clone checks
 
 - **Record date:** September 19, 2026
-- **Package version:** `v1.0.0-rc1`
-- **Staging repository:**
+- **Current package version:** `v1.0.0`
+- **Audited pre-release package:** `v1.0.0-rc1`
+- **Canonical repository:**
   <https://github.com/swihart/minvol-degree3-contact-bound>
 - **Visibility during this audit:** private
 - **Audited candidate commit:**
@@ -10,9 +11,10 @@
 - **Hosted workflow:**
   <https://github.com/swihart/minvol-degree3-contact-bound/actions/runs/35468019663>
 
-This document records the clean-source, hosted continuous-integration, and
-fresh-clone evidence for the release candidate. The repository still requires a
-final tagged-checkout replay before publication.
+This document preserves the clean-source, hosted continuous-integration, and
+fresh-clone evidence for the audited pre-release state. The final `v1.0.0` tag
+uses the same replay requirements and must pass its own hosted and tagged-clone
+gates before the GitHub Release is published.
 
 ## Results at a glance
 
@@ -20,7 +22,7 @@ final tagged-checkout replay before publication.
 |---|---|
 | Standalone certificate (`21a1750`) | Exact Python, binary64, ten tests, base R, checksums, and clean status passed |
 | Adversarial mutation suite (`068be1f`) | Seven representative corruptions rejected |
-| Lean Paper v1 (`b11a13a`) | Paper reconciliation, builds, paired documents, and PDF checks passed |
+| Focused Paper v1 (`b11a13a`) | Paper reconciliation, builds, paired documents, and PDF checks passed |
 | Complete release documentation (`dc4017a`) | Release-document, exact-constants, link, checksum, and PDF checks passed |
 | Release-candidate metadata (`892d4bc`) | Author, citation, repository, version, and split-license metadata passed |
 | Hosted candidate workflow | Three of three jobs completed successfully on `892d4bc` |
@@ -28,15 +30,21 @@ final tagged-checkout replay before publication.
 
 ## 1. Curated fresh history
 
-The audited bundle contains exactly five fresh-history commits:
+The audited bundle contains exactly five fresh-history commits. The labels below
+identify their public audit roles; the hashes are authoritative:
 
 ```text
-21a175010fb18d74e11286ef0e1135cb32c47053 Add standalone exact universal certificate
-068be1ff4bd7d815714445ec24549715eef0e5aa Add adversarial certificate mutation tests
-b11a13a145ebb09218dca542057b1d44700cb48e Add the lean Paper v1 manuscript
-dc4017ae564f8680eddbb9f1b4407ff1bd45991e Add the complete release documentation
-892d4bc6fad07950e78da66e45b95063a6415af6 Add release-candidate citation and licensing metadata
+21a175010fb18d74e11286ef0e1135cb32c47053 Standalone exact-certificate checkpoint
+068be1ff4bd7d815714445ec24549715eef0e5aa Adversarial mutation-test checkpoint
+b11a13a145ebb09218dca542057b1d44700cb48e Focused Paper v1 checkpoint
+dc4017ae564f8680eddbb9f1b4407ff1bd45991e Complete release-document checkpoint
+892d4bc6fad07950e78da66e45b95063a6415af6 Release-candidate metadata checkpoint
 ```
+
+The literal historical subject of commit `b11a13a` used lower-case *lean* in
+the ordinary sense of *concise*. Public documentation uses **focused** to avoid
+confusion with the Lean theorem prover. No proof-assistant formalization is
+claimed.
 
 `git fsck --full` passed, the bundle records a complete SHA-1 history, and no
 private research branch or private repository history is present.
@@ -152,9 +160,9 @@ and records complete history.
 
 ## 5. Interpretation
 
-This evidence shows that the candidate is self-contained, replays from the
-actual remote on the named author's machine, and passes the three-platform
-hosted workflow. It also confirms that the public-format history is the intended
+This evidence shows that the audited pre-release state is self-contained,
+replays from the actual remote on the named author's machine, and passes the
+three-job hosted workflow. It also confirms that the public-format history is the intended
 five-commit history and that the replay leaves tracked source unchanged.
 
 It does **not** establish external mathematical reproduction, peer review,
@@ -162,17 +170,16 @@ novelty, correctness of every conceptual reduction, sharpness, a minimizing
 body, or Meissner extremality. The fresh-clone audit was performed by the named
 author, and the hosted jobs execute project-supplied programs.
 
-## 6. Remaining final-release check
+## 6. Tagged-release follow-up
 
-The next evidence-bearing commit changes documentation and therefore must
-receive its own green three-job hosted run. Before publication, the project must
-also:
+The historical audit above is complete and intentionally retains its `rc1`
+filenames and commit identifiers. Publication of `v1.0.0` additionally requires:
 
-1. complete the named-author final copy and page approval;
-2. assign the final date and change `v1.0.0-rc1` to `v1.0.0`;
-3. build immutable release assets from the exact final commit;
-4. create and verify the annotated `v1.0.0` tag;
-5. repeat the complete replay from a fresh checkout of that tag;
-6. obtain a green three-job workflow on the immutable tag; and
-7. receive explicit approval before changing visibility, publishing the GitHub
-   Release, or announcing the result.
+1. a green three-job hosted run on the final release commit;
+2. an annotated `v1.0.0` tag pointing to that exact commit;
+3. a green three-job workflow triggered by the immutable tag;
+4. a complete replay from a fresh checkout of the tag with clean final status;
+5. deterministic release assets built from the tagged checkout and verified
+   against `SHA256SUMS.txt` after download; and
+6. explicit named-author approval before changing visibility, publishing the
+   GitHub Release, or announcing the result.

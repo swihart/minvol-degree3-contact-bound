@@ -56,8 +56,10 @@ grep -Fi "Bruce J. Swihart" "$paper_text" >/dev/null || \
   fail "paper PDF does not contain the author name"
 grep -F "0.411877563780302" "$paper_text" >/dev/null || \
   fail "paper PDF does not contain the theorem coefficient"
-grep -Fi "release candidate v1.0.0-rc1" "$paper_text" >/dev/null || \
-  fail "paper PDF does not contain the release-candidate version"
+grep -Fi "Version v1.0.0" "$paper_text" >/dev/null || \
+  fail "paper PDF does not contain the final version"
+grep -Fi "September 20, 2026" "$paper_text" >/dev/null || \
+  fail "paper PDF does not contain the release date"
 grep -Fi "no institutional affiliation is asserted" "$paper_text" >/dev/null || \
   fail "paper PDF does not contain the affiliation statement"
 grep -F "github.com/swihart/minvol-degree3-contact-bound" "$paper_text" >/dev/null || \
