@@ -1,6 +1,6 @@
 # AI assistance and provenance
 
-**Repository status:** release `v1.0.0` (September 20, 2026)
+**Repository status:** release `v1.0.0` (September 26, 2026)
 **Sole named author:** Bruce J. Swihart
 **Primary AI system used:** OpenAI ChatGPT (GPT-5.6 Sol Pro)
 **Primary access period:** August-September 2026<br>

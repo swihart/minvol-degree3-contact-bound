@@ -4,7 +4,7 @@ set -euo pipefail
 ROOT=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 cd "$ROOT"
 
-export SOURCE_DATE_EPOCH=${SOURCE_DATE_EPOCH:-1789862400}
+export SOURCE_DATE_EPOCH=${SOURCE_DATE_EPOCH:-1790380800}
 export FORCE_SOURCE_DATE=${FORCE_SOURCE_DATE:-1}
 
 OUT_ROOT=${1:-build/markdown}

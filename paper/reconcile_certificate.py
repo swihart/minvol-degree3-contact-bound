@@ -232,7 +232,7 @@ def validate_paper_source() -> None:
         r"\MainCoefficient",
         r"\CertificateSha",
         r"\newcommand{\releaseversion}{v1.0.0}",
-        r"\newcommand{\releasedate}{September 20, 2026}",
+        r"\newcommand{\releasedate}{September 26, 2026}",
         r"releases/tag/v1.0.0",
     )
     for token in required:

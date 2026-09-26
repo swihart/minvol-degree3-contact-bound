@@ -1,6 +1,6 @@
 # Source ledger and dated literature check
 
-**Ledger date:** September 20, 2026
+**Ledger date:** September 26, 2026
 **Scope:** sources used to frame, derive, compare, and document the proposed
 universal contact-geometric lower bound
 
@@ -191,7 +191,7 @@ The paper-facing constants are generated from the certificate JSON by
 
 ## Dated recent-literature check
 
-A targeted web check was performed on **September 20, 2026** using publisher,
+A targeted web check was performed on **September 26, 2026** using publisher,
 arXiv, and official repository records. It checked:
 
 - final bibliographic metadata for Nishioka's article;

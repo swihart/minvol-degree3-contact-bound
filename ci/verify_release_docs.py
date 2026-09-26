@@ -60,7 +60,6 @@ LIMITATION_DOCS = [
 PROHIBITED_TEXT = [
     "minvol-spectral-refinements",
     "work/jung-endpoint",
-    "0.4157",
     "d5916d673523015ddec4f735dfd254d5a927fd3c",
     "57050955c68e6b8bfd35b70e19631c70b9ab5364",
     "f3e54e68861677d6fd4b31664a1d85fe6350ee14",
@@ -201,7 +200,7 @@ def main() -> None:
                 raise SystemExit(f"private or provisional text leaked into {relative}: {prohibited}")
 
     source_ledger = texts["proof/SOURCE_LEDGER.md"]
-    if "September 20, 2026" not in source_ledger:
+    if "September 26, 2026" not in source_ledger:
         raise SystemExit("source ledger lacks the dated literature-check stamp")
     for token in (
         "10.1016/j.jmaa.2026.131038",
@@ -224,7 +223,7 @@ def main() -> None:
     release_date = (ROOT / "RELEASE_DATE").read_text(encoding="ascii").strip()
     if version != "v1.0.0":
         raise SystemExit(f"unexpected final VERSION: {version}")
-    if release_date != "2026-09-20":
+    if release_date != "2026-09-26":
         raise SystemExit(f"unexpected final RELEASE_DATE: {release_date}")
     if "PREPARED FOR THE FINAL TAG GATE" not in texts["RELEASE_CHECKLIST.md"]:
         raise SystemExit("release checklist lacks the final-tag gate decision")
@@ -249,7 +248,7 @@ def main() -> None:
                 raise SystemExit(f"obsolete release wording in {relative}: {obsolete}")
         for required in (
             "v1.0.0",
-            "September 20, 2026",
+            "September 26, 2026",
             "https://github.com/swihart/minvol-degree3-contact-bound/releases/tag/v1.0.0",
         ):
             if required not in text:
@@ -271,7 +270,7 @@ def main() -> None:
         'given-names: "Bruce J."',
         'family-names: "Swihart"',
         'version: "1.0.0"',
-        'date-released: "2026-09-20"',
+        'date-released: "2026-09-26"',
         'status: preprint',
         'repository-code: "https://github.com/swihart/minvol-degree3-contact-bound"',
     ):

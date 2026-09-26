@@ -1,7 +1,7 @@
 # Reproducibility guide
 
-**Package status:** release `v1.0.0` (September 20, 2026)
-**Prepared:** September 20, 2026
+**Package status:** release `v1.0.0` (September 26, 2026)
+**Prepared:** September 26, 2026
 **Main certificate schema:** `minvol.universal_contact_bound.v1`
 
 This guide explains how to reproduce the exact certificate, the independent

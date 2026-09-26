@@ -1,6 +1,6 @@
 # MinVol three-dimensional contact bound
 
-**Release:** [v1.0.0](https://github.com/swihart/minvol-degree3-contact-bound/releases/tag/v1.0.0) (September 20, 2026)<br>
+**Release:** [v1.0.0](https://github.com/swihart/minvol-degree3-contact-bound/releases/tag/v1.0.0) (September 26, 2026)<br>
 **Author:** Bruce J. Swihart<br>
 **Status:** AI-assisted, non-peer-reviewed computer-assisted research preprint seeking independent mathematical verification<br>
 **Canonical repository:** [github.com/swihart/minvol-degree3-contact-bound](https://github.com/swihart/minvol-degree3-contact-bound)<br>
@@ -45,7 +45,7 @@ machine-readable certificate rather than copied manually.
 - **Correspondence and verification reports:**
   <https://github.com/swihart/minvol-degree3-contact-bound/issues>
 - **Version:** `v1.0.0`
-- **Release date:** September 20, 2026
+- **Release date:** September 26, 2026
 - **Versioned release:**
   <https://github.com/swihart/minvol-degree3-contact-bound/releases/tag/v1.0.0>
 - **License:** CC BY 4.0 for paper/prose; MIT for software/build infrastructure

@@ -1,8 +1,8 @@
 # Verification status
 
 **Version:** `v1.0.0`<br>
-**Release date:** September 20, 2026<br>
-**Status date:** September 20, 2026<br>
+**Release date:** September 26, 2026<br>
+**Status date:** September 26, 2026<br>
 **Audited pre-release commit:** `892d4bc6fad07950e78da66e45b95063a6415af6`<br>
 **Audited hosted workflow:** <https://github.com/swihart/minvol-degree3-contact-bound/actions/runs/35468019663>
 
@@ -39,7 +39,7 @@ publication.
 - versioned release:
   <https://github.com/swihart/minvol-degree3-contact-bound/releases/tag/v1.0.0>;
 - version: `v1.0.0`;
-- release date: September 20, 2026;
+- release date: September 26, 2026;
 - prose license: CC BY 4.0;
 - software license: MIT;
 - archival DOI: none assigned or implied.

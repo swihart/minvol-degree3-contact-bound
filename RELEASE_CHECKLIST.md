@@ -1,8 +1,8 @@
 # Release checklist
 
 **Release version:** `v1.0.0`<br>
-**Release date:** September 20, 2026<br>
-**Checklist updated:** September 20, 2026<br>
+**Release date:** September 26, 2026<br>
+**Checklist updated:** September 26, 2026<br>
 **Audited pre-release commit:** `892d4bc6fad07950e78da66e45b95063a6415af6`<br>
 **Audited hosted workflow:** <https://github.com/swihart/minvol-degree3-contact-bound/actions/runs/35468019663>
 
@@ -91,7 +91,7 @@ non-peer-reviewed research preprint, but its absence must remain prominent.
       MIT for software/build infrastructure.
 - [x] `CITATION.cff` added and checked by the metadata preflight.
 - [x] Preferred paper citation finalized for version `v1.0.0`.
-- [x] `RELEASE_DATE` is `2026-09-20`.
+- [x] `RELEASE_DATE` is `2026-09-26`.
 - [x] `VERSION` is `v1.0.0`.
 - [ ] DOI or archival identifier added only after one exists.
 - [x] Copyright and third-party license boundary reviewed and documented.
@@ -138,7 +138,7 @@ GitHub release, and none is implied.
 - [x] Wording does not say "sharp," "optimal," "proved Meissner," or
       "independently certified."
 - [x] [Earlier public MinVol spectral repository](https://github.com/swihart/minvol-degree3-spectral-bound) is clearly separate.
-- [x] Private sequel results and history are absent.
+- [x] Unreleased research results and private history are absent.
 - [x] Named author approved creation and use of the private staging remote.
 - [x] Named author approves the README.
 - [x] Named author approves the theorem wording as displayed in the README.

@@ -10,8 +10,8 @@ fail() {
 }
 
 EXPECTED_VERSION=v1.0.0
-EXPECTED_DATE=2026-09-20
-DISPLAY_DATE="September 20, 2026"
+EXPECTED_DATE=2026-09-26
+DISPLAY_DATE="September 26, 2026"
 REPOSITORY_URL="https://github.com/swihart/minvol-degree3-contact-bound"
 RELEASE_URL="$REPOSITORY_URL/releases/tag/$EXPECTED_VERSION"
 

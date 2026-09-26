@@ -25,7 +25,7 @@ and named-author fresh-clone replay pass in the recorded environments.
 The audited pre-release state is
 `892d4bc6fad07950e78da66e45b95063a6415af6`. Its successful hosted workflow is
 <https://github.com/swihart/minvol-degree3-contact-bound/actions/runs/35468019663>.
-The release metadata is `v1.0.0`, dated September 20, 2026. The immutable tag
+The release metadata is `v1.0.0`, dated September 26, 2026. The immutable tag
 and GitHub Release remain operational publication gates until their workflows
 and downloaded assets are verified.
 

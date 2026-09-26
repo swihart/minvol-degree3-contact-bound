@@ -9,9 +9,9 @@ import zipfile
 from pathlib import Path, PurePosixPath
 
 EXPECTED_VERSION = "v1.0.0"
-EXPECTED_DATE = "2026-09-20"
+EXPECTED_DATE = "2026-09-26"
 PROJECT_STEM = "minvol-contact-bound"
-FIXED_ZIP_TIME = (2026, 9, 20, 0, 0, 0)
+FIXED_ZIP_TIME = (2026, 9, 26, 0, 0, 0)
 FORBIDDEN_PARTS = {".git", ".venv", "__pycache__", "build", "ci-artifacts"}
 FORBIDDEN_NAMES = {".DS_Store"}
 

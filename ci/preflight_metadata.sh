@@ -10,8 +10,8 @@ fail() {
 }
 
 EXPECTED_VERSION=v1.0.0
-EXPECTED_DATE=2026-09-20
-DISPLAY_DATE="September 20, 2026"
+EXPECTED_DATE=2026-09-26
+DISPLAY_DATE="September 26, 2026"
 REPOSITORY_URL="https://github.com/swihart/minvol-degree3-contact-bound"
 RELEASE_URL="$REPOSITORY_URL/releases/tag/$EXPECTED_VERSION"
 
@@ -37,7 +37,7 @@ grep -F "$DISPLAY_DATE" paper/contact_geometric_bound.tex >/dev/null || fail "pa
 grep -F 'given-names: "Bruce J."' CITATION.cff >/dev/null || fail "CFF given names missing"
 grep -F 'family-names: "Swihart"' CITATION.cff >/dev/null || fail "CFF family name missing"
 grep -F 'version: "1.0.0"' CITATION.cff >/dev/null || fail "CFF version inconsistent"
-grep -F 'date-released: "2026-09-20"' CITATION.cff >/dev/null || fail "CFF release date inconsistent"
+grep -F 'date-released: "2026-09-26"' CITATION.cff >/dev/null || fail "CFF release date inconsistent"
 grep -F 'status: preprint' CITATION.cff >/dev/null || fail "CFF preprint status missing"
 grep -F "repository-code: \"$REPOSITORY_URL\"" CITATION.cff >/dev/null || fail "CFF repository URL inconsistent"
 grep -F "url: \"$RELEASE_URL\"" CITATION.cff >/dev/null || fail "CFF release URL inconsistent"
@@ -57,7 +57,7 @@ text = Path('CITATION.cff').read_text(encoding='utf-8')
 required = (
     'cff-version: 1.2.0', 'message:', 'title:', 'type: software',
     'authors:', 'preferred-citation:', 'type: unpublished',
-    'version: "1.0.0"', 'date-released: "2026-09-20"',
+    'version: "1.0.0"', 'date-released: "2026-09-26"',
     'year: 2026', 'status: preprint', 'license: CC-BY-4.0',
     'https://github.com/swihart/minvol-degree3-contact-bound',
     'releases/tag/v1.0.0',

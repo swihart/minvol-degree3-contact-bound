@@ -123,7 +123,7 @@ extractable-text preflight.
 - **Sole named author:** Bruce J. Swihart
 - **Institutional affiliation:** none asserted
 - **Version:** `v1.0.0`
-- **Release date:** September 20, 2026
+- **Release date:** September 26, 2026
 - **Canonical repository:**
   <https://github.com/swihart/minvol-degree3-contact-bound>
 - **Versioned release:**

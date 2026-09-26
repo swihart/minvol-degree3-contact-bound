@@ -241,7 +241,7 @@ The following nonmathematical defects or risks were found and addressed during
 public-package construction:
 
 - private parent-package imports were flattened into a standalone public tree;
-- private branch names, commit hashes, and private sequel material were removed;
+- private branch names, commit hashes, and unrelated unreleased research material were removed;
 - a seven-case mutation suite was added to ensure that proof-object corruption
   is detected;
 - theorem-critical manuscript constants were moved to generated TeX includes;
@@ -263,12 +263,12 @@ certificate requires a new version and explicit coefficient comparison.
 ## 9. Literature and precedence audit
 
 The source ledger was checked against official publisher, arXiv, and public
-repository records on September 20, 2026. That targeted search did not locate a
+repository records on September 26, 2026. That targeted search did not locate a
 later public universal coefficient exceeding the proposed one. This is not a
 systematic novelty review and should not be reported as one.
 
-Before release, repeat the search and ask independent experts specifically
-about:
+The targeted search was repeated on September 26, 2026, immediately before
+release. Independent experts should still be asked specifically about:
 
 - unpublished or recently accepted universal lower bounds;
 - alternate contact-geometric certificates;

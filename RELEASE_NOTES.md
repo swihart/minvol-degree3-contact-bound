@@ -1,6 +1,6 @@
 # Release notes: v1.0.0
 
-**Release date:** September 20, 2026<br>
+**Release date:** September 26, 2026<br>
 **Author:** Bruce J. Swihart<br>
 **Status:** AI-assisted, non-peer-reviewed computer-assisted research preprint seeking independent mathematical verification
 
@@ -122,7 +122,7 @@ SHA256SUMS.txt
 - paper and prose license: CC BY 4.0;
 - software and build-infrastructure license: MIT;
 - version: `v1.0.0`;
-- release date: September 20, 2026;
+- release date: September 26, 2026;
 - archival DOI: none assigned or implied.
 
 ## Scope and limitations
@@ -152,7 +152,7 @@ repository](https://github.com/swihart/minvol-degree3-spectral-bound).
 
 Bruce J. Swihart, *A Certified Contact-Geometric Lower Bound for the
 Three-Dimensional Blaschke-Lebesgue Problem*, version v1.0.0,
-computer-assisted preprint, September 20, 2026.
+computer-assisted preprint, September 26, 2026.
 
 The machine-readable citation is in [`CITATION.cff`](CITATION.cff).
 

@@ -17,9 +17,9 @@ from pathlib import Path, PurePosixPath
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_OUTPUT = ROOT / "release" / "build"
 EXPECTED_VERSION = "v1.0.0"
-EXPECTED_DATE = "2026-09-20"
+EXPECTED_DATE = "2026-09-26"
 PROJECT_STEM = "minvol-contact-bound"
-FIXED_ZIP_TIME = (2026, 9, 20, 0, 0, 0)
+FIXED_ZIP_TIME = (2026, 9, 26, 0, 0, 0)
 
 FORBIDDEN_PARTS = {
     ".git",
