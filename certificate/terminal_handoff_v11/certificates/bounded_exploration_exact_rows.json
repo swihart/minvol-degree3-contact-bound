@@ -1,0 +1,249 @@
+{
+  "doubled_angular_resolution": {
+    "split2_minimum_coefficient_of_pi": "65552899375129/500000000000000",
+    "split2_minimum_volume_lower": "0.41188101419683242828062024945678498212848475833825",
+    "split2_rows": [
+      {
+        "case": "split",
+        "coefficient_of_pi": "26221620311207/200000000000000",
+        "interval": [
+          "76421809/125000000",
+          "611382837/1000000000"
+        ],
+        "negative_steps": 37129,
+        "positive_steps": 12617,
+        "s0": "9960147/20000000",
+        "volume_lower": "0.41188824867454409561627801677056668899293217574195"
+      },
+      {
+        "case": "split",
+        "coefficient_of_pi": "65552899375129/500000000000000",
+        "interval": [
+          "611382837/1000000000",
+          "305695601/500000000"
+        ],
+        "negative_steps": 37134,
+        "positive_steps": 12614,
+        "s0": "12450611/25000000",
+        "volume_lower": "0.41188101419683242828062024945678498212848475833825"
+      }
+    ],
+    "unsplit": {
+      "case": "split",
+      "coefficient_of_pi": "13110492615837/100000000000000",
+      "interval": [
+        "76421809/125000000",
+        "305695601/500000000"
+      ],
+      "negative_steps": 37125,
+      "positive_steps": 12619,
+      "s0": "3112413/6250000",
+      "volume_lower": "0.41187827286856750543296076970457769555943133528484"
+    }
+  },
+  "generator_regression": {
+    "private_reference_validation_transcript": "transcripts/reference_generator_validation.txt",
+    "reproduced_v1_O3B02_arrays": true,
+    "reproduced_v1_O3B02_coefficient": true
+  },
+  "left_shifts": {
+    "method": "Each terminal row was regenerated with exact rational step checks on angle grid N=38400 and radial grid G=100000000000 after a local 1e-8 tangent-radius search; floating point proposed nearby grid integers only.",
+    "samples": [
+      {
+        "R": "305695601/500000000",
+        "s0": [
+          "12450049/25000000",
+          "9960381/20000000"
+        ],
+        "shift": "0",
+        "split_min_coefficient_of_pi": "131105588132783/1000000000000000",
+        "split_point": "611382837/1000000000"
+      },
+      {
+        "R": "61139120199/100000000000",
+        "s0": [
+          "49800197/100000000",
+          "49801907/100000000"
+        ],
+        "shift": "1/100000000000",
+        "split_min_coefficient_of_pi": "65552794067751/500000000000000",
+        "split_point": "611382836995/1000000000000"
+      },
+      {
+        "R": "30569560099/50000000000",
+        "s0": [
+          "49800197/100000000",
+          "24900953/50000000"
+        ],
+        "shift": "1/50000000000",
+        "split_min_coefficient_of_pi": "131105588139273/1000000000000000",
+        "split_point": "611382836990/1000000000000"
+      },
+      {
+        "R": "61139120197/100000000000",
+        "s0": [
+          "24900099/50000000",
+          "9960381/20000000"
+        ],
+        "shift": "3/100000000000",
+        "split_min_coefficient_of_pi": "32776397035497/250000000000000",
+        "split_point": "611382836985/1000000000000"
+      },
+      {
+        "R": "15284780049/25000000000",
+        "s0": [
+          "24900099/50000000",
+          "24900953/50000000"
+        ],
+        "shift": "1/25000000000",
+        "split_min_coefficient_of_pi": "131105588145779/1000000000000000",
+        "split_point": "611382836980/1000000000000"
+      }
+    ],
+    "schema": "minvol-terminal-handoff-left-shift-exact-rows-v1"
+  },
+  "local_s0_retune": {
+    "coefficient_of_pi": "131104700448567/1000000000000000",
+    "interval": [
+      "76421809/125000000",
+      "305695601/500000000"
+    ],
+    "negative_steps": 18562,
+    "positive_steps": 6309,
+    "s0": "49798209/100000000",
+    "volume_lower": "0.41187756378030855743348610556931679628934140520993"
+  },
+  "schema": "minvol-terminal-handoff-archived-exact-search-v1",
+  "splits": {
+    "2": {
+      "minimum_coefficient_of_pi": "131105572993743/1000000000000000",
+      "minimum_volume_lower": "0.41188030496182340424665916356645708513864268953672",
+      "rows": [
+        {
+          "case": "split1",
+          "coefficient_of_pi": "131107875849897/1000000000000000",
+          "interval": [
+            "76421809/125000000",
+            "611382837/1000000000"
+          ],
+          "negative_steps": 18564,
+          "positive_steps": 6308,
+          "s0": "12450083/25000000",
+          "volume_lower": "0.41188753959779908469220994485427137772256162373762"
+        },
+        {
+          "case": "split2",
+          "coefficient_of_pi": "131105572993743/1000000000000000",
+          "interval": [
+            "611382837/1000000000",
+            "305695601/500000000"
+          ],
+          "negative_steps": 18566,
+          "positive_steps": 6307,
+          "s0": "49802043/100000000",
+          "volume_lower": "0.41188030496182340424665916356645708513864268953672"
+        }
+      ],
+      "source_transcript": "The exact row-generation run was captured in split_results.json in the scratch audit and normalized here."
+    },
+    "3": {
+      "minimum_coefficient_of_pi": "32776465979501/250000000000000",
+      "minimum_volume_lower": "0.41188121892734451288625420610775947226777572196680",
+      "rows": [
+        {
+          "case": "split1",
+          "coefficient_of_pi": "16388616817233/125000000000000",
+          "interval": [
+            "76421809/125000000",
+            "38211253/62500000"
+          ],
+          "negative_steps": 18565,
+          "positive_steps": 6308,
+          "s0": "24900521/50000000",
+          "volume_lower": "0.41189086556413865580566552321640026790126286507532"
+        },
+        {
+          "case": "split2",
+          "coefficient_of_pi": "65553699556993/500000000000000",
+          "interval": [
+            "38211253/62500000",
+            "978217/1600000"
+          ],
+          "negative_steps": 18566,
+          "positive_steps": 6307,
+          "s0": "24901091/50000000",
+          "volume_lower": "0.41188604188776338465471010472573858184658649887256"
+        },
+        {
+          "case": "split3",
+          "coefficient_of_pi": "32776465979501/250000000000000",
+          "interval": [
+            "978217/1600000",
+            "305695601/500000000"
+          ],
+          "negative_steps": 18568,
+          "positive_steps": 6306,
+          "s0": "24901661/50000000",
+          "volume_lower": "0.41188121892734451288625420610775947226777572196680"
+        }
+      ],
+      "source_transcript": "The exact row-generation run was captured in split_results.json in the scratch audit and normalized here."
+    },
+    "4": {
+      "minimum_coefficient_of_pi": "327765023517/2500000000000",
+      "minimum_volume_lower": "0.41188167599387720611035035897863628296918182234041",
+      "rows": [
+        {
+          "case": "split1",
+          "coefficient_of_pi": "131109463739037/1000000000000000",
+          "interval": [
+            "76421809/125000000",
+            "305689327/500000000"
+          ],
+          "negative_steps": 18565,
+          "positive_steps": 6307,
+          "s0": "9960279/20000000",
+          "volume_lower": "0.41189252809865602370690814511599538010277603910053"
+        },
+        {
+          "case": "split2",
+          "coefficient_of_pi": "16388539020447/125000000000000",
+          "interval": [
+            "305689327/500000000",
+            "611382837/1000000000"
+          ],
+          "negative_steps": 18566,
+          "positive_steps": 6307,
+          "s0": "199209/400000",
+          "volume_lower": "0.41188891031764769182745466781451000140955031891556"
+        },
+        {
+          "case": "split3",
+          "coefficient_of_pi": "13110716101299/100000000000000",
+          "interval": [
+            "611382837/1000000000",
+            "611387019/1000000000"
+          ],
+          "negative_steps": 18567,
+          "positive_steps": 6306,
+          "s0": "24901553/50000000",
+          "volume_lower": "0.41188529387142353864196459270484023018720338665387"
+        },
+        {
+          "case": "split4",
+          "coefficient_of_pi": "327765023517/2500000000000",
+          "interval": [
+            "611387019/1000000000",
+            "305695601/500000000"
+          ],
+          "negative_steps": 18568,
+          "positive_steps": 6306,
+          "s0": "24901981/50000000",
+          "volume_lower": "0.41188167599387720611035035897863628296918182234041"
+        }
+      ],
+      "source_transcript": "The exact row-generation run was captured in split_results.json in the scratch audit and normalized here."
+    }
+  },
+  "status": "Archived exact parameter-search outputs; final theorem candidate is independently regenerated by terminal_handoff_v11_exact.py."
+}

@@ -1,0 +1,129 @@
+{
+  "claim_boundary": {
+    "not_a_standalone_theorem_certificate": true,
+    "role": "Reference rows and reference-fan regression values only; the public verifier replays the replacement rows and final fan independently."
+  },
+  "lower_branch": {
+    "rows_through_handoff": [
+      {
+        "case": "0",
+        "coefficient_decimal": "0.417357494296971905466431476576887965040654067",
+        "coefficient_of_pi": "76439431/575385750",
+        "interval": [
+          "1/2",
+          "3/5"
+        ],
+        "negative_steps": 0,
+        "positive_steps": 0,
+        "s0": "37/80"
+      },
+      {
+        "case": "O1A",
+        "coefficient_decimal": "0.416797024215341508508847352576522509296485433",
+        "coefficient_of_pi": "8291913333733/62500000000000",
+        "interval": [
+          "3/5",
+          "6047/10000"
+        ],
+        "negative_steps": 15746,
+        "positive_steps": 7449,
+        "s0": "959367/2000000"
+      },
+      {
+        "case": "O1B",
+        "coefficient_decimal": "0.412421390558880711837656898236596319488642110",
+        "coefficient_of_pi": "65638902944279/500000000000000",
+        "interval": [
+          "6047/10000",
+          "3047/5000"
+        ],
+        "negative_steps": 16448,
+        "positive_steps": 7304,
+        "s0": "4819069/10000000"
+      },
+      {
+        "case": "O2A",
+        "coefficient_decimal": "0.412690926230586057042970098464648019570964061",
+        "coefficient_of_pi": "131363601757541/1000000000000000",
+        "interval": [
+          "3047/5000",
+          "61019/100000"
+        ],
+        "negative_steps": 17927,
+        "positive_steps": 6634,
+        "s0": "3943/8000"
+      },
+      {
+        "case": "O2B",
+        "coefficient_decimal": "0.411993918231918694157930046639197826052373354",
+        "coefficient_of_pi": "8196358576301/62500000000000",
+        "interval": [
+          "61019/100000",
+          "30549/50000"
+        ],
+        "negative_steps": 18107,
+        "positive_steps": 6557,
+        "s0": "123513/250000"
+      },
+      {
+        "case": "O3A1",
+        "coefficient_decimal": "0.411858907182107359587912463718035645483251196",
+        "coefficient_of_pi": "131098761868917/1000000000000000",
+        "interval": [
+          "30549/50000",
+          "6113/10000"
+        ],
+        "negative_steps": 18418,
+        "positive_steps": 6384,
+        "s0": "1987/4000"
+      },
+      {
+        "case": "O3A2",
+        "coefficient_decimal": "0.411898771358480044840465895790289077465524837",
+        "coefficient_of_pi": "131111451030361/1000000000000000",
+        "interval": [
+          "6113/10000",
+          "244541/400000"
+        ],
+        "negative_steps": 18448,
+        "positive_steps": 6397,
+        "s0": "1987/4000"
+      },
+      {
+        "case": "O3B01",
+        "coefficient_of_pi": "32777190301709/250000000000000",
+        "interval": [
+          "244541/400000",
+          "76421809/125000000"
+        ],
+        "negative_steps": 18555,
+        "positive_steps": 6313,
+        "s0": "4979241/10000000"
+      },
+      {
+        "case": "O3B02",
+        "coefficient_of_pi": "26220940089713/200000000000000",
+        "interval": [
+          "76421809/125000000",
+          "305695601/500000000"
+        ],
+        "negative_steps": 18562,
+        "positive_steps": 6309,
+        "s0": "2489911/5000000"
+      }
+    ],
+    "terminal_row": "O3B02"
+  },
+  "near_jung_reference_fan": {
+    "edges": 294912,
+    "faces": 196608,
+    "fan_sha256": "dcd9c4945cad4960f0a1a933d34b272190bb21d351e03eec3c2d4a708ed26200",
+    "minimum_margin": "66386013885953863114739214279224146553096536855793/33193006273460136529637112454622404044441108907614961083088896",
+    "minimum_margin_index": 19510,
+    "orbits": 24833,
+    "vertices": 98306
+  },
+  "schema": "minvol.reference_handoff.v1",
+  "source_certificate_sha256": "4173a5903099f23d6e4628e4384f9704a10598a75a3191a966bf0cbcd412087a",
+  "status": "IMMUTABLE_REFERENCE_PROOF_OBJECT"
+}

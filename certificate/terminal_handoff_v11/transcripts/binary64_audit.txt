@@ -1,0 +1,7 @@
+v1.0.0 lower:             0.4118775637803023
+v1.1 candidate lower:     0.4118796712122864
+unchanged near-Jung lower:0.4118796712148324
+split terminal minimum:   0.4118803049618234
+gain over v1.0.0:         2.1074319840885813e-06
+near-Jung safety margin:  2.5460744623728715e-12
+MINVOL TERMINAL-HANDOFF V1.1 BINARY64 AUDIT: PASS

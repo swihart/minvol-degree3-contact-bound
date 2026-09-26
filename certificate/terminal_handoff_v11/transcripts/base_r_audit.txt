@@ -1,0 +1,7 @@
+v1.0.0 lower:              0.4118775637803024
+v1.1 candidate lower:      0.4118796712122868
+unchanged near-Jung lower: 0.4118796712148326
+split terminal minimum:    0.4118803049618236
+gain over v1.0.0:          2.1074319844216483e-06
+near-Jung safety margin:   2.5457969066167152e-12
+MINVOL TERMINAL-HANDOFF V1.1 BASE-R AUDIT: PASS

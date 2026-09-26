@@ -1,0 +1,41 @@
+{
+  "schema": "minvol-terminal-handoff-left-shift-exact-rows-v1",
+  "method": "Each terminal row was regenerated with exact rational step checks on angle grid N=38400 and radial grid G=100000000000 after a local 1e-8 tangent-radius search; floating point proposed nearby grid integers only.",
+  "samples": [
+    {
+      "shift": "0",
+      "R": "305695601/500000000",
+      "split_point": "611382837/1000000000",
+      "s0": ["12450049/25000000", "9960381/20000000"],
+      "split_min_coefficient_of_pi": "131105588132783/1000000000000000"
+    },
+    {
+      "shift": "1/100000000000",
+      "R": "61139120199/100000000000",
+      "split_point": "611382836995/1000000000000",
+      "s0": ["49800197/100000000", "49801907/100000000"],
+      "split_min_coefficient_of_pi": "65552794067751/500000000000000"
+    },
+    {
+      "shift": "1/50000000000",
+      "R": "30569560099/50000000000",
+      "split_point": "611382836990/1000000000000",
+      "s0": ["49800197/100000000", "24900953/50000000"],
+      "split_min_coefficient_of_pi": "131105588139273/1000000000000000"
+    },
+    {
+      "shift": "3/100000000000",
+      "R": "61139120197/100000000000",
+      "split_point": "611382836985/1000000000000",
+      "s0": ["24900099/50000000", "9960381/20000000"],
+      "split_min_coefficient_of_pi": "32776397035497/250000000000000"
+    },
+    {
+      "shift": "1/25000000000",
+      "R": "15284780049/25000000000",
+      "split_point": "611382836980/1000000000000",
+      "s0": ["24900099/50000000", "24900953/50000000"],
+      "split_min_coefficient_of_pi": "131105588145779/1000000000000000"
+    }
+  ]
+}
