@@ -82,7 +82,7 @@ Required fields:
 | `strict_gain_over_previous_lower` | Exact-decimal gain over the immediate predecessor certificate |
 
 For schema v1, `coefficient_of_pi` is
-`26220940089713/200000000000000`.
+`26221074253/200000000000`.
 
 ### `circumradius_partition`
 
@@ -120,7 +120,7 @@ coefficient_of_pi
 ```
 
 The four refined rows additionally record the angular and radial grids and
-their exact margins over `O3B02`.
+their exact margins over the displayed theorem coefficient.
 
 ### `near_Jung_branch`
 
@@ -209,7 +209,7 @@ radial_grid
 positive_steps
 negative_steps
 coefficient_of_pi
-margin_over_O3B02
+margin_over_theorem
 ```
 
 ### `fan_orbit_margin_audit.tsv`
@@ -261,7 +261,7 @@ The exact program follows this order:
 7. verify determinant and coordinate-width bounds;
 8. verify cap allocations and cross-axis disjointness;
 9. assemble the near-Jung lower bound and handoff margin;
-10. compare both branches and select `O3B02` as the universal bottleneck;
+10. compare both branches, verify `O3B02A/O3B02B` clear the theorem coefficient, and identify the near-Jung branch as the universal bottleneck;
 11. write or compare derived TSV/CSV files; and
 12. serialize the final JSON with sorted keys and two-space indentation.
 

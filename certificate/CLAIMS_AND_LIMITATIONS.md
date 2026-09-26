@@ -7,8 +7,8 @@ The exact certificate and manuscript represent the universal statement
 $$
 \boxed{
 \mathrm{Vol}(K)\ge
-\frac{26220940089713\pi}{200000000000000}\,d^3
-=0.41187756378030227424817892598\ldots d^3
+\frac{26221074253\pi}{200000000000}\,d^3
+=0.41187967121228637754323153860\ldots d^3
 }
 $$
 
@@ -47,7 +47,7 @@ checks:
 - gap-free circumradius coverage from $1/2$ through $\sqrt6/4$;
 - the exact split
   $R_*=305695601/500000000$;
-- the unique lower-branch bottleneck `O3B02`;
+- the lower-branch weakest row `O3B02B`; the universal bottleneck is the near-Jung branch;
 - four exact replacement cells for the old `O3A1` interval;
 - reconstruction of a 98,306-vertex near-Jung fan;
 - all exact fan-margin and inherited-multiplier inequalities;

@@ -208,7 +208,7 @@ def run_audit() -> dict[str, float | int]:
     row_results = [audit_refined_row(path) for path in ROW_FILES]
     min_row = min(result[0] for result in row_results)
     if not min_row > theorem_pi + 1.0e-5:
-        raise RuntimeError("binary64 refined rows do not clear O3B02")
+        raise RuntimeError("binary64 refined rows do not clear theorem coefficient")
 
     reference = np.load(REFERENCE_FAN, allow_pickle=False)
     fan = np.load(FAN, allow_pickle=False)
@@ -311,7 +311,7 @@ def run_audit() -> dict[str, float | int]:
         raise RuntimeError("binary64 cross-axis disjointness failed")
 
     theorem = theorem_pi * math.pi
-    previous = 131_098_268_771_713 / 1_000_000_000_000_000 * math.pi
+    previous = 26_220_940_089_713 / 200_000_000_000_000 * math.pi
     if not near > theorem > previous:
         raise RuntimeError("binary64 universal assembly ordering failed")
     changed = int(np.sum(A < reference_A))

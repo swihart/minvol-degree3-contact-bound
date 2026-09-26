@@ -7,13 +7,13 @@ universal contact-geometric lower bound
 
 $$
 \mathrm{Vol}(K)\ge
-\frac{26220940089713\pi}{200000000000000}\,d^3
-=0.41187756378030227424817892598\ldots d^3
+\frac{26221074253\pi}{200000000000}\,d^3
+=0.41187967121228637754323153860\ldots d^3
 $$
 
 for every three-dimensional convex body `K` of constant width `d`.
 
-The manuscript is version `v1.0.0` of an **AI-assisted, computer-assisted,
+The manuscript is version `v1.1.0` of an **AI-assisted, computer-assisted,
 non-peer-reviewed research preprint**. Bruce J. Swihart is the sole named
 author, and no institutional affiliation is asserted. It does not establish
 sharpness or equality, identify a minimizer, or prove the Meissner conjecture.
@@ -122,12 +122,12 @@ extractable-text preflight.
 
 - **Sole named author:** Bruce J. Swihart
 - **Institutional affiliation:** none asserted
-- **Version:** `v1.0.0`
+- **Version:** `v1.1.0`
 - **Release date:** September 26, 2026
 - **Canonical repository:**
   <https://github.com/swihart/minvol-degree3-contact-bound>
 - **Versioned release:**
-  <https://github.com/swihart/minvol-degree3-contact-bound/releases/tag/v1.0.0>
+  <https://github.com/swihart/minvol-degree3-contact-bound/releases/tag/v1.1.0>
 - **Audited pre-release workflow:**
   <https://github.com/swihart/minvol-degree3-contact-bound/actions/runs/35468019663>
 - **Paper/prose license:** CC BY 4.0

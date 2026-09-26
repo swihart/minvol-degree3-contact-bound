@@ -10,7 +10,7 @@ The package represents the proposed theorem
 
 $$
 \mathrm{Vol}(K)\ge
-\frac{26220940089713\pi}{200000000000000}\,d^3
+\frac{26221074253\pi}{200000000000}\,d^3
 $$
 
 for every three-dimensional convex body $K$ of constant width $d>0$.

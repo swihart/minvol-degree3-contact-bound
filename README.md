@@ -1,6 +1,6 @@
 # MinVol three-dimensional contact bound
 
-**Release:** [v1.0.0](https://github.com/swihart/minvol-degree3-contact-bound/releases/tag/v1.0.0) (September 26, 2026)<br>
+**Release:** [v1.1.0](https://github.com/swihart/minvol-degree3-contact-bound/releases/tag/v1.1.0) (September 26, 2026)<br>
 **Author:** Bruce J. Swihart<br>
 **Status:** AI-assisted, non-peer-reviewed computer-assisted research preprint seeking independent mathematical verification<br>
 **Canonical repository:** [github.com/swihart/minvol-degree3-contact-bound](https://github.com/swihart/minvol-degree3-contact-bound)<br>
@@ -12,8 +12,8 @@ the proposed universal bound
 $$
 \boxed{
 \mathrm{Vol}(K)\ge
-\frac{26220940089713\pi}{200000000000000}\,d^3
-=0.41187756378030227424817892598\ldots d^3
+\frac{26221074253\pi}{200000000000}\,d^3
+=0.41187967121228637754323153860\ldots d^3
 }
 $$
 
@@ -44,10 +44,10 @@ machine-readable certificate rather than copied manually.
 - **Institutional affiliation:** none asserted
 - **Correspondence and verification reports:**
   <https://github.com/swihart/minvol-degree3-contact-bound/issues>
-- **Version:** `v1.0.0`
+- **Version:** `v1.1.0`
 - **Release date:** September 26, 2026
 - **Versioned release:**
-  <https://github.com/swihart/minvol-degree3-contact-bound/releases/tag/v1.0.0>
+  <https://github.com/swihart/minvol-degree3-contact-bound/releases/tag/v1.1.0>
 - **License:** CC BY 4.0 for paper/prose; MIT for software/build infrastructure
 - **Citation metadata:** [`CITATION.cff`](CITATION.cff)
 - **Licensing text:** [`LICENSE`](LICENSE)
@@ -65,7 +65,7 @@ empty `git status --short`.
 The archived evidence and exact transfer hashes are in
 [`CLEAN_CLONE_CHECK.md`](CLEAN_CLONE_CHECK.md) and
 [`certificate/evidence/rc1_remote_audit.json`](certificate/evidence/rc1_remote_audit.json).
-The final `v1.0.0` tag is required to pass the same three hosted jobs before the
+The final `v1.1.0` tag is required to pass the same three hosted jobs before the
 GitHub Release is published. These are reproducibility checks, not peer review
 or external mathematical verification.
 
@@ -168,10 +168,10 @@ R_*=\frac{305695601}{500000000}=0.611391202.
 $$
 
 Below the split, a gap-free exact radial-propagation certificate has unique
-bottleneck `O3B02`. Above the split, four balanced circumsphere contacts force
+weakest terminal row `O3B02B`. Above the split, four balanced circumsphere contacts force
 a 98,306-ray polyhedral core. An exact determinant transfer, a dominant-edge
 coordinate-width estimate, and three optimized antipodal cap pairs produce a
-near-Jung lower bound strictly above the bottleneck. Exact integer and rational
+near-Jung lower bound that is the universal bottleneck, while both split terminal rows clear the theorem coefficient. Exact integer and rational
 arithmetic supplies the finite proof authority; binary64 Python and base R are
 independent numerical audits.
 

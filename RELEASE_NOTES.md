@@ -1,4 +1,4 @@
-# Release notes: v1.0.0
+# Release notes: v1.1.0
 
 **Release date:** September 26, 2026<br>
 **Author:** Bruce J. Swihart<br>
@@ -8,24 +8,26 @@
 [github.com/swihart/minvol-degree3-contact-bound](https://github.com/swihart/minvol-degree3-contact-bound)
 
 **Versioned release:**
-[v1.0.0](https://github.com/swihart/minvol-degree3-contact-bound/releases/tag/v1.0.0)
+[v1.1.0](https://github.com/swihart/minvol-degree3-contact-bound/releases/tag/v1.1.0)
 
 **Main manuscript:**
 [PDF](paper/contact_geometric_bound.pdf) | [LaTeX source](paper/contact_geometric_bound.tex)
 
 ## Purpose of this release
 
-Version `v1.0.0` is the initial public research release of a proposed
+Version `v1.1.0` is a minor theorem-strengthening release of the public
 computer-assisted universal lower bound in the three-dimensional
-Blaschke-Lebesgue problem.
+Blaschke-Lebesgue problem. It preserves the `v1.0.0` proof architecture and
+replaces only the terminal lower-circumradius row by two independently tuned
+exact subrows.
 
 For every convex body $K\subset\mathbb R^3$ of constant width $d>0$, the
 package represents the proposed inequality
 
 $$
 \mathrm{Vol}(K)\ge
-\frac{26220940089713\pi}{200000000000000}\,d^3
-=0.4118775637803022742481789259828398710\ldots d^3.
+\frac{26221074253\pi}{200000000000}\,d^3
+=0.4118796712122863775432315385981549189\ldots d^3.
 $$
 
 The result is universal: no symmetry, smoothness, contact-type, or fixed
@@ -57,17 +59,19 @@ $$
 R_*=\frac{305695601}{500000000}=0.611391202.
 $$
 
-The lower branch is a gap-free exact radial certificate whose unique bottleneck
-is `O3B02`. In the near-Jung branch, four circumsphere contacts force a
-98,306-ray core. An exact determinant transfer, a dominant-edge
+The lower branch is a gap-free exact radial certificate. The former terminal
+row `O3B02` is replaced by the exact rows `O3B02A` and `O3B02B`; both strictly
+clear the displayed theorem coefficient. In the near-Jung branch, four
+circumsphere contacts force a 98,306-ray core. An exact determinant transfer, a dominant-edge
 coordinate-width estimate, and three optimized antipodal cap pairs give
 
 ```text
 near-Jung lower = 0.4118796712148324317327979810531508741628745212952960018
-handoff margin  = 0.0000021074345301574846190550703110031602996750911392740
+v1.1 theorem    = 0.4118796712122863775432315385981549188973081955671703077
+near-Jung margin over theorem = 0.000000000002546054189566442454995955265...
 ```
 
-so the lower-row coefficient is the universal bottleneck.
+The unchanged near-Jung branch is now the universal bottleneck.
 
 ## Verification status
 
@@ -87,7 +91,7 @@ Before the final version transition, audited release-candidate commit
   and R 4.6.1; and
 - a clean fresh-clone working tree and complete five-commit bundle.
 
-The exact `v1.0.0` tag must pass the same three hosted jobs before the GitHub
+The exact `v1.1.0` tag must pass the same three hosted jobs before the GitHub
 Release is published. Release assets are then built from that tagged checkout,
 verified against one SHA-256 manifest, downloaded, and reverified in a clean
 directory.
@@ -101,12 +105,12 @@ verification of the complete mathematical argument.
 The tagged asset builder produces:
 
 ```text
-minvol-contact-bound-paper-v1.0.0.pdf
-minvol-contact-bound-paper-source-v1.0.0.zip
-minvol-contact-bound-certificate-v1.0.0.zip
-minvol-contact-bound-docs-v1.0.0.zip
-minvol-contact-bound-replay-transcripts-v1.0.0.zip
-minvol-contact-bound-release-record-v1.0.0.json
+minvol-contact-bound-paper-v1.1.0.pdf
+minvol-contact-bound-paper-source-v1.1.0.zip
+minvol-contact-bound-certificate-v1.1.0.zip
+minvol-contact-bound-docs-v1.1.0.zip
+minvol-contact-bound-replay-transcripts-v1.1.0.zip
+minvol-contact-bound-release-record-v1.1.0.json
 RELEASE_NOTES.md
 RELEASE_NOTES.pdf
 SHA256SUMS.txt
@@ -121,7 +125,7 @@ SHA256SUMS.txt
 - preferred citation: `CITATION.cff`;
 - paper and prose license: CC BY 4.0;
 - software and build-infrastructure license: MIT;
-- version: `v1.0.0`;
+- version: `v1.1.0`;
 - release date: September 26, 2026;
 - archival DOI: none assigned or implied.
 
@@ -151,7 +155,7 @@ repository](https://github.com/swihart/minvol-degree3-spectral-bound).
 ## Preferred citation
 
 Bruce J. Swihart, *A Certified Contact-Geometric Lower Bound for the
-Three-Dimensional Blaschke-Lebesgue Problem*, version v1.0.0,
+Three-Dimensional Blaschke-Lebesgue Problem*, version v1.1.0,
 computer-assisted preprint, September 26, 2026.
 
 The machine-readable citation is in [`CITATION.cff`](CITATION.cff).
@@ -160,5 +164,5 @@ The machine-readable citation is in [`CITATION.cff`](CITATION.cff).
 
 A change to any theorem-bearing proof object, exact verification rule, radius
 partition, or coefficient requires a new version and explicit mathematical
-comparison. Corrections must preserve the `v1.0.0` record and must not silently
-rewrite released history.
+comparison. The public `v1.0.0` tag and release remain immutable. Corrections must preserve
+all released history and must not silently rewrite either release.

@@ -22,8 +22,8 @@ The present package represents the universal lower bound
 
 $$
 \mathrm{Vol}(K)\ge
-\frac{26220940089713\pi}{200000000000000}\,d^3
-=0.4118775637803022742\ldots d^3.
+\frac{26221074253\pi}{200000000000}\,d^3
+=0.4118796712122863775\ldots d^3.
 $$
 
 ## Normalize the width
@@ -103,7 +103,7 @@ radial function is forced above or below explicit values.
 All cap angles are represented by a rational tangent-half-angle grid. After
 one square root is cleared, every propagation, cap, disjointness, and
 integration condition becomes an integer inequality. A gap-free finite table
-covers $[1/2,R_*]$. Its unique weakest row is `O3B02`, and its exact coefficient
+covers $[1/2,R_*]$. Its terminal row is split into `O3B02A` and `O3B02B`; `O3B02B` is the weakest lower row, while the near-Jung branch sets the theorem coefficient. The former exact terminal coefficient
 of $\pi$ is the final theorem coefficient.
 
 ## Branch II: near the Jung endpoint
@@ -224,7 +224,7 @@ $$
 0.000002107434530157484619055\ldots>0.
 $$
 
-Therefore the universal bottleneck is the lower-branch row `O3B02`, and the
+Therefore the split terminal rows clear the theorem coefficient, the unchanged near-Jung branch is the universal bottleneck, and the
 two branches together cover the complete Jung interval.
 
 ## What the computer checks

@@ -18,7 +18,7 @@
   urlcolor=blue,
   pdftitle={A Certified Contact-Geometric Lower Bound for the Three-Dimensional Blaschke--Lebesgue Problem},
   pdfauthor={Bruce J. Swihart},
-  pdfsubject={Version v1.0.0; computer-assisted preprint; three-dimensional Blaschke--Lebesgue problem},
+  pdfsubject={Version v1.1.0; computer-assisted preprint; three-dimensional Blaschke--Lebesgue problem},
   pdfkeywords={constant width, Blaschke--Lebesgue problem, convex geometry, computer-assisted proof, exact rational arithmetic}
 }
 
@@ -37,10 +37,10 @@
 \newcommand{\Id}{\operatorname{Id}}
 \newcommand{\dd}{\,d\sigma}
 \newcommand{\eps}{\varepsilon}
-\newcommand{\releaseversion}{v1.0.0}
+\newcommand{\releaseversion}{v1.1.0}
 \newcommand{\releasedate}{September 26, 2026}
 \newcommand{\repositoryurl}{https://github.com/swihart/minvol-degree3-contact-bound}
-\newcommand{\releaseurl}{https://github.com/swihart/minvol-degree3-contact-bound/releases/tag/v1.0.0}
+\newcommand{\releaseurl}{https://github.com/swihart/minvol-degree3-contact-bound/releases/tag/v1.1.0}
 
 \input{certificate_constants.tex}
 
@@ -137,9 +137,10 @@ The certificate uses the exact handoff
 A finite radial certificate covers $R\le R_*$.  The complementary interval is
 handled by a nearly tetrahedral four-contact configuration, a
 $\FanVertices$-ray forced fan, and six additional cone caps.  The near-Jung
-branch gives the strictly larger lower value
-$\NearDecimal\ldots$, leaving the final row of the radial partition as the
-unique bottleneck.
+branch gives the lower value
+$\NearDecimal\ldots$.  After splitting and retuning the former terminal row
+\texttt{O3B02}, both replacement rows clear the theorem coefficient, so the
+near-Jung branch is the universal bottleneck.
 
 The proof has two layers.  The geometric reductions are stated and proved in
 the text.  The finite claims are represented by immutable integer and rational
@@ -278,13 +279,14 @@ sum.  The resulting arrays therefore contain no floating-point proof step.
 
 \subsection{Finite partition}
 
-The exact lower branch contains twelve rows.  Four doubled-angular-grid cells
+The exact lower branch contains thirteen rows.  Four doubled-angular-grid cells
 replace a formerly insufficient parent row; their angular denominator is
 $76{,}800$ and their radial denominator is $4\cdot10^{10}$.  The weakest
 replacement margin over the terminal coefficient of $\pi$ is
 $1.8799274348\times10^{-5}$.  Appendix~\ref{app:lower-table} gives the complete
-gap-free table generated directly from the certificate JSON.  Its unique
-weakest row is \texttt{O3B02}, ending exactly at $R_*$.
+gap-free table generated directly from the certificate JSON.  The former terminal row \texttt{O3B02} is split into \texttt{O3B02A} and
+\texttt{O3B02B}; the latter is the weakest lower-branch row and ends exactly
+at $R_*$.  Both strictly clear the theorem coefficient.
 
 \section{Near-Jung contact geometry}
 \label{sec:contact}
@@ -527,10 +529,10 @@ Theorem~\ref{thm:main} is
 Therefore the near-Jung construction covers
 $[R_*,\sqrt6/4]$.
 
-For $R\le R_*$, the exact partition in Section~\ref{sec:lower} applies.  Its
-unique weakest row is \texttt{O3B02}, whose exact coefficient is
-$\MainCoefficientOfPi\pi$.  The two branch endpoints agree exactly, so the
-union is the full Jung interval.  Finally, dilation from width one to width
+For $R\le R_*$, the exact partition in Section~\ref{sec:lower} applies.  Its weakest row is \texttt{O3B02B}, and both split terminal rows strictly
+exceed $\MainCoefficientOfPi\pi$.  Thus the unchanged near-Jung branch sets
+the displayed universal coefficient.  The two branch endpoints agree exactly,
+so the union is the full Jung interval.  Finally, dilation from width one to width
 $d$ multiplies volume by $d^3$, completing the computer-assisted proof of
 Theorem~\ref{thm:main} under the trust boundary below.
 

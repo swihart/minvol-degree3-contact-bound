@@ -12,13 +12,13 @@ binary64 and base-R audits, or the adversarial mutation tests.
 The exact package reconstructs the proposed coefficient
 
 $$
-\frac{26220940089713\pi}{200000000000000}
-=0.4118775637803022742481789259828398710\ldots
+\frac{26221074253\pi}{200000000000}
+=0.4118796712122863775432315385981549189\ldots
 $$
 
-and verifies a strictly larger near-Jung branch value. The lower row `O3B02`
-is therefore the unique bottleneck within the certified gap-free circumradius
-partition.
+and verifies that both split terminal rows `O3B02A` and `O3B02B` strictly
+clear the theorem coefficient. The unchanged near-Jung branch is therefore the
+universal bottleneck within the certified gap-free circumradius partition.
 
 This conclusion is limited in four ways:
 
@@ -93,7 +93,7 @@ Audit focus:
 
 ## 3. Lower-branch certificate audit
 
-The lower interval is covered by twelve rows. Four refined cells replace the
+The lower interval is covered by thirteen rows. Four refined cells replace the
 formerly weak `O3A1` interval. Their endpoints match exactly and the full table
 covers
 
@@ -105,7 +105,7 @@ without a gap or overlap affecting the argument.
 
 The exact verifier checks each rational step certificate, cap bound,
 disjointness condition, and coefficient comparison. It then proves that
-`O3B02` is the unique weakest row.
+`O3B02B` is the weakest lower-branch row, while the near-Jung branch sets the theorem coefficient.
 
 High-risk items checked:
 
@@ -221,7 +221,7 @@ and exceeds the upper enclosure of the lower-branch bottleneck by
 0.0000021074345301574846190550703110031602996750911392740
 ```
 
-Therefore the lower-branch `O3B02` coefficient is universal across the two
+Therefore both split terminal rows clear the displayed coefficient across the lower branch, while the near-Jung certificate supplies the universal bottleneck across the two
 closed intervals. The proof restores $d^3$ by scaling.
 
 Audit focus:

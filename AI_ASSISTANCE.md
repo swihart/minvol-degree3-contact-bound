@@ -1,11 +1,11 @@
 # AI assistance and provenance
 
-**Repository status:** release `v1.0.0` (September 26, 2026)
+**Repository status:** release `v1.1.0` (September 26, 2026)
 **Sole named author:** Bruce J. Swihart
 **Primary AI system used:** OpenAI ChatGPT (GPT-5.6 Sol Pro)
 **Primary access period:** August-September 2026<br>
 **Canonical repository:** <https://github.com/swihart/minvol-degree3-contact-bound><br>
-**Versioned release:** <https://github.com/swihart/minvol-degree3-contact-bound/releases/tag/v1.0.0>
+**Versioned release:** <https://github.com/swihart/minvol-degree3-contact-bound/releases/tag/v1.1.0>
 
 ## Scope of AI assistance
 
@@ -51,7 +51,7 @@ The named author is responsible for:
 
 ## Authorship and affiliation decision
 
-Bruce J. Swihart is the sole named author of release `v1.0.0`. No
+Bruce J. Swihart is the sole named author of release `v1.1.0`. No
 institutional affiliation or ORCID is asserted. Correspondence and verification
 reports are directed to the intended repository issue tracker. OpenAI ChatGPT
 is disclosed as an extensively used research tool and is not an author,

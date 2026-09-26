@@ -32,7 +32,7 @@
 | L1 | Transport inequality and tangent-gap master inequality | Paper Section 3 | ESTABLISHED IN MANUSCRIPT |
 | L2 | Rational propagation implications | Paper Section 3; exact lower-cell checks | ESTABLISHED IN MANUSCRIPT; EXACT-CERTIFIED |
 | L3 | Four refined cells replace `O3A1` with positive margins | Refined NPZ cells and JSON | EXACT-CERTIFIED; NUMERICAL AUDIT |
-| L4 | Complete lower partition is gap free and has unique bottleneck `O3B02` | Final JSON and exact verifier | EXACT-CERTIFIED; RECONSTRUCTION-CHECKED |
+| L4 | Complete lower partition is gap free and has weakest terminal row `O3B02B` | Final JSON and exact verifier | EXACT-CERTIFIED; RECONSTRUCTION-CHECKED |
 | N1 | Near-Jung four-contact deficiency budget | Paper Section 4 | ESTABLISHED IN MANUSCRIPT |
 | N2 | Affine contact coordinates and Gram formulas | Paper Section 4 | ESTABLISHED IN MANUSCRIPT |
 | N3 | Determinant transfer $\det H\ge1-S/2-S^2/2$ | Paper Proposition 4.1 | ESTABLISHED IN MANUSCRIPT; exact endpoint evaluation |
@@ -42,7 +42,7 @@
 | N7 | Three axis-specific antipodal cap-pair bounds | Hull TSV and cap certificate fields | EXACT-CERTIFIED; NUMERICAL AUDIT; MUTATION-TESTED |
 | N8 | Six cap interiors are pairwise disjoint | Paper and exact disjointness fields | ESTABLISHED IN MANUSCRIPT; EXACT-CERTIFIED; MUTATION-TESTED |
 | N9 | Near-Jung lower bound exceeds theorem upper enclosure | Final JSON assembly | EXACT-CERTIFIED; NUMERICAL AUDIT |
-| T1 | Universal coefficient equals the exact theorem coefficient | `O3B02` plus strict near-Jung handoff; exact value in the certificate and paper | EXACT-CERTIFIED; RECONSTRUCTION-CHECKED |
+| T1 | Universal coefficient equals the exact theorem coefficient | split `O3B02A/O3B02B` plus strict near-Jung comparison; exact value in the certificate and paper | EXACT-CERTIFIED; RECONSTRUCTION-CHECKED |
 | T2 | Scaling gives the theorem for arbitrary width $d>0$ | Homogeneity | ESTABLISHED IN MANUSCRIPT |
 
 ## Verification and provenance claims
@@ -75,12 +75,12 @@ The hosted evidence above refers to
 |---|---|---|
 | P1 | Focused ten-page Paper v1 manuscript is present | Completed draft |
 | P2 | Complete release-document set is present in Markdown and PDF | Completed; 22 paired documents |
-| P3 | Final author list and no-affiliation statement are fixed | Completed for `v1.0.0` |
-| P4 | Split license and final citation metadata are fixed | Completed for `v1.0.0` |
+| P3 | Final author list and no-affiliation statement are fixed | Completed for `v1.1.0` |
+| P4 | Split license and final citation metadata are fixed | Completed for `v1.1.0` |
 | P5 | Private staging remote exists and the audited candidate was pushed | Completed at commit `892d4bc6...` |
 | P6 | Hosted Python, R, and document jobs are green on the audited candidate | Completed on run `35468019663` |
 | P7 | Fresh staging-remote clone replay is recorded | Completed; final status clean |
-| P8 | Final `v1.0.0` release commit receives its own hosted run | RELEASE-PENDING |
+| P8 | Final `v1.1.0` release commit receives its own hosted run | RELEASE-PENDING |
 | P9 | Immutable final tag and release assets exist | RELEASE-PENDING |
 | P10 | Repository visibility is public and GitHub Release is published | RELEASE-PENDING |
 | P11 | External subject-matter reviewer has checked the theorem | EXTERNAL REVIEW NEEDED |
@@ -100,10 +100,10 @@ The mathematical, finite-certificate, authorship, citation, licensing,
 hosted-pre-release, fresh-clone, README-rendering, and Table 3 presentation
 gates are complete. The remaining publication bottlenecks are:
 
-1. green hosted jobs on the final `v1.0.0` release commit;
+1. green hosted jobs on the final `v1.1.0` release commit;
 2. final named-author approval of the complete paper, release notes, and
    announcement wording;
-3. an annotated `v1.0.0` tag and green tag-triggered workflow;
+3. an annotated `v1.1.0` tag and green tag-triggered workflow;
 4. a clean replay from a fresh checkout of the tag;
 5. deterministic release assets and independent post-download hash
    verification;

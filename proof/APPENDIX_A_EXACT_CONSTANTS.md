@@ -23,13 +23,13 @@ represents the proposed inequality
 
 $$
 \mathrm{Vol}(K)\ge
-\frac{26220940089713\pi}{200000000000000}d^3
-=0.4118775637803022742481789259828398710025748462041567278\ldots d^3.
+\frac{26221074253\pi}{200000000000}d^3
+=0.4118796712122863775432315385981549188973081955671703077\ldots d^3.
 $$
 
-- Exact coefficient of $\pi$: `26220940089713/200000000000000`
-- Certified decimal lower enclosure: `0.4118775637803022742481789259828398710025748462041567278`
-- Strict gain over the predecessor certificate: `0.0000202057087485067278752862995149697425463581710298836`
+- Exact coefficient of $\pi$: `26221074253/200000000000`
+- Certified decimal lower enclosure: `0.4118796712122863775432315385981549188973081955671703077`
+- Strict gain over the predecessor certificate: `0.0000021074319841032950526126153150478947333493630135799`
 
 ## Circumradius split
 
@@ -94,7 +94,7 @@ lower bound for $\pi$.
 - Propagation steps: 12739 positive; 36890 negative
 - Exact coefficient of $\pi$: `32797449039141/250000000000000`
 - Certified volume lower: `0.412144899831403954`
-- Margin over `O3B02` as a coefficient of $\pi$: `85095707999/1000000000000000`
+- Margin over theorem coefficient as a coefficient of $\pi$: `21106222891/250000000000000`
 - Angular denominator: 76800
 - Radial denominator: 40000000000
 
@@ -105,7 +105,7 @@ lower bound for $\pi$.
 - Propagation steps: 12719 positive; 36931 negative
 - Exact coefficient of $\pi$: `4098989998007/31250000000000`
 - Certified volume lower: `0.412075419676058637`
-- Margin over `O3B02` as a coefficient of $\pi$: `62979487659/1000000000000000`
+- Margin over theorem coefficient as a coefficient of $\pi$: `7788583903/125000000000000`
 - Angular denominator: 76800
 - Radial denominator: 40000000000
 
@@ -116,7 +116,7 @@ lower bound for $\pi$.
 - Propagation steps: 12699 positive; 36973 negative
 - Exact coefficient of $\pi$: `26229116212741/200000000000000`
 - Certified volume lower: `0.412005994020500329`
-- Margin over `O3B02` as a coefficient of $\pi$: `2044030757/50000000000000`
+- Margin over theorem coefficient as a coefficient of $\pi$: `8041959741/200000000000000`
 - Angular denominator: 76800
 - Radial denominator: 40000000000
 
@@ -127,7 +127,7 @@ lower bound for $\pi$.
 - Propagation steps: 12679 positive; 37015 negative
 - Exact coefficient of $\pi$: `131123499722913/1000000000000000`
 - Certified volume lower: `0.411936623442486770`
-- Margin over `O3B02` as a coefficient of $\pi$: `4699818587/250000000000000`
+- Margin over theorem coefficient as a coefficient of $\pi$: `18128457913/1000000000000000`
 - Angular denominator: 76800
 - Radial denominator: 40000000000
 
@@ -147,22 +147,36 @@ lower bound for $\pi$.
 - Exact coefficient of $\pi$: `32777190301709/250000000000000`
 - Certified volume lower: `0.411890321028654451`
 
-### Row `O3B02`
+### Row `O3B02A`
 
-- Circumradius interval: `[76421809/125000000, 305695601/500000000]`
-- Tangency radius $s_0$: `2489911/5000000`
-- Propagation steps: 6309 positive; 18562 negative
-- Exact coefficient of $\pi$: `26220940089713/200000000000000`
-- Certified volume lower: `0.411877563780302274`
+- Circumradius interval: `[76421809/125000000, 611382837/1000000000]`
+- Tangency radius $s_0$: `12450083/25000000`
+- Propagation steps: 6308 positive; 18564 negative
+- Exact coefficient of $\pi$: `131107875849897/1000000000000000`
+- Certified volume lower: `0.411887539597799084`
+- Margin over theorem coefficient as a coefficient of $\pi$: `2504584897/1000000000000000`
+- Angular denominator: 38400
+- Radial denominator: 1000000000
+
+### Row `O3B02B`
+
+- Circumradius interval: `[611382837/1000000000, 305695601/500000000]`
+- Tangency radius $s_0$: `49802043/100000000`
+- Propagation steps: 6307 positive; 18566 negative
+- Exact coefficient of $\pi$: `131105572993743/1000000000000000`
+- Certified volume lower: `0.411880304961823404`
+- Margin over theorem coefficient as a coefficient of $\pi$: `201728743/1000000000000000`
+- Angular denominator: 38400
+- Radial denominator: 1000000000
 
 ### Lower-branch summary
 
-- Unique bottleneck: `O3B02`
-- Weakest exact coefficient of $\pi$: `26220940089713/200000000000000`
+- Weakest lower-branch row: `O3B02B`
+- Weakest exact coefficient of $\pi$: `131105572993743/1000000000000000`
 - Refined replacement cells: 4
 - Refined angular denominator: 76800
 - Refined radial denominator: 40000000000
-- Minimum exact coefficient margin over `O3B02`: `4699818587/250000000000000`
+- Minimum exact refined-row margin over theorem coefficient: `18128457913/1000000000000000`
 - Replaced predecessor row: `O3A1`
 
 ## Near-Jung fan census
@@ -234,8 +248,8 @@ lower bound for $\pi$.
 
 ### Near-Jung margin over theorem upper enclosure
 
-- Exact: certificate field `near_Jung_branch.margin_over_theorem_upper` (4152-digit numerator / 4157-digit denominator)
-- Certified decimal lower: `0.000002107434530157484619`
+- Exact: certificate field `near_Jung_branch.margin_over_theorem_upper` (4147-digit numerator / 4158-digit denominator)
+- Certified decimal lower: `0.000000000002546054189566`
 
 ## Coordinate-axis cap pairs
 
@@ -304,7 +318,7 @@ dcd9c4945cad4960f0a1a933d34b272190bb21d351e03eec3c2d4a708ed26200
 
 ### Certified inside this package
 
-- Gap-free lower circumradius partition through O3B02.
+- Gap-free lower circumradius partition through split rows O3B02A/O3B02B.
 - Four exact doubled-angular-grid cells replacing O3A1.
 - Exact dominant-edge coordinate-width sharpening for all three coordinate axes.
 - Exact adjusted 98,306-ray near-Jung fan at the split.

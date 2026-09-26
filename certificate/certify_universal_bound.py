@@ -3,7 +3,7 @@
 
 The verifier proves the proposed universal coefficient
 
-    Vol(K) >= (26220940089713*pi/200000000000000) d^3
+    Vol(K) >= (26221074253*pi/200000000000) d^3
 
 from immutable local proof objects. All theorem-supporting comparisons use
 Python integers and ``fractions.Fraction``. NumPy is used only to read the
@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib.util
 import json
 import sys
 from decimal import Decimal, getcontext
@@ -41,6 +42,16 @@ HULL_AUDIT = DATA / "all_axis_pair_section_hulls.tsv"
 ROW_AUDIT = DATA / "refined_lower_rows.tsv"
 AUDIT_CONSTANTS = DATA / "audit_constants.csv"
 CERT_PATH = DATA / "universal_contact_bound_certificate.json"
+TERMINAL_PACKAGE = HERE / "terminal_handoff_v11"
+TERMINAL_SCRIPT = TERMINAL_PACKAGE / "terminal_handoff_v11_exact.py"
+TERMINAL_ROW_FILES = (
+    TERMINAL_PACKAGE / "certificates" / "o3b02a_exact.npz",
+    TERMINAL_PACKAGE / "certificates" / "o3b02b_exact.npz",
+)
+TERMINAL_ROW_SHA256 = (
+    "34d93a8119f97d07eae399522021ca98c31ab90a8a2a9b0c825c930033868836",
+    "cc23ce59a954f7befa8ade2e318f516ddac6ddd94ef65a11f9079b88b6704ccc",
+)
 
 SCHEMA = "minvol.universal_contact_bound.v1"
 REFERENCE_CERT_SHA256 = "36a6d5cc145fdda500b3cfa8f77a784e6e29860efc44196b05684ee4c348b7af"
@@ -56,8 +67,8 @@ ROW_SHA256 = (
 R_SPLIT = Fraction(305_695_601, 500_000_000)
 Q_SPLIT = R_SPLIT * R_SPLIT
 Q_JUNG = Fraction(3, 8)
-THEOREM_PI_COEFFICIENT = Fraction(26_220_940_089_713, 200_000_000_000_000)
-PREVIOUS_PI_COEFFICIENT = Fraction(131_098_268_771_713, 10**15)
+THEOREM_PI_COEFFICIENT = Fraction(26_221_074_253, 200_000_000_000)
+PREVIOUS_PI_COEFFICIENT = Fraction(26_220_940_089_713, 200_000_000_000_000)
 HYRA_PI_COEFFICIENT = Fraction(130_838_246_407_123, 10**15)
 FAN_MARGIN_TARGET = Fraction(1, 10**12)
 
@@ -203,7 +214,7 @@ def replay_refined_row(path: Path, expected: dict[str, Any]) -> dict[str, Any]:
     if rebuilt != coefficient:
         raise AssertionError(f"{expected['case']} coefficient reconstruction failed")
     if coefficient <= THEOREM_PI_COEFFICIENT:
-        raise AssertionError(f"{expected['case']} does not clear O3B02")
+        raise AssertionError(f"{expected['case']} does not clear theorem coefficient")
 
     return {
         "case": expected["case"],
@@ -215,7 +226,7 @@ def replay_refined_row(path: Path, expected: dict[str, Any]) -> dict[str, Any]:
         "negative_steps": len(zs),
         "coefficient_of_pi": fs(coefficient),
         "coefficient_decimal": dec(coefficient, 18),
-        "margin_over_O3B02_coefficient": fs(coefficient - THEOREM_PI_COEFFICIENT),
+        "margin_over_theorem_coefficient": fs(coefficient - THEOREM_PI_COEFFICIENT),
     }
 
 
@@ -225,14 +236,14 @@ def verify_refined_rows(write: bool) -> list[dict[str, Any]]:
             raise RuntimeError(f"refined-row proof-object fingerprint mismatch: {path}")
     rows = [replay_refined_row(path, expected) for path, expected in zip(ROW_FILES, ROW_EXPECTED)]
     lines = [
-        "case\tleft\tright\ts0\tangle_N\tradial_grid\tpositive_steps\tnegative_steps\tcoefficient_of_pi\tmargin_over_O3B02\n"
+        "case\tleft\tright\ts0\tangle_N\tradial_grid\tpositive_steps\tnegative_steps\tcoefficient_of_pi\tmargin_over_theorem\n"
     ]
     for row in rows:
         lines.append(
             f"{row['case']}\t{row['interval'][0]}\t{row['interval'][1]}\t{row['s0']}\t"
             f"{row['angle_grid_N']}\t{row['radial_grid']}\t{row['positive_steps']}\t"
             f"{row['negative_steps']}\t{row['coefficient_of_pi']}\t"
-            f"{row['margin_over_O3B02_coefficient']}\n"
+            f"{row['margin_over_theorem_coefficient']}\n"
         )
     blob = "".join(lines).encode("ascii")
     if write:
@@ -244,6 +255,58 @@ def verify_refined_rows(write: bool) -> list[dict[str, Any]]:
             "refined O3A1 row audit is not byte-identical",
         )
     return rows
+
+
+def verify_terminal_split_rows() -> list[dict[str, Any]]:
+    """Replay the two exact terminal O3B02 subrows used by v1.1.0.
+
+    The bounded optimization package already contains the exact row verifier.
+    The main theorem verifier imports that source locally, checks the immutable
+    NPZ fingerprints, replays every exact row inequality, and then converts the
+    rows into the canonical lower-branch record format.
+    """
+    if not TERMINAL_SCRIPT.exists():
+        raise RuntimeError("missing terminal-handoff exact verifier")
+    spec = importlib.util.spec_from_file_location("minvol_terminal_handoff_v11_exact", TERMINAL_SCRIPT)
+    if spec is None or spec.loader is None:
+        raise RuntimeError("cannot load terminal-handoff exact verifier")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+
+    for path, digest in zip(TERMINAL_ROW_FILES, TERMINAL_ROW_SHA256, strict=True):
+        if not path.exists() or sha256(path) != digest:
+            raise RuntimeError(f"terminal-row proof-object fingerprint mismatch: {path}")
+
+    records: list[dict[str, Any]] = []
+    for case in ("O3B02A", "O3B02B"):
+        row = module.read_row_npz(case)
+        module.verify_row(row)
+        coefficient = Fraction(row["coefficient"])
+        if coefficient <= THEOREM_PI_COEFFICIENT:
+            raise AssertionError(f"{case} does not clear v1.1.0 theorem coefficient")
+        records.append(
+            {
+                "case": case,
+                "interval": [fs(Fraction(row["rlo"])), fs(Fraction(row["rhi"]))],
+                "s0": fs(Fraction(row["s0"])),
+                "angle_grid_N": int(row["N"]),
+                "radial_grid": int(row["G"]),
+                "positive_steps": int(row["positive_steps"]),
+                "negative_steps": int(row["negative_steps"]),
+                "coefficient_of_pi": fs(coefficient),
+                "coefficient_decimal": dec(coefficient, 18),
+                "margin_over_theorem_coefficient": fs(coefficient - THEOREM_PI_COEFFICIENT),
+            }
+        )
+
+    if Fraction(records[0]["interval"][0]) != Fraction(76_421_809, 125_000_000):
+        raise AssertionError("terminal split left endpoint mismatch")
+    if records[0]["interval"][1] != records[1]["interval"][0]:
+        raise AssertionError("terminal split is not gap-free")
+    if Fraction(records[1]["interval"][1]) != R_SPLIT:
+        raise AssertionError("terminal split right endpoint mismatch")
+    return records
 
 
 def verify_coordinate_width_lemma() -> dict[str, Any]:
@@ -599,18 +662,22 @@ def build_certificate(write: bool = False) -> dict[str, Any]:
 
     width_lemma = verify_coordinate_width_lemma()
     refined_rows = verify_refined_rows(write)
+    terminal_rows = verify_terminal_split_rows()
     rows: list[dict[str, Any]] = []
     inserted = False
+    terminal_inserted = False
     for row in reference_cert["lower_branch"]["rows_through_handoff"]:
         case = row["case"]
         if case == "O3A1":
             rows.extend(refined_rows)
             inserted = True
             continue
-        rows.append(row)
         if case == "O3B02":
+            rows.extend(terminal_rows)
+            terminal_inserted = True
             break
-    if not inserted or rows[-1]["case"] != "O3B02":
+        rows.append(row)
+    if not inserted or not terminal_inserted or rows[-1]["case"] != "O3B02B":
         raise AssertionError("lower-row replacement assembly failed")
 
     weakest_name = ""
@@ -624,8 +691,10 @@ def build_certificate(write: bool = False) -> dict[str, Any]:
         coefficient = Fraction(row["coefficient_of_pi"])
         if weakest is None or coefficient < weakest:
             weakest, weakest_name = coefficient, row["case"]
-    if previous != R_SPLIT or weakest != THEOREM_PI_COEFFICIENT or weakest_name != "O3B02":
-        raise AssertionError("new lower-branch bottleneck mismatch")
+    if previous != R_SPLIT:
+        raise AssertionError("lower branch does not end at the handoff")
+    if weakest is None or weakest <= THEOREM_PI_COEFFICIENT:
+        raise AssertionError("lower branch does not strictly clear v1.1.0 theorem coefficient")
 
     fan = verify_fan_and_caps(write)
     pi_lo, pi_hi = P.pi_bounds()
@@ -666,7 +735,7 @@ def build_certificate(write: bool = False) -> dict[str, Any]:
     }
     for i, row in enumerate(refined_rows, 1):
         values[f"refined_row{i}_pi_coefficient"] = Fraction(row["coefficient_of_pi"])
-        values[f"refined_row{i}_margin"] = Fraction(row["margin_over_O3B02_coefficient"])
+        values[f"refined_row{i}_margin"] = Fraction(row["margin_over_theorem_coefficient"])
     for axis in range(3):
         values[f"axis{axis}_support_plus"] = fan["supports"][(axis, 1)]
         values[f"axis{axis}_support_minus"] = fan["supports"][(axis, -1)]
@@ -715,7 +784,7 @@ def build_certificate(write: bool = False) -> dict[str, Any]:
         "theorem": {
             "statement": (
                 "Every convex body K in R^3 of constant width d>0 satisfies "
-                "Vol(K) >= (26220940089713*pi/200000000000000)d^3."
+                "Vol(K) >= (26221074253*pi/200000000000)d^3."
             ),
             "coefficient_of_pi": fs(THEOREM_PI_COEFFICIENT),
             "coefficient_decimal_lower": dec(theorem_lo, 55),
@@ -737,10 +806,12 @@ def build_certificate(write: bool = False) -> dict[str, Any]:
                 "angle_N": ROW_ANGLE_N,
                 "radial_grid": ROW_GRID,
                 "cells": len(refined_rows),
-                "minimum_margin_over_O3B02": fs(refined_margin),
+                "minimum_margin_over_theorem": fs(refined_margin),
             },
-            "weakest_row": "O3B02",
-            "weakest_coefficient_of_pi": fs(THEOREM_PI_COEFFICIENT),
+            "weakest_row": weakest_name,
+            "weakest_coefficient_of_pi": fs(weakest),
+            "terminal_split_rows": [row["case"] for row in terminal_rows],
+            "theorem_bottleneck": "near_Jung_branch",
         },
         "near_Jung_branch": {
             "reference_fan_sha256": REFERENCE_FAN_SHA256,
@@ -790,7 +861,7 @@ def build_certificate(write: bool = False) -> dict[str, Any]:
         "pi_bounds": {"lower": fs(pi_lo), "upper": fs(pi_hi)},
         "claim_boundary": {
             "certified_inside_package": [
-                "Gap-free lower circumradius partition through O3B02.",
+                "Gap-free lower circumradius partition through split rows O3B02A/O3B02B.",
                 "Four exact doubled-angular-grid cells replacing O3A1.",
                 "Exact dominant-edge coordinate-width sharpening for all three coordinate axes.",
                 "Exact adjusted 98,306-ray near-Jung fan at the split.",
@@ -841,7 +912,7 @@ def main() -> None:
     print(f"near-Jung handoff margin:     {near['margin_over_theorem_upper_decimal']}")
     print(f"universal coefficient lower: {theorem['coefficient_decimal_lower']}")
     print(f"gain over previous lower:     {theorem['strict_gain_over_previous_lower']}")
-    print("PROPOSED UNIVERSAL LOWER BOUND ABOVE 0.4118775: EXACTLY CERTIFIED BY THIS PACKAGE")
+    print("PROPOSED UNIVERSAL LOWER BOUND ABOVE 0.4118796: EXACTLY CERTIFIED BY THIS PACKAGE")
 
 
 if __name__ == "__main__":

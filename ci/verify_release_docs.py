@@ -168,7 +168,7 @@ def main() -> None:
             )
 
     rational_fragment, exact_decimal = theorem_strings()
-    decimal_prefix = exact_decimal[:17] if exact_decimal else "0.411877563780302"
+    decimal_prefix = exact_decimal[:17] if exact_decimal else "0.411879671212286"
 
     for relative in THEOREM_DOCS:
         text = texts[relative]
@@ -221,7 +221,7 @@ def main() -> None:
 
     version = (ROOT / "VERSION").read_text(encoding="ascii").strip()
     release_date = (ROOT / "RELEASE_DATE").read_text(encoding="ascii").strip()
-    if version != "v1.0.0":
+    if version != "v1.1.0":
         raise SystemExit(f"unexpected final VERSION: {version}")
     if release_date != "2026-09-26":
         raise SystemExit(f"unexpected final RELEASE_DATE: {release_date}")
@@ -237,7 +237,7 @@ def main() -> None:
     for relative in final_public_docs:
         text = texts[relative]
         for obsolete in (
-            "v1.0.0-rc1",
+            "v1.1.0-rc1",
             "UNRELEASED",
             "DO NOT RELEASE YET",
             "Candidate version",
@@ -247,9 +247,9 @@ def main() -> None:
             if obsolete in text:
                 raise SystemExit(f"obsolete release wording in {relative}: {obsolete}")
         for required in (
-            "v1.0.0",
+            "v1.1.0",
             "September 26, 2026",
-            "https://github.com/swihart/minvol-degree3-contact-bound/releases/tag/v1.0.0",
+            "https://github.com/swihart/minvol-degree3-contact-bound/releases/tag/v1.1.0",
         ):
             if required not in text:
                 raise SystemExit(f"final release metadata missing from {relative}: {required}")
@@ -269,7 +269,7 @@ def main() -> None:
     for token in (
         'given-names: "Bruce J."',
         'family-names: "Swihart"',
-        'version: "1.0.0"',
+        'version: "1.1.0"',
         'date-released: "2026-09-26"',
         'status: preprint',
         'repository-code: "https://github.com/swihart/minvol-degree3-contact-bound"',

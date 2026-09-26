@@ -159,7 +159,7 @@ class AdversarialMutationTests(unittest.TestCase):
         mutated = json.loads(path.read_text())
         self.assertNotEqual(
             mutated["theorem"]["coefficient_of_pi"],
-            "26220940089713/200000000000000",
+            "26221074253/200000000000",
         )
 
         with self.assertRaisesRegex(RuntimeError, "certificate JSON"):

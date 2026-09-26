@@ -1,0 +1,5 @@
+6309 18562 26220940089713/200000000000000
+w equal True
+z equal True
+coef equal True
+seconds 1.1492021083831787

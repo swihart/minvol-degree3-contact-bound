@@ -1,13 +1,13 @@
 cff-version: 1.2.0
 message: >-
   Please cite the computer-assisted preprint in preferred-citation below and
-  identify the repository version used. This file describes release v1.0.0.
+  identify the repository version used. This file describes release v1.1.0.
 title: "Exact certificate and reproducibility package for a contact-geometric MinVol bound"
 type: software
-version: "1.0.0"
+version: "1.1.0"
 date-released: "2026-09-26"
 repository-code: "https://github.com/swihart/minvol-degree3-contact-bound"
-url: "https://github.com/swihart/minvol-degree3-contact-bound/releases/tag/v1.0.0"
+url: "https://github.com/swihart/minvol-degree3-contact-bound/releases/tag/v1.1.0"
 authors:
   - family-names: "Swihart"
     given-names: "Bruce J."
@@ -33,10 +33,10 @@ preferred-citation:
     - family-names: "Swihart"
       given-names: "Bruce J."
   year: 2026
-  version: "1.0.0"
+  version: "1.1.0"
   date-released: "2026-09-26"
   status: preprint
-  url: "https://github.com/swihart/minvol-degree3-contact-bound/releases/tag/v1.0.0"
+  url: "https://github.com/swihart/minvol-degree3-contact-bound/releases/tag/v1.1.0"
   license: CC-BY-4.0
   notes: >-
     AI-assisted, computer-assisted, and non-peer-reviewed; no institutional

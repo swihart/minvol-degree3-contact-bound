@@ -1,7 +1,7 @@
 # Recorded clean-source, hosted, and fresh-clone checks
 
 - **Record date:** September 19, 2026
-- **Current package version:** `v1.0.0`
+- **Current package version:** `v1.1.0`
 - **Audited pre-release package:** `v1.0.0-rc1`
 - **Canonical repository:**
   <https://github.com/swihart/minvol-degree3-contact-bound>
@@ -12,9 +12,9 @@
   <https://github.com/swihart/minvol-degree3-contact-bound/actions/runs/35468019663>
 
 This document preserves the clean-source, hosted continuous-integration, and
-fresh-clone evidence for the audited pre-release state. The final `v1.0.0` tag
-uses the same replay requirements and must pass its own hosted and tagged-clone
-gates before the GitHub Release is published.
+fresh-clone evidence for the audited pre-release state. The historical `v1.0.0` release remains immutable. The `v1.1.0` tag uses the
+same replay requirements and must pass its own hosted and tagged-clone gates
+before the GitHub Release is published.
 
 ## Results at a glance
 

@@ -116,11 +116,11 @@ def render() -> str:
                 f"- Certified volume lower: {q(volume_lower)}",
             ]
         )
-        if "margin_over_O3B02_coefficient" in row:
+        if "margin_over_theorem_coefficient" in row:
             lines.extend(
                 [
-                    f"- Margin over `O3B02` as a coefficient of $\\pi$: "
-                    f"{q(row['margin_over_O3B02_coefficient'])}",
+                    f"- Margin over theorem coefficient as a coefficient of $\\pi$: "
+                    f"{q(row['margin_over_theorem_coefficient'])}",
                     f"- Angular denominator: {row['angle_grid_N']}",
                     f"- Radial denominator: {row['radial_grid']}",
                 ]
@@ -132,13 +132,13 @@ def render() -> str:
         [
             "### Lower-branch summary",
             "",
-            f"- Unique bottleneck: {q(lower['weakest_row'])}",
+            f"- Weakest lower-branch row: {q(lower['weakest_row'])}",
             f"- Weakest exact coefficient of $\\pi$: {q(lower['weakest_coefficient_of_pi'])}",
             f"- Refined replacement cells: {refined['cells']}",
             f"- Refined angular denominator: {refined['angle_N']}",
             f"- Refined radial denominator: {refined['radial_grid']}",
-            f"- Minimum exact coefficient margin over `O3B02`: "
-            f"{q(refined['minimum_margin_over_O3B02'])}",
+            f"- Minimum exact refined-row margin over theorem coefficient: "
+            f"{q(refined['minimum_margin_over_theorem'])}",
             f"- Replaced predecessor row: {q(lower['replaced_reference_row'])}",
             "",
             "## Near-Jung fan census",

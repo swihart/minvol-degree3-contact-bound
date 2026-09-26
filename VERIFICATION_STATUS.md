@@ -1,6 +1,6 @@
 # Verification status
 
-**Version:** `v1.0.0`<br>
+**Version:** `v1.1.0`<br>
 **Release date:** September 26, 2026<br>
 **Status date:** September 26, 2026<br>
 **Audited pre-release commit:** `892d4bc6fad07950e78da66e45b95063a6415af6`<br>
@@ -14,14 +14,14 @@ package represents the proposed universal inequality
 $$
 \boxed{
 \mathrm{Vol}(K)\ge
-\frac{26220940089713\pi}{200000000000000}\,d^3
-=0.41187756378030227424817892598\ldots d^3
+\frac{26221074253\pi}{200000000000}\,d^3
+=0.41187967121228637754323153860\ldots d^3
 }.
 $$
 
 ## Current designation
 
-> **Proposed exact universal certificate - standalone release v1.0.0.**
+> **Proposed exact universal certificate - standalone release v1.1.0.**
 
 The finite exact verifier, independent binary64 Python audit, independent
 base-R audit, regression tests, adversarial mutation tests, manuscript
@@ -37,8 +37,8 @@ publication.
 - canonical repository:
   <https://github.com/swihart/minvol-degree3-contact-bound>;
 - versioned release:
-  <https://github.com/swihart/minvol-degree3-contact-bound/releases/tag/v1.0.0>;
-- version: `v1.0.0`;
+  <https://github.com/swihart/minvol-degree3-contact-bound/releases/tag/v1.1.0>;
+- version: `v1.1.0`;
 - release date: September 26, 2026;
 - prose license: CC BY 4.0;
 - software license: MIT;
@@ -64,7 +64,7 @@ publication.
 | C2 | Green hosted Python, R, and document jobs on the audited candidate | Three jobs on commit `892d4bc6...` | Passed on run `35468019663` |
 | C3 | Complete public-history bundle and transfer hashes verified | Bundle and three transferred evidence artifacts | Passed |
 | C4 | Hosted workflow and fresh-clone evidence are internally indexed | `certificate/evidence/rc1_remote_audit.json`; `ci/verify_remote_evidence.py` | Passed |
-| C5 | Green hosted jobs and fresh replay on the immutable final tag | Final `v1.0.0` tag and release procedure | Publication gate |
+| C5 | Green hosted jobs and fresh replay on the immutable final tag | Final `v1.1.0` tag and release procedure | Publication gate |
 | A1 | Deterministic release assets and SHA-256 manifest verify | `release/build_release_assets.py`; `release/verify_release_assets.py` | Preview-tested; tagged build required for publication |
 | X1 | Independent mathematical reproduction by an outside reviewer | None yet | Pending |
 | J1 | Peer review or journal acceptance | None yet | Pending |
@@ -114,14 +114,14 @@ See [`certificate/TRUST_BOUNDARY.md`](certificate/TRUST_BOUNDARY.md).
 ## What is established inside the package
 
 - gap-free circumradius coverage from $1/2$ to $\sqrt6/4$;
-- unique lower-branch bottleneck `O3B02`;
+- lower-branch weakest row `O3B02B`; the universal bottleneck is the near-Jung branch;
 - exact refinement of the formerly weak lower-row interval;
 - final fan reconstruction with 98,306 rays;
 - positive exact fan margin;
 - determinant transfer and dominant-edge coordinate-width bounds;
 - forced-core and three cap-pair lower bounds;
 - exact six-cap disjointness;
-- a near-Jung lower bound strictly above the bottleneck;
+- a near-Jung lower bound that sets the universal bottleneck;
 - exact universal coefficient assembly;
 - paper and appendix reconciliation with the certificate;
 - rejection of seven representative proof-object corruptions; and
@@ -142,11 +142,11 @@ The Meissner volume is used only as an explicit-body comparison value.
 
 ## Publication boundary
 
-The repository is prepared for release `v1.0.0`. Publication of the GitHub
+The repository is prepared for release `v1.1.0`. Publication of the GitHub
 Release is conditioned on all of the following operational checks:
 
 1. the final release commit is clean and receives three green hosted jobs;
-2. the annotated `v1.0.0` tag points to that exact commit;
+2. the annotated `v1.1.0` tag points to that exact commit;
 3. the tag-triggered Python, R, and document jobs are green;
 4. a fresh tagged checkout completes the full replay and ends clean;
 5. tagged release assets are built, hashed, downloaded, and reverified; and
