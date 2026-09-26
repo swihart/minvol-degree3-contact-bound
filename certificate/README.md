@@ -7,11 +7,11 @@ proposes the universal inequality
 
 $$
 \mathrm{Vol}(K)\ge
-\frac{26220940089713\pi}{200000000000000}\,d^3
-=0.41187756378030227424817892598\ldots d^3.
+\frac{26221074253\pi}{200000000000}\,d^3
+=0.41187967121228637754323153860\ldots d^3.
 $$
 
-**Status:** standalone release `v1.0.0` of a proposed exact universal
+**Status:** standalone release `v1.1.0` of a proposed exact universal
 certificate. The package has passed its exact Python replay, independent
 binary64 Python and base-R implementation audits, seven adversarial rejection
 tests, a three-job hosted workflow, and a complete named-author fresh-clone
@@ -142,7 +142,7 @@ $$
 
 For the lower branch, it retains the immutable predecessor rows, replaces the
 formerly insufficient `O3A1` interval by four exact doubled-angular-grid cells,
-and confirms that `O3B02` is the unique bottleneck.
+and confirms that the split terminal rows clear the theorem coefficient and the unchanged near-Jung branch is the bottleneck.
 
 For the near-Jung branch, it reconstructs the cubical spherical fan with
 98,306 vertices, 196,608 triangular faces, 294,912 edges, and 24,833
@@ -239,10 +239,10 @@ Not completed in the assistant construction container:
 
 - a second base-R execution, because `Rscript` is unavailable there;
 - external mathematical review;
-- the tag-triggered replay on the immutable `v1.0.0` tag;
+- the tag-triggered replay on the immutable `v1.1.0` tag;
 - tagged release-asset download and independent re-verification; and
 - any later archival DOI assignment.
 
 Authorship, no-affiliation wording, citation metadata, repository identity,
 version/date metadata, and the split CC BY 4.0/MIT license are fixed for
-release `v1.0.0`.
+release `v1.1.0`.

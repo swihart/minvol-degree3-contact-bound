@@ -1,6 +1,6 @@
 # Release checklist
 
-**Release version:** `v1.0.0`<br>
+**Release version:** `v1.1.0`<br>
 **Release date:** September 26, 2026<br>
 **Checklist updated:** September 26, 2026<br>
 **Audited pre-release commit:** `892d4bc6fad07950e78da66e45b95063a6415af6`<br>
@@ -14,7 +14,7 @@ checkpoint. It does not authorize publication by itself.
 - [x] Exact theorem numerator and denominator are fixed in the authoritative
       certificate.
 - [x] Lower and near-Jung circumradius branches cover the full Jung interval.
-- [x] `O3B02` is the exact lower-branch bottleneck.
+- [x] `O3B02A/O3B02B` are exact terminal rows and both clear the theorem coefficient; the near-Jung branch is the universal bottleneck.
 - [x] Near-Jung handoff margin is strictly positive in exact arithmetic.
 - [x] Width scaling restores the factor $d^3$.
 - [x] Paper states no sharpness, equality, minimizer, or Meissner-extremality
@@ -38,7 +38,7 @@ non-peer-reviewed research preprint, but its absence must remain prominent.
 - [x] Export-equivalence record checks ten theorem-critical fields.
 - [x] Complete replay passes from a fresh clone of the staging remote at
       commit `892d4bc6fad07950e78da66e45b95063a6415af6`.
-- [ ] Complete replay passes from a fresh checkout of the immutable `v1.0.0`
+- [ ] Complete replay passes from a fresh checkout of the immutable `v1.1.0`
       tag.
 
 ## C. Paper
@@ -90,9 +90,9 @@ non-peer-reviewed research preprint, but its absence must remain prominent.
 - [x] Split license selected and `LICENSE` added: CC BY 4.0 for paper/prose and
       MIT for software/build infrastructure.
 - [x] `CITATION.cff` added and checked by the metadata preflight.
-- [x] Preferred paper citation finalized for version `v1.0.0`.
+- [x] Preferred paper citation finalized for version `v1.1.0`.
 - [x] `RELEASE_DATE` is `2026-09-26`.
-- [x] `VERSION` is `v1.0.0`.
+- [x] `VERSION` is `v1.1.0`.
 - [ ] DOI or archival identifier added only after one exists.
 - [x] Copyright and third-party license boundary reviewed and documented.
 
@@ -116,7 +116,7 @@ GitHub release, and none is implied.
 - [x] Three hosted jobs are green on the rendering-repair/evidence commit, as
       reported by the named author.
 - [ ] Three hosted jobs are green on the final release commit.
-- [ ] Three hosted jobs are green on the immutable `v1.0.0` tag.
+- [ ] Three hosted jobs are green on the immutable `v1.1.0` tag.
 - [ ] Clean tagged-checkout replay is completed and archived.
 
 ## G. Release assets
@@ -129,7 +129,7 @@ GitHub release, and none is implied.
 - [x] Preview replay-transcript archive builds and verifies.
 - [x] Preview release record and one asset `SHA256SUMS.txt` build and verify.
 - [x] Release notes PDF is generated from the final Markdown source.
-- [ ] All assets are rebuilt from the exact `v1.0.0` tagged checkout.
+- [ ] All assets are rebuilt from the exact `v1.1.0` tagged checkout.
 - [ ] Every downloaded tagged asset is reverified in a clean directory.
 
 ## H. Public wording and approval

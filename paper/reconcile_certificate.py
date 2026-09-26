@@ -209,11 +209,11 @@ def validate_data(data: dict) -> None:
     if data.get("schema") != EXPECTED_SCHEMA:
         raise SystemExit(f"unexpected certificate schema: {data.get('schema')!r}")
     theorem = data["theorem"]
-    if theorem["coefficient_of_pi"] != "26220940089713/200000000000000":
+    if theorem["coefficient_of_pi"] != "26221074253/200000000000":
         raise SystemExit("unexpected theorem coefficient")
     if data["circumradius_partition"]["split"] != "305695601/500000000":
         raise SystemExit("unexpected circumradius split")
-    if data["lower_branch"]["weakest_row"] != "O3B02":
+    if data["lower_branch"]["weakest_row"] != "O3B02B":
         raise SystemExit("unexpected lower-branch bottleneck")
     if not data["circumradius_partition"]["gap_free"]:
         raise SystemExit("circumradius partition is not gap-free")
@@ -231,14 +231,14 @@ def validate_paper_source() -> None:
         r"\input{lower_branch_table.tex}",
         r"\MainCoefficient",
         r"\CertificateSha",
-        r"\newcommand{\releaseversion}{v1.0.0}",
+        r"\newcommand{\releaseversion}{v1.1.0}",
         r"\newcommand{\releasedate}{September 26, 2026}",
-        r"releases/tag/v1.0.0",
+        r"releases/tag/v1.1.0",
     )
     for token in required:
         if token not in text:
             raise SystemExit(f"paper is missing required generated token: {token}")
-    if re.search(r"26220940089713|305695601|0\.411877563780302", text):
+    if re.search(r"26221074253|26220940089713|305695601|0\.411879671212286|0\.411877563780302", text):
         raise SystemExit("paper hard-codes a certificate-critical number outside generated TeX")
 
 

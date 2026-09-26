@@ -9,7 +9,7 @@ fail() {
   exit 2
 }
 
-EXPECTED_VERSION=v1.0.0
+EXPECTED_VERSION=v1.1.0
 EXPECTED_DATE=2026-09-26
 DISPLAY_DATE="September 26, 2026"
 REPOSITORY_URL="https://github.com/swihart/minvol-degree3-contact-bound"
@@ -49,7 +49,7 @@ grep -F "non-peer-reviewed" RELEASE_NOTES.md >/dev/null || fail "release-note st
 grep -F "PREPARED FOR THE FINAL TAG GATE" RELEASE_CHECKLIST.md >/dev/null || fail "release decision missing"
 
 for obsolete in \
-  "v1.0.0-rc1" \
+  "v1.1.0-rc1" \
   "UNRELEASED" \
   "not yet public" \
   "Candidate version" \

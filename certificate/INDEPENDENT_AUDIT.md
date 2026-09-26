@@ -118,7 +118,7 @@ sharp determinant squared:     0.990112274299406
 core volume lower:             0.411735710312777
 three-pair cap lower:          0.000143960902055
 near-Jung lower:               0.411879671214832
-universal coefficient:         0.411877563780302
+universal coefficient:         0.411879671212286
 MINVOL UNIVERSAL CONTACT-BOUND BINARY64 AUDIT: PASS
 ```
 
@@ -147,7 +147,7 @@ determinant squared lower:    0.990112274299406
 core volume lower:            0.411735710312777
 three-pair cap lower:         0.000143960902055
 near-Jung volume lower:       0.411879671214832
-universal coefficient lower: 0.411877563780302
+universal coefficient lower: 0.411879671212286
 ```
 
 The archived construction transcript is `transcripts/base_r_audit.txt`. The

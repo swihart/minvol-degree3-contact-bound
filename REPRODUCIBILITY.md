@@ -1,6 +1,6 @@
 # Reproducibility guide
 
-**Package status:** release `v1.0.0` (September 26, 2026)
+**Package status:** release `v1.1.0` (September 26, 2026)
 **Prepared:** September 26, 2026
 **Main certificate schema:** `minvol.universal_contact_bound.v1`
 
@@ -13,8 +13,8 @@ The proposed theorem represented by the package is
 
 $$
 \mathrm{Vol}(K)\ge
-\frac{26220940089713\pi}{200000000000000}\,d^3
-=0.41187756378030227424817892598\ldots d^3
+\frac{26221074253\pi}{200000000000}\,d^3
+=0.41187967121228637754323153860\ldots d^3
 $$
 
 for every convex body $K\subset\mathbb R^3$ of constant width $d>0$.
@@ -109,7 +109,7 @@ The structural checker is `ci/verify_remote_evidence.py`.
 
 The canonical repository is
 <https://github.com/swihart/minvol-degree3-contact-bound>. For a release replay,
-check out the immutable `v1.0.0` tag or download the corresponding GitHub
+check out the immutable `v1.1.0` tag or download the corresponding GitHub
 Release assets and verify their `SHA256SUMS.txt` before execution.
 
 Enter the repository root:
@@ -326,7 +326,7 @@ Verify every generated file, archive member, and SHA-256 entry:
 ./verify_release_assets.sh
 ```
 
-From the exact `v1.0.0` tagged checkout, build the release assets without the
+From the exact `v1.1.0` tagged checkout, build the release assets without the
 preview flag:
 
 ```sh
@@ -334,7 +334,7 @@ preview flag:
 ```
 
 The tagged mode refuses a dirty tree and refuses a `HEAD` that is not tagged
-`v1.0.0`. The output under `release/build/` contains the paper PDF, paper-source
+`v1.1.0`. The output under `release/build/` contains the paper PDF, paper-source
 archive, standalone certificate archive, paired-documentation archive, replay
 records, release notes in Markdown and PDF, a machine-readable release record,
 and one `SHA256SUMS.txt`. Downloaded GitHub Release assets should be reverified

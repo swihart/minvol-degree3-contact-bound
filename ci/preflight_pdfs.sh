@@ -54,9 +54,9 @@ trap 'rm -f "$paper_text"' EXIT HUP INT TERM
 pdftotext "$PAPER_PDF" "$paper_text"
 grep -Fi "Bruce J. Swihart" "$paper_text" >/dev/null || \
   fail "paper PDF does not contain the author name"
-grep -F "0.411877563780302" "$paper_text" >/dev/null || \
+grep -F "0.411879671212286" "$paper_text" >/dev/null || \
   fail "paper PDF does not contain the theorem coefficient"
-grep -Fi "Version v1.0.0" "$paper_text" >/dev/null || \
+grep -Fi "Version v1.1.0" "$paper_text" >/dev/null || \
   fail "paper PDF does not contain the final version"
 grep -Fi "September 26, 2026" "$paper_text" >/dev/null || \
   fail "paper PDF does not contain the release date"

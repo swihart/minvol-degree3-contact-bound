@@ -27,7 +27,7 @@ C0 constant-width identities and scaling
        |     |
        |     +--> L1 exact rational propagation cells and row partition
        |           |
-       |           +--> L2 unique bottleneck O3B02
+       |           +--> L2 weakest lower row O3B02B / near-Jung theorem bottleneck
        |
        +--> N0 four-contact near-Jung deficiency budget
              |
@@ -58,7 +58,7 @@ L2 + N8 + gap-free partition --> T0 universal coefficient
 | C2 | Opposite-point identity $x-n\in K$ and support inequality | Paper Lemma 2.1 | Paper proof | C0 |
 | L0 | Divergence transport inequality and tangent majorant | Paper Section 3 | Paper proof | C0, C2 |
 | L1 | Rational propagation, exact cap rings, and complete lower row table | Four NPZ cells, reference handoff JSON, exact verifier | Exact certificate | L0 |
-| L2 | `O3B02` is the unique lower-branch bottleneck at $R_*$ | Final JSON and byte-identical row reconstruction | Exact certificate | L1 |
+| L2 | `O3B02B` is the weakest lower-branch row at $R_*$, while the near-Jung branch is the universal bottleneck | Final JSON and byte-identical row reconstruction | Exact certificate | L1 |
 | N0 | Four-contact deficiency budget $S\le(3-8R^2)/(4R^2-1)$ | Paper Section 4 | Paper proof | C1 |
 | N1 | Affine tetrahedral reference coordinates and explicit Gram formulas | Paper Section 4 | Paper proof | N0 |
 | N2 | $\det H\ge1-S/2-S^2/2$ | Paper Proposition 4.1; exact assembly inputs | Paper proof; exact evaluation | N1 |
@@ -68,7 +68,7 @@ L2 + N8 + gap-free partition --> T0 universal coefficient
 | N6 | Three optimized antipodal cap-pair lower bounds | Section hull TSV, cap fields, exact verifier | Exact certificate | N3, N4 |
 | N7 | Interiors of all six caps are pairwise disjoint | Cross-axis disjointness fields and exact verifier | Paper proof; exact certificate | N3, N6 |
 | N8 | Near-Jung branch exceeds the theorem upper enclosure by a strict positive margin | Final JSON and exact branch assembly | Exact certificate | N5, N6, N7 |
-| T0 | Universal coefficient equals the `O3B02` coefficient | Gap-free split and exact branch comparison | Exact certificate plus paper reduction | L2, N8 |
+| T0 | Universal coefficient is set just below the near-Jung branch and is cleared by both split terminal rows | Gap-free split and exact branch comparison | Exact certificate plus paper reduction | L2, N8 |
 | A0 | Binary64 Python agrees with principal exact values | `audit_universal_bound.py` and transcript | Independent audit | L1, N4-N8, T0 |
 | A1 | Base-R implementation agrees with principal values | `audit_universal_bound.R` and transcript | Independent audit | L1, N4-N8, T0 |
 | A2 | Seven corrupted objects are rejected | Mutation suite and transcript | Adversarial audit | L1, N4, N6-N8, T0 |
@@ -86,7 +86,7 @@ $$
 \left[R_*,\frac{\sqrt6}{4}\right].
 $$
 
-The lower branch proves the `O3B02` coefficient throughout the first interval.
+The lower branch proves a coefficient strictly above the displayed theorem value throughout the first interval via the split terminal rows `O3B02A/O3B02B`.
 The near-Jung branch proves a strictly larger coefficient throughout the second
 interval. The common endpoint causes no gap because both branch conditions are
 valid there.

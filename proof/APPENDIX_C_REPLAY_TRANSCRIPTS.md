@@ -30,11 +30,11 @@ The exact transcript should report, among other values:
 
 ```text
 split radius:                  0.61139120200000000000
-weakest lower row:            O3B02
+weakest lower row:            O3B02B
 changed fan vertices:         18229
 minimum exact fan margin:     0.0000000002888904207092857876733697822441644655792123744
-near-Jung handoff margin:     0.0000021074345301574846190550703110031602996750911392740
-universal coefficient lower: 0.4118775637803022742481789259828398710025748462041567278
+near-Jung handoff margin:     0.0000000000025460541895664424549959552655663257281256941
+universal coefficient lower: 0.4118796712122863775432315385981549188973081955671703077
 ```
 
 The exact output is a human-readable projection of integer and rational

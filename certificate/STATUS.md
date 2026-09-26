@@ -6,15 +6,15 @@ The exact package represents the proposed universal theorem
 
 $$
 \mathrm{Vol}(K)\ge
-\frac{26220940089713\pi}{200000000000000}\,d^3
-=0.41187756378030227424817892598\ldots d^3
+\frac{26221074253\pi}{200000000000}\,d^3
+=0.41187967121228637754323153860\ldots d^3
 $$
 
 for every three-dimensional convex body of constant width `d`.
 
 ## Current classification
 
-**PROPOSED EXACT UNIVERSAL CERTIFICATE - STANDALONE RELEASE v1.0.0**
+**PROPOSED EXACT UNIVERSAL CERTIFICATE - STANDALONE RELEASE v1.1.0**
 
 The public-format package is independent of the private repository layout and
 replays using only files contained in this fresh-history repository. Its exact
@@ -25,14 +25,14 @@ and named-author fresh-clone replay pass in the recorded environments.
 The audited pre-release state is
 `892d4bc6fad07950e78da66e45b95063a6415af6`. Its successful hosted workflow is
 <https://github.com/swihart/minvol-degree3-contact-bound/actions/runs/35468019663>.
-The release metadata is `v1.0.0`, dated September 26, 2026. The immutable tag
+The release metadata is `v1.1.0`, dated September 26, 2026. The immutable tag
 and GitHub Release remain operational publication gates until their workflows
 and downloaded assets are verified.
 
 ## Established inside this package
 
 - gap-free circumradius coverage from `1/2` to `sqrt(6)/4`;
-- unique lower-branch bottleneck `O3B02`;
+- lower-branch weakest row `O3B02B`; the universal bottleneck is the near-Jung branch;
 - four exact replacement cells for the old `O3A1` interval;
 - dominant-edge coordinate-width sharpening on all three axes;
 - exact final-fan reconstruction and fan-margin verification;
@@ -67,7 +67,7 @@ The hosted and fresh-clone evidence is indexed in
 ## Remaining publication gates
 
 1. green hosted Python, R, and document jobs on the final release commit;
-2. an annotated `v1.0.0` tag pointing to that exact commit;
+2. an annotated `v1.1.0` tag pointing to that exact commit;
 3. clean tagged-checkout replay and green hosted jobs on the tag;
 4. tagged release assets and an independently checked download manifest;
 5. explicit named-author approval before changing visibility, creating the
@@ -76,4 +76,4 @@ The hosted and fresh-clone evidence is indexed in
 
 Authorship, no-affiliation wording, citation metadata, repository identity,
 release date, version, and the split CC BY 4.0/MIT license are fixed for
-`v1.0.0`.
+`v1.1.0`.

@@ -35,10 +35,10 @@ class UniversalContactBoundTests(unittest.TestCase):
 
     def test_certificate_claims(self) -> None:
         self.assertEqual(self.cert["schema"], "minvol.universal_contact_bound.v1")
-        self.assertEqual(self.cert["lower_branch"]["weakest_row"], "O3B02")
+        self.assertEqual(self.cert["lower_branch"]["weakest_row"], "O3B02B")
         self.assertEqual(
             self.cert["theorem"]["coefficient_of_pi"],
-            "26220940089713/200000000000000",
+            "26221074253/200000000000",
         )
         self.assertTrue(self.cert["circumradius_partition"]["gap_free"])
         self.assertEqual(self.cert["lower_branch"]["replaced_reference_row"], "O3A1")
@@ -69,7 +69,7 @@ class UniversalContactBoundTests(unittest.TestCase):
         blob = (json.dumps(self.rebuilt, indent=2, sort_keys=True) + "\n").encode("ascii")
         self.assertEqual(blob, CERT.read_bytes())
 
-    def test_refined_o3a1_rows_are_gap_free_and_clear_o3b02(self) -> None:
+    def test_refined_o3a1_rows_are_gap_free_and_clear_theorem(self) -> None:
         rows = [
             row
             for row in self.cert["lower_branch"]["rows"]
@@ -87,9 +87,22 @@ class UniversalContactBoundTests(unittest.TestCase):
             previous = right
         self.assertEqual(previous, Fraction(6_113, 10_000))
         self.assertGreater(
-            Fraction(self.cert["lower_branch"]["refined_angular_grid"]["minimum_margin_over_O3B02"]),
+            Fraction(self.cert["lower_branch"]["refined_angular_grid"]["minimum_margin_over_theorem"]),
             0,
         )
+
+    def test_terminal_split_rows_are_gap_free_and_clear_theorem(self) -> None:
+        rows = [row for row in self.cert["lower_branch"]["rows"] if row["case"] in {"O3B02A", "O3B02B"}]
+        self.assertEqual([row["case"] for row in rows], ["O3B02A", "O3B02B"])
+        target = Fraction(self.cert["theorem"]["coefficient_of_pi"])
+        previous = Fraction(76_421_809, 125_000_000)
+        for row in rows:
+            left, right = map(Fraction, row["interval"])
+            self.assertEqual(left, previous)
+            self.assertGreater(Fraction(row["coefficient_of_pi"]), target)
+            previous = right
+        self.assertEqual(previous, self.c.R_SPLIT)
+        self.assertEqual(self.cert["lower_branch"]["theorem_bottleneck"], "near_Jung_branch")
 
     def test_coordinate_width_sharpening(self) -> None:
         lemma = self.c.verify_coordinate_width_lemma()
@@ -156,7 +169,7 @@ class UniversalContactBoundTests(unittest.TestCase):
         self.assertGreater(out["total_cap_lower"], 1.4e-4)
         self.assertGreater(out["cross_axis_gap"], 0.6)
         self.assertGreater(out["near_jung_lower"], out["universal_coefficient"])
-        self.assertGreater(out["gain_over_previous"], 2.0e-5)
+        self.assertGreater(out["gain_over_previous"], 2.0e-6)
 
 
 if __name__ == "__main__":
